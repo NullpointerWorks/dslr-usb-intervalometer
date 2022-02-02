@@ -9,7 +9,6 @@ import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
 
 public class ApplicationView 
 {
-	
 	public JFrame jfWindow;
 	
 	
@@ -17,6 +16,11 @@ public class ApplicationView
 	
 	public ApplicationView()
 	{
+		
+		
+		
+		
+		
 		
 		JPanel jpInterface = new JPanel();
 		jpInterface.setLocation(0, 0);
