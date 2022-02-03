@@ -1,6 +1,7 @@
 package com.nullpointerworks.intervalometer;
 
 import com.nullpointerworks.intervalometer.view.ApplicationView;
+import com.nullpointerworks.intervalometer.view.swing.UILookAndFeel;
 
 public class Application 
 {
@@ -13,6 +14,7 @@ public class Application
 	
 	Application()
 	{
+		UILookAndFeel.setLookAndFeel( UILookAndFeel.WINDOWS );
 		
 		ApplicationView vWindow = new ApplicationView();
 		
