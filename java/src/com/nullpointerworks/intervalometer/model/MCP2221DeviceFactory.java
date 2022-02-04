@@ -55,10 +55,20 @@ public final class MCP2221DeviceFactory
 	 */
 	public IMCP2221Device getDeviceBySerialNumber(String sn)
 	{
+		long mcpHandle = chip.Mcp2221_OpenBySN(DEFAULT_VID, DEFAULT_PID, sn);
 		
+        result = chip.Mcp2221_GetLastError();
+        if (result != Constants.E_NO_ERR) 
+        {
+            System.out.println("!!! Open connection by serial number for device: " + result);
+        }
 		
-		
+		return new MCP2221Device(mcpHandle);
 	}
+	
+	
+	
+	
 	
 	
 }
