@@ -1,5 +1,6 @@
 package com.nullpointerworks.intervalometer;
 
+import com.nullpointerworks.intervalometer.model.MCP2221DeviceFactory;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
 import com.nullpointerworks.intervalometer.view.swing.UILookAndFeel;
 
@@ -16,8 +17,11 @@ public class Application
 	{
 		UILookAndFeel.setLookAndFeel( UILookAndFeel.WINDOWS );
 		
-		ApplicationView vWindow = new ApplicationView();
+		MCP2221DeviceFactory mFactory = new MCP2221DeviceFactory();
 		
+		
+		
+		ApplicationView vWindow = new ApplicationView();
 		
 		
 		

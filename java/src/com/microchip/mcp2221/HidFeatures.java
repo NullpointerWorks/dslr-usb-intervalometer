@@ -13,20 +13,32 @@
 
 package com.microchip.mcp2221;
 
-public class HidFeatures {
+public class HidFeatures 
+{
     
-    static{
-        //check the system arhitecture
-        if(System.getProperty("sun.arch.data.model").equals("32")){
-            try{
+    static
+    {
+        //check the system architecture
+        if(System.getProperty("sun.arch.data.model").equals("32"))
+        {
+            try
+            {
                 System.loadLibrary("libmcp2221_jni_x86");   //load the native library at runtime
-            }catch(Exception ex){
+            }
+            catch(Exception ex)
+            {
                 System.out.println("The specified library does not exist");
             }
-        }else if(System.getProperty("sun.arch.data.model").equals("64")){
-            try{
+        }
+        else 
+        if(System.getProperty("sun.arch.data.model").equals("64"))
+        {
+            try
+            {
                 System.loadLibrary("libmcp2221_jni_x64");   //load the native library at runtime
-            }catch(Exception ex){
+            }
+            catch(Exception ex)
+            {
                 System.out.println("The specified library does not exist");
                         
             }
