@@ -1,58 +1,13 @@
-//©[2016] Microchip Technology Inc.and its subsidiaries.You may use this software and any derivatives exclusively with Microchip products.
-//
-//THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS".NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
-//WARRANTIES OF NON - INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION WITH ANY 
-//OTHER PRODUCTS, OR USE IN ANY APPLICATION.
-//
-//IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND WHATSOEVER
-//RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE.TO THE FULLEST EXTENT ALLOWED
-//BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, THAT YOU HAVE PAID
-//DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-//
-//MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE TERMS.
+package com.nullpointerworks.intervalometer.model.nativeinterface;
 
-package com.microchip.mcp2221;
-
-import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221NativeInterface;
-
-public class HidFeatures implements Mcp2221NativeInterface
+public interface Mcp2221NativeInterface 
 {
-    static
-    {
-        //check the system architecture
-        if(System.getProperty("sun.arch.data.model").equals("32"))
-        {
-            try
-            {
-                System.loadLibrary("libmcp2221_jni_x86");   //load the native library at runtime
-            }
-            catch(Exception ex)
-            {
-                System.out.println("The specified library does not exist");
-            }
-        }
-        else 
-        if(System.getProperty("sun.arch.data.model").equals("64"))
-        {
-            try
-            {
-                System.loadLibrary("libmcp2221_jni_x64");   //load the native library at runtime
-            }
-            catch(Exception ex)
-            {
-                System.out.println("The specified library does not exist");
-                        
-            }
-        }
-    }
-    
-    
     /**
      * Load native C DLL and check the existence of every function
      * @return 0 for success; error code otherwise
      */
-    public native int Mcp2221_LoadDll();
-
+	int Mcp2221_LoadDll();
+	
     //==========================================================================
     /**
      * Returns the version number of the DLL.
@@ -60,7 +15,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * 
      * <p>NOTE: If the operation failed, call the Mcp2221_GetLastError() method to get the error code.</p>
      */
-    public native String Mcp2221_GetLibraryVersion();
+    String Mcp2221_GetLibraryVersion();
     
     //==========================================================================
     /**
@@ -71,7 +26,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the operation failed, call the Mcp2221_GetLastError() method to get the error code.</p>
      * @see #Mcp2221_GetLastError()
      */
-    public native int Mcp2221_GetConnectedDevices(int VID, int PID);
+    int Mcp2221_GetConnectedDevices(int VID, int PID);
     
     //==========================================================================
     /**
@@ -83,7 +38,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the operation failed, call the Mcp2221_GetLastError() method to get the error code.</p>
      * @see #Mcp2221_GetLastError()
      */
-    public native long Mcp2221_OpenByIndex(int VID, int PID, int index);
+    long Mcp2221_OpenByIndex(int VID, int PID, int index);
     
     //==========================================================================
     /**
@@ -96,7 +51,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      *          <br>If a connection to a matching device is already open, the function will fail with the "device not found" error.
      * @see #Mcp2221_GetLastError()
      */
-    public native long Mcp2221_OpenBySN(int VID, int PID, String serialNumber);
+    long Mcp2221_OpenBySN(int VID, int PID, String serialNumber);
     
     //==========================================================================
     /**
@@ -104,14 +59,14 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param handle    The handle for the device we'll close the connection to.
      * @return          0 for success; error code otherwise
      */
-    public native int Mcp2221_Close(long handle);
+    int Mcp2221_Close(long handle);
     
     //==========================================================================
     /**
      * Attempt to close all the currently opened MCP2221 connections. If successful, all existing handles will be set to INVALID_HANDLE_VALUE(-1).
      * @return      0 for success; error code otherwise
      */
-    public native int Mcp2221_CloseAll();
+    int Mcp2221_CloseAll();
     
     //==========================================================================
     /**
@@ -119,7 +74,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param handle    The handle for the device we'll reset. If successful, the handle will also be closed.
      * @return          0 for success, error code otherwise
      */
-    public native int Mcp2221_Reset(long handle);
+    int Mcp2221_Reset(long handle);
     
     //==========================================================================
     /**
@@ -131,7 +86,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * The "Mcp2221_I2cCancelCurrentTransfer" function can be used to free the bus before retrying to set the speed.
      * @see             #Mcp2221_I2cCancelCurrentTransfer(long handle)
      */
-    public native int Mcp2221_SetSpeed(long handle, int speed);
+    int Mcp2221_SetSpeed(long handle, int speed);
     
     //==========================================================================
     /**
@@ -142,7 +97,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param maxRetries    The maximum amount of times we'll try to read data back from a slave (default value = 5).
      * @return              0 for success; error code otherwise
      */
-    public native int Mcp2221_SetAdvancedCommParams(long handle, short timeout, short maxRetries);
+    int Mcp2221_SetAdvancedCommParams(long handle, short timeout, short maxRetries);
     
     //==========================================================================
     /**
@@ -150,7 +105,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param handle    The handle for the device.
      * @return          0 for success; error code otherwise
      */
-    public native int Mcp2221_I2cCancelCurrentTransfer(long handle);
+    int Mcp2221_I2cCancelCurrentTransfer(long handle);
     
     //==========================================================================
     /**
@@ -165,7 +120,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the "Mcp2221_SetSpeed" function has not been called for the provided handle, the default speed of 100kbps will be configured and used.
      *          Otherwise, the speed will not be reconfigured.</p>
      */
-    public native int Mcp2221_I2cRead(long handle, int bytesToRead, byte slaveAddress, boolean use7bitAddress, byte[] i2cRxData);
+    int Mcp2221_I2cRead(long handle, int bytesToRead, byte slaveAddress, boolean use7bitAddress, byte[] i2cRxData);
     
     //==========================================================================
     /**
@@ -180,7 +135,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the "Mcp2221_SetSpeed" function has not been called for the provided handle, the default speed of 100kbps will be configured and used. 
      *          Otherwise, the speed will not be reconfigured.</p>
      */
-    public native int Mcp2221_I2cWrite(long handle, int bytesToWrite, byte slaveAddress, boolean use7bitAddress, byte[] i2cTxData);
+    int Mcp2221_I2cWrite(long handle, int bytesToWrite, byte slaveAddress, boolean use7bitAddress, byte[] i2cTxData);
     
     //==========================================================================
     /**
@@ -197,7 +152,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the "Mcp2221_SetSpeed" function has not been called for the provided handle, the default speed of 100kbps will be configured and used. 
                 Otherwise, the speed will not be reconfigured.</p>
      */
-    public native int Mcp2221_SmbusWriteByte(long handle, byte slaveAddress, boolean use7bitAddress, boolean usePec, byte command, byte dataToWrite);
+    int Mcp2221_SmbusWriteByte(long handle, byte slaveAddress, boolean use7bitAddress, boolean usePec, byte command, byte dataToWrite);
     
     //==========================================================================
     /**
@@ -214,7 +169,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the "Mcp2221_SetSpeed" function has not been called for the provided handle, the default speed of 100kbps will be configured and used.
                 Otherwise, the speed will not be reconfigured.</p>
      */
-    public native int Mcp2221_SmbusReadByte(long handle, byte slaveAddrress, boolean use7bitAddress, boolean usePec, byte command, byte[] dataToRead);
+    int Mcp2221_SmbusReadByte(long handle, byte slaveAddrress, boolean use7bitAddress, boolean usePec, byte command, byte[] dataToRead);
     
     //==========================================================================
     /**
@@ -233,7 +188,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the "Mcp2221_SetSpeed" function has not been called for the provided handle, the default speed of 100kbps will be configured and used. 
                 Otherwise, the speed will not be reconfigured.</p>
      */
-    public native int Mcp2221_SmbusWriteWord(long handle, byte slaveAdrress, boolean use7bitAddress, boolean usePec, byte command, byte[] dataToWrite);
+    int Mcp2221_SmbusWriteWord(long handle, byte slaveAdrress, boolean use7bitAddress, boolean usePec, byte command, byte[] dataToWrite);
     
     //==========================================================================
     /**
@@ -252,7 +207,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the "Mcp2221_SetSpeed" function has not been called for the provided handle, the default speed of 100kbps will be configured and used.
                 Otherwise, the speed will not be reconfigured.</p>
      */
-    public native int Mcp2221_SmbusReadWord(long handle, byte slaveAddress, boolean use7bitAddress, boolean usePec, byte command, byte[] dataToRead);
+    int Mcp2221_SmbusReadWord(long handle, byte slaveAddress, boolean use7bitAddress, boolean usePec, byte command, byte[] dataToRead);
     
     //==========================================================================
     /**
@@ -271,7 +226,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the "Mcp2221_SetSpeed" function has not been called for the provided handle, the default speed of 100kbps will be configured and used.
      *          Otherwise, the speed will not be reconfigured.</p>
      */
-    public native int Mcp2221_SmbusBlockWrite(long handle, byte slaveAddress, boolean use7bitAddress, boolean usePec, byte command, short byteCount, byte[] dataToWrite);
+    int Mcp2221_SmbusBlockWrite(long handle, byte slaveAddress, boolean use7bitAddress, boolean usePec, byte command, short byteCount, byte[] dataToWrite);
     
     //==========================================================================
     /**
@@ -291,7 +246,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the "Mcp2221_SetSpeed" function has not been called for the provided handle, the default speed of 100kbps will be configured and used.
      *          Otherwise, the speed will not be reconfigured.
      */
-    public native int Mcp2221_SmbusBlockRead(long handle, byte slaveAddress, boolean use7bitAddress, boolean usePec, byte command, short byteCount, byte[] dataToRead);
+    int Mcp2221_SmbusBlockRead(long handle, byte slaveAddress, boolean use7bitAddress, boolean usePec, byte command, short byteCount, byte[] dataToRead);
     
     //==========================================================================
     /**
@@ -302,7 +257,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the operation failed, call the Mcp2221_GetLastError() method to get the error code.</p>
      * @see                 #Mcp2221_GetLastError()
      */
-    public native String Mcp2221_GetManufacturerDescriptor(long handle);
+    String Mcp2221_GetManufacturerDescriptor(long handle);
     
     //==========================================================================
     /**
@@ -311,7 +266,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param manufacturerString    The value of the USB Manufacturer Descriptor String. The input string can contain a maximum of 30 characters
      * @return                      0 for success; error code otherwise
      */
-    public native int Mcp2221_SetManufacturerDescriptor(long handle, String manufacturerString);
+    int Mcp2221_SetManufacturerDescriptor(long handle, String manufacturerString);
     
     //==========================================================================
     /**
@@ -322,7 +277,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the operation failed, call the Mcp2221_GetLastError() method to get the error code.</p>
      * @see             #Mcp2221_GetLastError()
      */
-    public native String Mcp2221_GetProductDescriptor(long handle);
+    String Mcp2221_GetProductDescriptor(long handle);
     
     //==========================================================================
     /**
@@ -331,7 +286,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param productString     The value of the USB Product Descriptor String. The input string can contain a maximum of 30 characters.
      * @return                  0 for success, error code otherwise
      */
-    public native int Mcp2221_SetProductDescriptor(long handle, String productString);
+    int Mcp2221_SetProductDescriptor(long handle, String productString);
     
     //==========================================================================
     /**
@@ -342,7 +297,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the operation failed, call the Mcp2221_GetLastError() method to get the error code.</p>
      * @see             #Mcp2221_GetLastError()
      */
-    public native String Mcp2221_GetSerialNumberDescriptor(long handle);
+    String Mcp2221_GetSerialNumberDescriptor(long handle);
     
     //==========================================================================
     /**
@@ -351,7 +306,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param serialNumber      The value of the USB Serial Number Descriptor String. The input string can contain a maximum of 30 characters.
      * @return                  0 for success; error code otherwise
      */
-    public native int Mcp2221_SetSerialNumberDescriptor(long handle, String serialNumber);
+    int Mcp2221_SetSerialNumberDescriptor(long handle, String serialNumber);
     
     //==========================================================================
     /**
@@ -362,7 +317,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the operation failed, call the Mcp2221_GetLastError() method to get the error code.</p>
      * @see                 #Mcp2221_GetLastError()
      */
-    public native String Mcp2221_GetFactorySerialNumber(long handle);
+    String Mcp2221_GetFactorySerialNumber(long handle);
     
     //==========================================================================
     /**
@@ -373,7 +328,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return          o for success; error code otherwise
      * <p>NOTE: All output arrays must have a minimum length of 1.</p>
      */
-    public native int Mcp2221_GetVidPid(long handle, int[] vid, int[] pid);
+    int Mcp2221_GetVidPid(long handle, int[] vid, int[] pid);
     
     //==========================================================================
     /**
@@ -384,7 +339,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return          0 for success; error code otherwise
      * <p>NOTE: The new VID/PID values will be take effect after a device reset.
      */
-    public native int Mcp2221_SetVidPid(long handle, int vid, int pid);
+    int Mcp2221_SetVidPid(long handle, int vid, int pid);
     
     //==========================================================================
     /**
@@ -398,7 +353,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return                  0 for success; error code otherwise
      * <p>NOTE: All output arrays must have a minimum length of 1.</p>
      */
-    public native int Mcp2221_GetInitialPinValues(long handle, byte[] ledUtxInitVal, byte[] ledUrxInitVal, byte[] ledI2cInitVal, byte[] sspndInitVal, byte[] usbCfgInitVal);
+    int Mcp2221_GetInitialPinValues(long handle, byte[] ledUtxInitVal, byte[] ledUrxInitVal, byte[] ledI2cInitVal, byte[] sspndInitVal, byte[] usbCfgInitVal);
     
     //==========================================================================
     /**
@@ -411,7 +366,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param usbCfgInitVal     The value which represents the logical level signaled when the device is not usb configured (inactive level).
      * @return                  0 for success; error code otherwise
      */
-    public native int Mcp2221_SetInitialPinValues(long handle, byte ledUtxInitVal, byte ledUrxInitVal, byte ledI2cInitVal, byte sspndInitVal, byte usbCfgInitVal);
+    int Mcp2221_SetInitialPinValues(long handle, byte ledUtxInitVal, byte ledUrxInitVal, byte ledI2cInitVal, byte sspndInitVal, byte usbCfgInitVal);
     
     //==========================================================================
     /**
@@ -427,7 +382,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return                      0 for success; error code otherwise
      * <p>NOTE: All output arrays must have a minimum length of 1.</p>
      */
-    public native int Mcp2221_GetUsbPowerAttributes(long handle, short[] powerAttributes, int[] currentReq);
+    int Mcp2221_GetUsbPowerAttributes(long handle, short[] powerAttributes, int[] currentReq);
     
     //==========================================================================
     /**
@@ -442,7 +397,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param currentReq        The requested current value (mA). This value is expressed in multiples of 2mA.
      * @return                  0 for success; error code otherwise
      */
-    public native int Mcp2221_SetUsbPowerAttributes(long handle, short powerAttributes, int currentReq);
+    int Mcp2221_SetUsbPowerAttributes(long handle, short powerAttributes, int currentReq);
     
     //==========================================================================
     /**
@@ -453,7 +408,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return                  0 for success; error code otherwise
      * <p>NOTE: All output arrays must have a minimum length of 1.</p>
      */
-    public native int Mcp2221_GetSerialNumberEnumerationEnable(long handle, byte[] snEnumEnabled);
+    int Mcp2221_GetSerialNumberEnumerationEnable(long handle, byte[] snEnumEnabled);
     
     //==========================================================================
     /**
@@ -463,7 +418,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      *                          <br>If 1 - the serial number descriptor is used; if 0 - no serial number descriptor will be present during enumeration.
      * @return                  0 for success; error code otherwise
      */
-    public native int Mcp2221_SetSerialNumberEnumerationEnable(long handle, byte snEnumEnabled);
+    int Mcp2221_SetSerialNumberEnumerationEnable(long handle, byte snEnumEnabled);
     
     //==========================================================================
     /**
@@ -476,7 +431,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return                  0 for success; error code otherwise
      * <p>NOTE: All output arrays must have a minimum length of 1.</p>
      */
-    public native int Mcp2221_GetSecuritySetting(long handle, byte[] securitySetting);
+    int Mcp2221_GetSecuritySetting(long handle, byte[] securitySetting);
     
     //==========================================================================
     /**
@@ -490,7 +445,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param newPassword       The value for the new password. Must be an 8 character string. This is only for the "enable" or "change" operations.
      * @return                  0 for success; error code otherwise
      */
-    public native int Mcp2221_SetSecuritySetting(long handle, byte securitySetting, String currentPassword, String newPassword);
+    int Mcp2221_SetSecuritySetting(long handle, byte securitySetting, String currentPassword, String newPassword);
     
     //==========================================================================
     /**
@@ -500,7 +455,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>!!! WARNING !!! -- USE THIS FUNCTION WITH GREAT CAUTION.  THE CHIP FLASH SETTINGS (boot-up defaults) CANNOT BE
                 CONFIGURED AFTER THIS FUNCTION HAS BEEN INVOKED!!</p>
      */
-    public native int Mcp2221_SetPermanentLock(long handle);
+    int Mcp2221_SetPermanentLock(long handle);
     
     //==========================================================================
     /**
@@ -511,7 +466,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If 3 flash writes are attempted with an incorrect password, the chip won't accept any more passwords. This function doesn't validate the password, it just sends it to the device. 
      *          The password is checked only during a flash write.</p>
      */
-    public native int Mcp2221_SendPassword(long handle, String password);
+    int Mcp2221_SendPassword(long handle, String password);
     
     //==========================================================================
     /**
@@ -526,7 +481,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return                  0 for success; error code otherwise
      * <p>NOTE: All output arrays must have a minimum length of 1.</p>
      */
-    public native int Mcp2221_GetInterruptEdgeSetting(long handle, byte whichToGet, byte[] interruptPinMode);
+    int Mcp2221_GetInterruptEdgeSetting(long handle, byte whichToGet, byte[] interruptPinMode);
     
     //==========================================================================
     /**
@@ -540,7 +495,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      *                              <br>* 3 - both
      * @return                  0 for success; error code otherwise
      */
-    public native int Mcp2221_SetInterruptEdgeSetting(long handle, byte whichToSet, byte interruptPinMode);
+    int Mcp2221_SetInterruptEdgeSetting(long handle, byte whichToSet, byte interruptPinMode);
     
     //==========================================================================
     /**
@@ -548,7 +503,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param handle    The handle for the device.
      * @return          0 for success; error code otherwise
      */
-    public native int Mcp2221_ClearInterruptPinFlag(long handle);
+    int Mcp2221_ClearInterruptPinFlag(long handle);
     
     //==========================================================================
     /**
@@ -558,7 +513,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return              0 for success; error code otherwise
      * <p>NOTE: All output arrays must have a minimum length of 1.</p>
      */
-    public native int Mcp2221_GetInterruptPinFlag(long handle, byte[] flagValue);
+    int Mcp2221_GetInterruptPinFlag(long handle, byte[] flagValue);
     
     //==========================================================================
     /**
@@ -568,7 +523,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the operation failed, call the Mcp2221_GetLastError() method to get the error code.</p>
      * @see             #Mcp2221_GetLastError()
      */
-    public native String Mcp2221_GetHardwareRevision(long handle);
+    String Mcp2221_GetHardwareRevision(long handle);
     
     //==========================================================================
     /**
@@ -578,7 +533,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * <p>NOTE: If the operation failed, call the Mcp2221_GetLastError() method to get the error code.</p>
      * @see             #Mcp2221_GetLastError()
      */
-    public native String Mcp2221_GetFirmwareRevision(long handle);
+    String Mcp2221_GetFirmwareRevision(long handle);
     
     //==========================================================================
     /**
@@ -602,7 +557,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return                  0 for success; error code otherwise
      * <p>NOTE: All output arrays must have a minimum length of 1.</p>
      */
-    public native int Mcp2221_GetClockSettings(long handle, byte whichToGet, byte[] dutyCycle, byte[] clockDivider);
+    int Mcp2221_GetClockSettings(long handle, byte whichToGet, byte[] dutyCycle, byte[] clockDivider);
     
     //==========================================================================
     /**
@@ -625,7 +580,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      *                              <br>* 7 - 375 kHz
      * @return              0 for success; error code otherwise
      */
-    public native int Mcp2221_SetClockSettings(long handle, byte whichToSet, byte dutyCycle, byte clockDivider);
+    int Mcp2221_SetClockSettings(long handle, byte whichToSet, byte dutyCycle, byte clockDivider);
     
     //==========================================================================
     /**
@@ -647,7 +602,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return                  0 for success; error code otherwise
      * <p>NOTE: All output arrays must have a minimum length of 4.</p>
      */
-    public native int Mcp2221_GetGpioSettings(long handle, byte whichToGet, byte[] pinFunctions, byte[] pinDirections, byte[] outputValues);
+    int Mcp2221_GetGpioSettings(long handle, byte whichToGet, byte[] pinFunctions, byte[] pinDirections, byte[] outputValues);
     
     //==========================================================================
     /**
@@ -671,7 +626,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return                  0 for success; error code otherwise
      * <p>NOTE: All input arrays must have a minimum length of 4.</p>
      **/
-    public native int Mcp2221_SetGpioSettings(long handle, byte whichToSet, byte[] pinFunctions, byte[] pinDirections, byte[] outputValues);
+    int Mcp2221_SetGpioSettings(long handle, byte whichToSet, byte[] pinFunctions, byte[] pinDirections, byte[] outputValues);
     
     //==========================================================================
     /**
@@ -684,7 +639,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return                  0 for success; error code otherwise
      * <p>NOTE: The output array must have a minimum length of 4.</p>
      */
-    public native int Mcp2221_GetGpioValues(long handle, byte[] gpioValues);
+    int Mcp2221_GetGpioValues(long handle, byte[] gpioValues);
     
     //==========================================================================
     /**
@@ -696,7 +651,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return              0 for success; error code otherwise
      * <p>NOTE: The input array must have a minimum length of 4.</p>
      */
-    public native int Mcp2221_SetGpioValues(long handle, byte[] gpioValues);
+    int Mcp2221_SetGpioValues(long handle, byte[] gpioValues);
     
     //==========================================================================
     /**
@@ -709,7 +664,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return          0 for success; error code otherwise
      * <p>NOTE: The output array must have a minimum length of 4.</p>
      */
-    public native int Mcp2221_GetGpioDirection(long handle, byte[] gpioDir);
+    int Mcp2221_GetGpioDirection(long handle, byte[] gpioDir);
     
     //==========================================================================
     /**
@@ -721,7 +676,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return          0 for success; error code otherwise
      * <p>NOTE: The input array must have a minimum length of 4.</p>
      */
-    public native int Mcp2221_SetGpioDirection(long handle, byte[] gpioDir);
+    int Mcp2221_SetGpioDirection(long handle, byte[] gpioDir);
     
     //==========================================================================
     /**
@@ -736,7 +691,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return              0 for success; error code otherwise
      * <p>NOTE: The output array must have a minimum length of 1.</p>
      */
-    public native int Mcp2221_GetDacVref(long handle, byte whichToGet, byte[] dacVref);
+    int Mcp2221_GetDacVref(long handle, byte whichToGet, byte[] dacVref);
     
     //==========================================================================
     /**
@@ -750,7 +705,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      *                          <br>* 3 - 4.096 V
      * @return              0 for success; error code otherwise
      */
-    public native int Mcp2221_SetDacVref(long handle, byte whichToSet, byte dacVref);
+    int Mcp2221_SetDacVref(long handle, byte whichToSet, byte dacVref);
     
     //==========================================================================
     /**
@@ -761,7 +716,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return              0 for success; error code otherwise
      * <p>NOTE: The output array must have a minimum length of 1.</p>
      */
-    public native int Mcp2221_GetDacValue(long handle, byte whichToGet, byte[] dacValue);
+    int Mcp2221_GetDacValue(long handle, byte whichToGet, byte[] dacValue);
     
     //==========================================================================
     /**
@@ -771,7 +726,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @param dacValue      The DAC output value. Valid range is between 0 and 31.
      * @return              0 for success; error code otherwise
      */
-    public native int Mcp2221_SetDacValue(long handle, byte whichToSet, byte dacValue);
+    int Mcp2221_SetDacValue(long handle, byte whichToSet, byte dacValue);
     
     //==========================================================================
     /**
@@ -786,7 +741,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return              0 for success; error code otherwise
      * <p>NOTE: The output array must have a minimum length of 1.</p>
      */
-    public native int Mcp2221_GetAdcVref(long handle, byte whichToGet, byte[] adcVref);
+    int Mcp2221_GetAdcVref(long handle, byte whichToGet, byte[] adcVref);
     
     //==========================================================================
     /**
@@ -800,7 +755,7 @@ public class HidFeatures implements Mcp2221NativeInterface
      *                          <br>* 3 - 4.096 V
      * @return              0 for success; error code otherwise
      */
-    public native int Mcp2221_SetAdcVref(long handle, byte whichToSet, byte adcVref);
+    int Mcp2221_SetAdcVref(long handle, byte whichToSet, byte adcVref);
     
     //==========================================================================
     /**
@@ -810,11 +765,11 @@ public class HidFeatures implements Mcp2221NativeInterface
      * @return          0 for success; error code otherwise
      * <p>NOTE: The output array must have a minimum length of 3.</p>
      */
-    public native int Mcp2221_GetAdcData(long handle, int[] adcData);
+    int Mcp2221_GetAdcData(long handle, int[] adcData);
      
     /**
      * Gets the last error value.
      * @return      The value for the last error code.
      */
-    public native int Mcp2221_GetLastError();
+    int Mcp2221_GetLastError();
 }

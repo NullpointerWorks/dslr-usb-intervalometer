@@ -1,11 +1,11 @@
-package com.nullpointerworks.intervalometer.model;
+package com.nullpointerworks.intervalometer.model.nativeinterface;
 
 import com.microchip.mcp2221.Constants;
 import com.microchip.mcp2221.HidFeatures;
 
 public final class Mcp2221DeviceFactory 
 {
-	private final HidFeatures chip;
+	private final Mcp2221NativeInterface chip;
 	
 	private int DEFAULT_VID = 0x04D8;
 	private int DEFAULT_PID = 0x00DD;
@@ -21,6 +21,7 @@ public final class Mcp2221DeviceFactory
         if (result != Constants.E_NO_ERR) 
         {
             System.err.println("!!! Load DLL: " + result);
+            return;
         }
         
         libVersion = chip.Mcp2221_GetLibraryVersion();
@@ -28,6 +29,7 @@ public final class Mcp2221DeviceFactory
         if (result != Constants.E_NO_ERR) 
         {
             System.err.println("!!! Get Library Version: " + result);
+            return;
         }
         
         System.out.println("Library version: " + libVersion);
@@ -60,7 +62,8 @@ public final class Mcp2221DeviceFactory
         result = chip.Mcp2221_GetLastError();
         if (result != Constants.E_NO_ERR) 
         {
-            System.out.println("!!! Open connection by serial number for device: " + result);
+            System.err.println("!!! Open connection by serial number for device: " + result);
+            return null;
         }
 		
 		return new Mcp2221Device(chip, mcpHandle);

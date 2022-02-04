@@ -1,17 +1,24 @@
-package com.nullpointerworks.intervalometer.model;
+package com.nullpointerworks.intervalometer.model.nativeinterface;
 
 import com.microchip.mcp2221.Constants;
-import com.microchip.mcp2221.HidFeatures;
 
 public class Mcp2221Device implements IMcp2221Device 
 {
-	private final HidFeatures nativeInterface;
+	private final Mcp2221NativeInterface nativeInterface;
 	private final long devHandle;
 	
-	public Mcp2221Device(HidFeatures chip, long handle)
+	private byte gpioValues[];
+	
+	public Mcp2221Device(Mcp2221NativeInterface chip, long handle)
 	{
 		nativeInterface = chip;
 		devHandle = handle;
+		
+		gpioValues = new byte[4];
+	    gpioValues[0] = 0;
+	    gpioValues[1] = 0;
+	    gpioValues[2] = 0;
+	    gpioValues[3] = 0;
 	}
 	
 	@Override
@@ -20,6 +27,7 @@ public class Mcp2221Device implements IMcp2221Device
 		return devHandle;
 	}
 	
+	@Override
 	public String getProductDescriptor()
 	{
 		String desc = new String();
@@ -28,18 +36,31 @@ public class Mcp2221Device implements IMcp2221Device
         int result = nativeInterface.Mcp2221_GetLastError();
         if (result != Constants.E_NO_ERR) 
         {
-            System.out.println("!!! Get product descriptor for device: " + result);
+            System.err.println("!!! Get product descriptor for device: " + result);
         }
         
         return desc;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Override
 	public void closeConnection()
 	{
         int result = nativeInterface.Mcp2221_Close(devHandle);
         if (result != Constants.E_NO_ERR) 
         {
-            System.out.println("!!! Close connection for device: " + result);
+            System.err.println("!!! Close connection for device: " + result);
         }
 	}
 }
