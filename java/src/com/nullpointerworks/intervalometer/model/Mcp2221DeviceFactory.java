@@ -3,7 +3,7 @@ package com.nullpointerworks.intervalometer.model;
 import com.microchip.mcp2221.Constants;
 import com.microchip.mcp2221.HidFeatures;
 
-public final class MCP2221DeviceFactory 
+public final class Mcp2221DeviceFactory 
 {
 	private final HidFeatures chip;
 	
@@ -13,7 +13,7 @@ public final class MCP2221DeviceFactory
 	private int result = 0;
 	private String libVersion;
 	
-	public MCP2221DeviceFactory()
+	public Mcp2221DeviceFactory()
 	{
         chip = new HidFeatures();
         
@@ -53,7 +53,7 @@ public final class MCP2221DeviceFactory
 	 * @param sn
 	 * @return
 	 */
-	public IMCP2221Device getDeviceBySerialNumber(String sn)
+	public IMcp2221Device getDeviceBySerialNumber(String sn)
 	{
 		long mcpHandle = chip.Mcp2221_OpenBySN(DEFAULT_VID, DEFAULT_PID, sn);
 		
@@ -63,12 +63,6 @@ public final class MCP2221DeviceFactory
             System.out.println("!!! Open connection by serial number for device: " + result);
         }
 		
-		return new MCP2221Device(mcpHandle);
+		return new Mcp2221Device(chip, mcpHandle);
 	}
-	
-	
-	
-	
-	
-	
 }
