@@ -1,11 +1,5 @@
 package com.nullpointerworks.intervalometer;
 
-import java.awt.Color;
-
-import javax.swing.UIManager;
-
-import com.nullpointerworks.intervalometer.model.nativeinterface.GPIO;
-import com.nullpointerworks.intervalometer.model.nativeinterface.IMcp2221Device;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221DeviceFactory;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
 import com.nullpointerworks.intervalometer.view.swing.UILookAndFeel;
@@ -46,7 +40,7 @@ public class Application
 		//*/
 		
 		
-		ApplicationView vWindow = new ApplicationView();
+		ApplicationView vWindow = new ApplicationView("DSLR Intervalometer", 640, 480);
 		vWindow.setVisible(true);
 	}
 	
