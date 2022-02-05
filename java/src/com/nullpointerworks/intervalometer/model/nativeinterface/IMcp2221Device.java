@@ -6,7 +6,9 @@ public interface IMcp2221Device
 	String getProductDescriptor();
 	String getSerialNumberDescriptor();
 	String getFactorySerialNumber();
-	
+	void readVidPid();
+	int getVid();
+	int getPid();
 	
 	/**
 	 * Set the communication speed for I2C/SMBus operations.
@@ -16,9 +18,8 @@ public interface IMcp2221Device
 	void setManufacturerDescriptor(String desc);
 	void setProductDescriptor(String desc);
 	void setSerialNumberDescriptor(String sn);
-	
+	void setVidPid(int v, int p);
 	void setGPIOValue(GPIO io, boolean v);
-	
 	
 	long getDeviceHandle();
 	void closeConnection();

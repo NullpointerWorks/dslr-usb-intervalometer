@@ -68,7 +68,7 @@ public class Mcp2221Device implements IMcp2221Device
         int result = nativeInterface.Mcp2221_GetLastError();
         if (result != Constants.E_NO_ERR) 
         {
-            System.out.println("!!! Get serial number descriptor for device: " + result);
+            System.err.println("!!! Get serial number descriptor for device: " + result);
             return "";
         }
         
@@ -84,11 +84,37 @@ public class Mcp2221Device implements IMcp2221Device
         int result = nativeInterface.Mcp2221_GetLastError();
         if (result != Constants.E_NO_ERR) 
         {
-            System.out.println("!!! Get factory serial number for device: " + result);
+            System.err.println("!!! Get factory serial number for device: " + result);
             return "";
         }
         
         return sn;
+	}
+	
+	public void readVidPid()
+	{
+		int[] v = new int[1];
+		int[] p = new int[1];
+        
+        int result = nativeInterface.Mcp2221_GetVidPid(devHandle, v, p);
+        if (result != Constants.E_NO_ERR) 
+        {
+            System.err.println("!!! Get vid and pid for device: " + result);
+            return;
+        }
+        
+        vid[0] = v[0];
+        pid[0] = p[0];
+	}
+
+	public int getVid()
+	{
+		return vid[0];
+	}
+	
+	public int getPid()
+	{
+		return pid[0];
 	}
 	
 	
@@ -104,7 +130,7 @@ public class Mcp2221Device implements IMcp2221Device
 	public void setSpeed(int speed)
 	{
 		if (speed < 46875) speed = 46875; // minimum
-		if (speed < 500000) speed = 500000; // maximum
+		if (speed > 500000) speed = 500000; // maximum
 		
 		int result = nativeInterface.Mcp2221_SetSpeed(devHandle, speed);
         if (result != Constants.E_NO_ERR) 
@@ -150,13 +176,18 @@ public class Mcp2221Device implements IMcp2221Device
         }
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+	public void setVidPid(int v, int p)
+	{
+		int result = nativeInterface.Mcp2221_SetVidPid(devHandle, vid[0], pid[0]);
+        if (result != Constants.E_NO_ERR) 
+        {
+            System.err.println("!!! Set vid and pid for device: " + result);
+            return;
+        }
+        
+        vid[0] = v;
+        pid[0] = p;
+	}
 	
 	@Override
 	public void setGPIOValue(GPIO io, boolean v)
