@@ -8,11 +8,16 @@ public class Mcp2221Device implements IMcp2221Device
 	private final long devHandle;
 	
 	private byte gpioValues[];
+	private int vid[] = new int[1];
+	private int pid[] = new int[1];
 	
 	public Mcp2221Device(Mcp2221NativeInterface chip, long handle)
 	{
 		nativeInterface = chip;
 		devHandle = handle;
+		
+		vid[0] = 0x04D8; // defaults
+	    pid[0] = 0x00DD;
 		
 		gpioValues = new byte[4];
 	    gpioValues[0] = 0;
@@ -21,10 +26,22 @@ public class Mcp2221Device implements IMcp2221Device
 	    gpioValues[3] = 0;
 	}
 	
-	@Override
-	public long getDeviceHandle()
+	// ========================================================================
+	// GETTERS
+	// ========================================================================
+	
+	public String getManufacturerDescriptor()
 	{
-		return devHandle;
+		String desc = new String();
+		desc = nativeInterface.Mcp2221_GetManufacturerDescriptor(devHandle);
+        
+        int result = nativeInterface.Mcp2221_GetLastError();
+        if (result != Constants.E_NO_ERR) 
+        {
+            System.err.println("!!! Get manufacturer descriptor for device: " + result);
+        }
+        
+        return desc;
 	}
 	
 	@Override
@@ -43,7 +60,7 @@ public class Mcp2221Device implements IMcp2221Device
 	}
 	
 	@Override
-	public String getSerialNumber()
+	public String getSerialNumberDescriptor()
 	{
 		String sn = new String();
         sn = nativeInterface.Mcp2221_GetSerialNumberDescriptor(devHandle);
@@ -51,7 +68,23 @@ public class Mcp2221Device implements IMcp2221Device
         int result = nativeInterface.Mcp2221_GetLastError();
         if (result != Constants.E_NO_ERR) 
         {
-            System.out.println("!!! Get serial number descriptor for dev1: " + result);
+            System.out.println("!!! Get serial number descriptor for device: " + result);
+            return "";
+        }
+        
+        return sn;
+	}
+	
+	@Override
+	public String getFactorySerialNumber()
+	{
+		String sn = new String();
+        sn = nativeInterface.Mcp2221_GetFactorySerialNumber(devHandle);
+        
+        int result = nativeInterface.Mcp2221_GetLastError();
+        if (result != Constants.E_NO_ERR) 
+        {
+            System.out.println("!!! Get factory serial number for device: " + result);
             return "";
         }
         
@@ -60,6 +93,62 @@ public class Mcp2221Device implements IMcp2221Device
 	
 	
 	
+	
+	
+	
+	// ========================================================================
+	// SETTERS
+	// ========================================================================
+	
+	
+	public void setSpeed(int speed)
+	{
+		if (speed < 46875) speed = 46875; // minimum
+		if (speed < 500000) speed = 500000; // maximum
+		
+		int result = nativeInterface.Mcp2221_SetSpeed(devHandle, speed);
+        if (result != Constants.E_NO_ERR) 
+        {
+            System.err.println("!!! Set min value for speed: " + result);
+        }
+        
+	}
+	
+	public void setManufacturerDescriptor(String desc)
+	{
+		String temp = new String();
+		temp = desc;
+		
+        int result = nativeInterface.Mcp2221_SetManufacturerDescriptor(devHandle, temp);
+        if (result != Constants.E_NO_ERR)
+        {
+            System.err.println("!!! Set manufacturer descriptor for device: " + result);
+        }
+	}
+	
+	public void setProductDescriptor(String desc)
+	{
+		String temp = new String();
+		temp = desc;
+		
+        int result = nativeInterface.Mcp2221_SetProductDescriptor(devHandle, temp);
+        if (result != Constants.E_NO_ERR)
+        {
+            System.err.println("!!! Set product descriptor for device: " + result);
+        }
+	}
+	
+	public void setSerialNumberDescriptor(String sn)
+	{
+        String temp;
+        temp = sn;
+		
+        int result = nativeInterface.Mcp2221_SetSerialNumberDescriptor(devHandle, temp);
+        if (result != Constants.E_NO_ERR)
+        {
+            System.err.println("!!! Set serial number descriptor for device: " + result);
+        }
+	}
 	
 	
 	
@@ -80,14 +169,15 @@ public class Mcp2221Device implements IMcp2221Device
         }
 	}
 	
+	// ========================================================================
+	// CONTROL
+	// ========================================================================
 	
-	
-	
-	
-	
-	
-	
-	
+	@Override
+	public long getDeviceHandle()
+	{
+		return devHandle;
+	}
 	
 	@Override
 	public void closeConnection()

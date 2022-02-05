@@ -23,7 +23,7 @@ public class Application
 		
 		
 		IMcp2221Device device = mFactory.getDeviceBySerialNumber("0000449396");
-		System.out.println( "serialnumber: "+device.getSerialNumber() );
+		//System.out.println( "serialnumber: "+device.getSerialNumber() );
 		System.out.println( "product:      "+device.getProductDescriptor() );
 		
 		
