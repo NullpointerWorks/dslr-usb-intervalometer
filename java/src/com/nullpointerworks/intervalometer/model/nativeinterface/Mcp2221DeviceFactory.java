@@ -32,7 +32,7 @@ public final class Mcp2221DeviceFactory
             return;
         }
         
-        System.out.println("Library version: " + libVersion);
+        System.out.println("MCP2221 library version: " + libVersion);
 	}
 	
 	/**

@@ -24,7 +24,7 @@ public class ApplicationView
 		
 		JPanel jpInterface = new JPanel();
 		jpInterface.setLocation(0, 0);
-		jpInterface.setSize(640, 550);
+		jpInterface.setSize(640, 480);
 		jpInterface.setPreferredSize( jpInterface.getSize() );
 		jpInterface.setLayout( new AbsoluteLayout() );
 		jpInterface.setBackground( Color.WHITE );

@@ -1,5 +1,6 @@
 package com.nullpointerworks.intervalometer.view.swing;
 
+import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -36,4 +37,19 @@ public class UILookAndFeel
 			e.printStackTrace();
 		}
 	}
+	
+	public static void setLookAndFeel(final LookAndFeel lookandfeel)
+	{
+		try 
+		{
+			UIManager.setLookAndFeel(lookandfeel);
+		} 
+		catch (UnsupportedLookAndFeelException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 }
