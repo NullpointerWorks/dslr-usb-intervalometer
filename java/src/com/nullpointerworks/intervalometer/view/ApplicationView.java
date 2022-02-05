@@ -22,6 +22,8 @@ public class ApplicationView
 		
 		
 		
+		
+		
 		jpStatusBar = new StatusBarJPanel();
 		jpStatusBar.setSize(width,20);
 		jpStatusBar.setPreferredSize( jpStatusBar.getSize() );

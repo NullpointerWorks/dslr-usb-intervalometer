@@ -1,6 +1,6 @@
 package com.nullpointerworks.intervalometer.model.nativeinterface;
 
-public interface IMcp2221Device
+public interface Mcp2221Interface
 {
 	String getManufacturerDescriptor();
 	String getProductDescriptor();

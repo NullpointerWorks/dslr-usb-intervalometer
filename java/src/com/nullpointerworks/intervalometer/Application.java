@@ -1,5 +1,6 @@
 package com.nullpointerworks.intervalometer;
 
+import com.nullpointerworks.intervalometer.model.config.Configuration;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221DeviceFactory;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
 import com.nullpointerworks.intervalometer.view.swing.UILookAndFeel;
@@ -13,23 +14,25 @@ public class Application
 		new Application();
 	}
 	
-	Application()
+	private Application()
 	{
 		UILookAndFeel.setLookAndFeel( UILookAndFeel.WINDOWS );
 		
-		
+		Configuration mConfig;
 		Mcp2221DeviceFactory mFactory = new Mcp2221DeviceFactory();
 		
 		
-		/*
-		IMcp2221Device device = mFactory.getDeviceBySerialNumber("0000449396");
 		
+		
+		
+		
+		/*
+		Mcp2221Interface device = mFactory.getDeviceBySerialNumber("0000449396");
 		
 		device.setGPIOValue(GPIO.GP1, true);
 		sleep(1000);
 		device.setGPIOValue(GPIO.GP1, false);
 		sleep(100);
-		
 		
 		device.setGPIOValue(GPIO.GP0, true);
 		sleep(1000);

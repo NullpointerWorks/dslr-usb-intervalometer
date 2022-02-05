@@ -55,7 +55,7 @@ public final class Mcp2221DeviceFactory
 	 * @param sn
 	 * @return
 	 */
-	public IMcp2221Device getDeviceBySerialNumber(String sn)
+	public Mcp2221Interface getDeviceBySerialNumber(String sn)
 	{
 		long mcpHandle = chip.Mcp2221_OpenBySN(DEFAULT_VID, DEFAULT_PID, sn);
 		

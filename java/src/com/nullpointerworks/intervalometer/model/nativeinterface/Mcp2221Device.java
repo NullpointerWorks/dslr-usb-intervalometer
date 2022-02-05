@@ -2,7 +2,7 @@ package com.nullpointerworks.intervalometer.model.nativeinterface;
 
 import com.microchip.mcp2221.Constants;
 
-public class Mcp2221Device implements IMcp2221Device 
+public class Mcp2221Device implements Mcp2221Interface 
 {
 	private final Mcp2221NativeInterface nativeInterface;
 	private final long devHandle;
