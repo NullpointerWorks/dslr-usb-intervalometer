@@ -7,7 +7,7 @@ There are a number of Canon DSLRs that allow for an external shutter release usi
 The purpose of this project is to replace the clunky battery-powered intervalometer with a USB powered device. You can now automate the DSLR's exposure time using a desktop application and a piece of electronics. The application will save your DSLR profiles and should be a lot easier to set up. 
 
 ## Supported DSLR's
-There are a handful of Canon DSLRs that come equipped with a 2.5mm external shutter release interface. I own a Canon 350D (astro-modified) and 1100D and confirmed it works on both of them. The list below is not an exhaustive list, just the one's I'm aware of.
+There are a handful of Canon DSLRs that come equipped with a 2.5mm external shutter release interface. I own a Canon 350D (astro-modified) and 1100D and confirmed it works on both of them. The list below is not an exhaustive list, just the ones I'm aware of.
 ###### Canon EOS
 - 1100D
 - 300D/Rebel
