@@ -1,4 +1,4 @@
-package com.nullpointerworks.intervalometer.control;
+package com.nullpointerworks.intervalometer.control.interfaces;
 
 public interface RunnableCommand extends Command, Runnable 
 {

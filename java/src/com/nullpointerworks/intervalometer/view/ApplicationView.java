@@ -12,6 +12,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
 import com.nullpointerworks.intervalometer.view.swing.StatusBarJPanel;
 
@@ -108,7 +109,6 @@ public class ApplicationView
 		jpInterface.setSize(340, 480);
 		jpInterface.setPreferredSize( jpInterface.getSize() );
 		jpInterface.setLayout( new BorderLayout() );
-		//jpInterface.setBackground( Color.WHITE );
 		jpInterface.add(tpTabs, BorderLayout.CENTER);
 		jpInterface.add(jpStatusBar, BorderLayout.SOUTH);
 		
@@ -122,6 +122,8 @@ public class ApplicationView
 		jfWindow.pack();
 		jfWindow.setLocationRelativeTo(null);
 	}
+
+	public void setConnectToCommand(ActionCommand aConnectTo) {jmiConnect.addActionListener(aConnectTo);}
 	
 	public void setVisible(boolean b)
 	{

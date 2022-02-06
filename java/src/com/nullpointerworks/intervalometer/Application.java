@@ -1,5 +1,7 @@
 package com.nullpointerworks.intervalometer;
 
+import com.nullpointerworks.intervalometer.control.ConnectToCommand;
+import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.model.config.Configuration;
 import com.nullpointerworks.intervalometer.model.nativeinterface.GPIO;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221Device;
@@ -72,12 +74,22 @@ public class Application
 		
 		//*/
 		
-		
 		ApplicationView vWindow = new ApplicationView("DSLR Intervalometer");
+		
+		
+		
+		
+		ActionCommand aConnectTo = new ConnectToCommand();
+		
+		
+		
+		
+		
+		
+		vWindow.setConnectToCommand(aConnectTo);
 		vWindow.setVisible(true);
 		
-		vWindow.setSerialNumber("0000449396");
-		vWindow.setDisplayTab("<New Profile>", new ProfileJPanel() );
+		//vWindow.setDisplayTab("<New Profile>", new ProfileJPanel() );
 		
 		
 		
