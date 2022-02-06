@@ -1,6 +1,8 @@
 package com.nullpointerworks.intervalometer;
 
 import com.nullpointerworks.intervalometer.model.config.Configuration;
+import com.nullpointerworks.intervalometer.model.nativeinterface.GPIO;
+import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221Device;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221DeviceFactory;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
 import com.nullpointerworks.intervalometer.view.ProfileJPanel;
