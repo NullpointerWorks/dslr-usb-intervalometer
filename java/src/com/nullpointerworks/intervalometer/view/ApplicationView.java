@@ -40,28 +40,35 @@ public class ApplicationView
 		JMenuBar jmbMainMenu = new JMenuBar();
 		
 		JMenu jmProgram = new JMenu("Program");
-		jmiConnect = new JMenuItem("Connect");
+		jmiConnect = new JMenuItem("Connect To");
+		JMenu jmConnectRecent = new JMenu("Connect Recent");
 		jmiExit = new JMenuItem("Exit");
-		jmiConnect.setMargin(menuInset);
-		jmiExit.setMargin(menuInset);
 		
 		JMenu jmProfile = new JMenu("Profile");
 		jmiNewProfile = new JMenuItem("New");
 		jmiLoadProfile = new JMenuItem("Load");
+		JMenu jmLoadRecent = new JMenu("Load Recent");
 		jmiSaveProfile = new JMenuItem("Save");
-		jmiSaveAsProfile = new JMenuItem("Save As");
+		jmiSaveAsProfile = new JMenuItem("Save As...");
+		
+		jmiConnect.setMargin(menuInset);
+		jmConnectRecent.setMargin(menuInset);
+		jmiExit.setMargin(menuInset);
 		jmiNewProfile.setMargin(menuInset);
 		jmiLoadProfile.setMargin(menuInset);
+		jmLoadRecent.setMargin(menuInset);
 		jmiSaveProfile.setMargin(menuInset);
 		jmiSaveAsProfile.setMargin(menuInset);
 		
 		jmProgram.add(jmiConnect);
+		jmProgram.add(jmConnectRecent);
 		jmProgram.addSeparator();
 		jmProgram.add(jmiExit);
 		
 		jmProfile.add(jmiNewProfile);
 		jmProfile.addSeparator();
 		jmProfile.add(jmiLoadProfile);
+		jmProfile.add(jmLoadRecent);
 		jmProfile.addSeparator();
 		jmProfile.add(jmiSaveProfile);
 		jmProfile.add(jmiSaveAsProfile);
