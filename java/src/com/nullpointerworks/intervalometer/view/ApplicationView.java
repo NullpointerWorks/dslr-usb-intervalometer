@@ -24,7 +24,7 @@ public class ApplicationView
 	private JLabel jlConnectStatus;
 	private JLabel jlSerialNumber;
 
-	private final Insets menuInset = new Insets(-1,0,0,0); // makes menuitems not as tall as its default
+	private final Insets menuInset = new Insets(-1,0,0,0); // makes menu items not as tall as its default
 	private JMenuItem jmiConnect;
 	private JMenuItem jmiExit;
 	private JMenuItem jmiNewProfile;

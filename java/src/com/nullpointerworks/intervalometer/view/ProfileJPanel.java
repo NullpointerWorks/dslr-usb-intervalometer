@@ -34,6 +34,12 @@ public class ProfileJPanel extends JPanel
 {
 	private static final long serialVersionUID = -7670816939485627712L;
 	
+	
+	private JButton jbSetStartDelay;
+	private JButton jbSetExposure;
+	private JButton jbSetDelay;
+	
+	
 	private JTextField jtfNumber;
 	
 	public ProfileJPanel()
@@ -50,27 +56,16 @@ public class ProfileJPanel extends JPanel
 		JLabel lbNumberExposures = new JLabel("Desired Exposures:");
 		lbNumberExposures.setLocation(20, 95);
 		lbNumberExposures.setSize(100, 20);
-		JLabel lbExposuresTaken = new JLabel("Exposures Taken:");
-		lbExposuresTaken.setLocation(20, 120);
-		lbExposuresTaken.setSize(100, 20);
 		
-		JButton jbSetStartDelay = new JButton("Set");
+		jbSetStartDelay = new JButton("Set");
 		jbSetStartDelay.setLocation(250, 20);
 		jbSetStartDelay.setSize(50, 20);
-		JButton jbSetExposure = new JButton("Set");
+		jbSetExposure = new JButton("Set");
 		jbSetExposure.setLocation(250, 45);
 		jbSetExposure.setSize(50, 20);
-		JButton jbSetDelay = new JButton("Set");
+		jbSetDelay = new JButton("Set");
 		jbSetDelay.setLocation(250, 70);
 		jbSetDelay.setSize(50, 20);
-		
-		
-		
-		JButton jbStartStop = new JButton("Start/Stop");
-		jbStartStop.setLocation(20, 95);
-		jbStartStop.setSize(50, 20);
-		
-		
 		
 		JTextField jtfNumber = new JTextField();
 		jtfNumber.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
@@ -80,12 +75,22 @@ public class ProfileJPanel extends JPanel
 		
 		
 		
+		JButton jbStartStop = new JButton("Start");
+		jbStartStop.setLocation(20, 20);
+		jbStartStop.setSize(70, 20);
+		
+		JLabel lbExposuresTaken = new JLabel("Exposures Taken:");
+		lbExposuresTaken.setLocation(20, 45);
+		lbExposuresTaken.setSize(100, 20);
+		
+		
+		
 		
 		JPanel jpIntervalometer = new JPanel();
 		jpIntervalometer.setLayout( new AbsoluteLayout() );
 		jpIntervalometer.setBorder( BorderFactory.createTitledBorder("Intervalometer") );
 		jpIntervalometer.setLocation(5, 5);
-		jpIntervalometer.setSize(320, 155);
+		jpIntervalometer.setSize(320, 130);
 		jpIntervalometer.setPreferredSize(jpIntervalometer.getSize());
 		jpIntervalometer.setBackground( Color.WHITE );
 		
@@ -93,19 +98,26 @@ public class ProfileJPanel extends JPanel
 		jpIntervalometer.add(lbExposureTime);
 		jpIntervalometer.add(lbInBetweenDelay);
 		jpIntervalometer.add(lbNumberExposures);
-		jpIntervalometer.add(lbExposuresTaken);
 		jpIntervalometer.add(jbSetStartDelay);
 		jpIntervalometer.add(jbSetExposure);
 		jpIntervalometer.add(jbSetDelay);
 		
-		
-		
+		JPanel jpSession = new JPanel();
+		jpSession.setLayout( new AbsoluteLayout() );
+		jpSession.setBorder( BorderFactory.createTitledBorder("Session") );
+		jpSession.setLocation(5, 140);
+		jpSession.setSize(320, 80);
+		jpSession.setPreferredSize(jpSession.getSize());
+		jpSession.setBackground( Color.WHITE );
+		jpSession.add(jbStartStop);
+		jpSession.add(lbExposuresTaken);
 		
 		setSize(640, 480);
 		setPreferredSize( getSize() );
 		setBackground( Color.WHITE );
 		setLayout( new AbsoluteLayout() );
 		add(jpIntervalometer);
+		add(jpSession);
 	}
 	
 	
