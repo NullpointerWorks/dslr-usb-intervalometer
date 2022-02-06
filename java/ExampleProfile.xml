@@ -1,0 +1,7 @@
+<Profile>
+	<Name>Example Profile</Name>
+	<StartDelay>5</StartDelay>
+	<ExposureTime>120</ExposureTime>
+	<InBetweenDelay>10</InBetweenDelay>
+	<Exposures>200</Exposures>
+</Profile>

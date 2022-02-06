@@ -38,33 +38,37 @@ public class ProfileJPanel extends JPanel
 	
 	public ProfileJPanel()
 	{
-
 		JLabel lbStartDelay = new JLabel("Start-up Delay:");
 		lbStartDelay.setLocation(20, 20);
 		lbStartDelay.setSize(100, 20);
-		
 		JLabel lbExposureTime = new JLabel("Exposure Time:");
 		lbExposureTime.setLocation(20, 45);
 		lbExposureTime.setSize(100, 20);
-		
 		JLabel lbInBetweenDelay = new JLabel("In-Between Delay:");
 		lbInBetweenDelay.setLocation(20, 70);
 		lbInBetweenDelay.setSize(100, 20);
-		
-		
-		
-		
-		
-		
+		JLabel lbNumberExposures = new JLabel("Desired Exposures:");
+		lbNumberExposures.setLocation(20, 95);
+		lbNumberExposures.setSize(100, 20);
+		JLabel lbExposuresTaken = new JLabel("Exposures Taken:");
+		lbExposuresTaken.setLocation(20, 120);
+		lbExposuresTaken.setSize(100, 20);
 		
 		JButton jbSetStartDelay = new JButton("Set");
-		jbSetStartDelay.setLocation(150, 20);
+		jbSetStartDelay.setLocation(250, 20);
 		jbSetStartDelay.setSize(50, 20);
+		JButton jbSetExposure = new JButton("Set");
+		jbSetExposure.setLocation(250, 45);
+		jbSetExposure.setSize(50, 20);
+		JButton jbSetDelay = new JButton("Set");
+		jbSetDelay.setLocation(250, 70);
+		jbSetDelay.setSize(50, 20);
 		
-		JButton jbSetExposure = new JButton();
-		JButton jbSetDelay = new JButton();
-		JLabel jlPictureAmount = new JLabel();
-		JButton jbStartStop = new JButton();
+		
+		
+		JButton jbStartStop = new JButton("Start/Stop");
+		jbStartStop.setLocation(20, 95);
+		jbStartStop.setSize(50, 20);
 		
 		
 		
@@ -81,21 +85,18 @@ public class ProfileJPanel extends JPanel
 		jpIntervalometer.setLayout( new AbsoluteLayout() );
 		jpIntervalometer.setBorder( BorderFactory.createTitledBorder("Intervalometer") );
 		jpIntervalometer.setLocation(5, 5);
-		jpIntervalometer.setSize(250, 150);
+		jpIntervalometer.setSize(320, 155);
 		jpIntervalometer.setPreferredSize(jpIntervalometer.getSize());
 		jpIntervalometer.setBackground( Color.WHITE );
 		
 		jpIntervalometer.add(lbStartDelay);
 		jpIntervalometer.add(lbExposureTime);
 		jpIntervalometer.add(lbInBetweenDelay);
-		
-		
-		
+		jpIntervalometer.add(lbNumberExposures);
+		jpIntervalometer.add(lbExposuresTaken);
 		jpIntervalometer.add(jbSetStartDelay);
-		
-		
-		
-		
+		jpIntervalometer.add(jbSetExposure);
+		jpIntervalometer.add(jbSetDelay);
 		
 		
 		
@@ -105,8 +106,8 @@ public class ProfileJPanel extends JPanel
 		setBackground( Color.WHITE );
 		setLayout( new AbsoluteLayout() );
 		add(jpIntervalometer);
-		
 	}
+	
 	
 	
 }
