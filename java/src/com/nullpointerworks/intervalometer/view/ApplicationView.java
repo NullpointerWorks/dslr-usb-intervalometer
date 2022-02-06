@@ -2,7 +2,6 @@ package com.nullpointerworks.intervalometer.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Insets;
 
 import javax.swing.JFrame;
@@ -51,6 +50,13 @@ public class ApplicationView
 		jmiSaveProfile = new JMenuItem("Save");
 		jmiSaveAsProfile = new JMenuItem("Save As...");
 		
+		JMenu jmAbout = new JMenu("About");
+		
+		
+		
+		
+		
+		
 		jmiConnect.setMargin(menuInset);
 		jmConnectRecent.setMargin(menuInset);
 		jmiExit.setMargin(menuInset);
@@ -75,6 +81,7 @@ public class ApplicationView
 		
 		jmbMainMenu.add(jmProgram);
 		jmbMainMenu.add(jmProfile);
+		jmbMainMenu.add(jmAbout);
 		
 		// tab interface
 		tpTabs = new JTabbedPane();
@@ -121,7 +128,7 @@ public class ApplicationView
 		jfWindow.setVisible(b);
 	}
 	
-	public void setDisplayTab(String title, Component comp) 
+	public void setDisplayTab(String title, ProfileJPanel comp) 
 	{
 		tpTabs.removeAll();
 		tpTabs.addTab(title, comp);
