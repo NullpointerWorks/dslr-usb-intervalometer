@@ -2,7 +2,7 @@
 
 # DSLR Intervalometer
 
-There are a number of Canon DSLRs that allow external control using a 3-terminal 2.5mm audio jack. You can purchase the hand-held intervalometers online, but using those can be somewhat inconvenient. They either don't save their last configuration or they can't store any for later use. The purpose of this project is to change that. This project allows for automating the DSLR exposure time over USB using a desktop application and a piece of electronics. 
+There are a number of Canon DSLRs that allow for an external shutter release using a 3-terminal 2.5mm audio jack. You can purchase the hand-held intervalometers online, but using those can be somewhat inconvenient. They either don't save their last configuration or they can't store any for later use. The purpose of this project is to change that. This project allows for automating the DSLR exposure time over USB using a desktop application and a piece of electronics. 
 
 ## Supported DSLR's
 There are a handful of Canon DSLRs that come equipped with a 2.5mm external shutter release interface. I own a Canon 350D (astro-modified) and 1100D and confirmed it works on both of them. The list below is not an exhaustive list. Some models may be missing.
