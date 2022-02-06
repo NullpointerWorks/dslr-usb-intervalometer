@@ -3,9 +3,13 @@ package com.nullpointerworks.intervalometer.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Insets;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -20,21 +24,63 @@ public class ApplicationView
 	private JTabbedPane tpTabs;
 	private JLabel jlConnectStatus;
 	private JLabel jlSerialNumber;
+
+	private final Insets menuInset = new Insets(-1,0,0,0); // makes menuitems not as tall as its default
+	private JMenuItem jmiConnect;
+	private JMenuItem jmiExit;
+	private JMenuItem jmiNewProfile;
+	private JMenuItem jmiLoadProfile;
+	private JMenuItem jmiSaveProfile;
+	private JMenuItem jmiSaveAsProfile;
 	
 	public ApplicationView(String title, int width, int height)
 	{
+		
+		// menu bar
+		JMenuBar jmbMainMenu = new JMenuBar();
+		
+		JMenu jmProgram = new JMenu("Program");
+		jmiConnect = new JMenuItem("Connect");
+		jmiExit = new JMenuItem("Exit");
+		jmiConnect.setMargin(menuInset);
+		jmiExit.setMargin(menuInset);
+		
+		JMenu jmProfile = new JMenu("Profile");
+		jmiNewProfile = new JMenuItem("New");
+		jmiLoadProfile = new JMenuItem("Load");
+		jmiSaveProfile = new JMenuItem("Save");
+		jmiSaveAsProfile = new JMenuItem("Save As");
+		jmiNewProfile.setMargin(menuInset);
+		jmiLoadProfile.setMargin(menuInset);
+		jmiSaveProfile.setMargin(menuInset);
+		jmiSaveAsProfile.setMargin(menuInset);
+		
+		jmProgram.add(jmiConnect);
+		jmProgram.addSeparator();
+		jmProgram.add(jmiExit);
+		
+		jmProfile.add(jmiNewProfile);
+		jmProfile.addSeparator();
+		jmProfile.add(jmiLoadProfile);
+		jmProfile.addSeparator();
+		jmProfile.add(jmiSaveProfile);
+		jmProfile.add(jmiSaveAsProfile);
+		
+		jmbMainMenu.add(jmProgram);
+		jmbMainMenu.add(jmProfile);
+		
+		// tab interface
 		tpTabs = new JTabbedPane();
 		
+		// status bar
 		jlConnectStatus = new JLabel();
 		jlConnectStatus.setSize( 100, 19 );
 		jlConnectStatus.setText( "Not Connected" );
 		jlConnectStatus.setForeground(Color.RED);
-
+		
 		jlSerialNumber = new JLabel();
 		jlSerialNumber.setSize( 140, 19 );
 		jlSerialNumber.setText( "S/N: " );
-		
-		
 		
 		jpStatusBar = new StatusBarJPanel();
 		jpStatusBar.setSize(width,20);
@@ -42,6 +88,7 @@ public class ApplicationView
 		jpStatusBar.addStatusBarElement(jlConnectStatus);
 		jpStatusBar.addStatusBarElement(jlSerialNumber);
 		
+		// interface
 		JPanel jpInterface = new JPanel();
 		jpInterface.setLocation(0, 0);
 		jpInterface.setSize(width, height);
@@ -56,10 +103,10 @@ public class ApplicationView
 		jfWindow.setResizable(false);
 		jfWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jfWindow.setLayout( new AbsoluteLayout() );
+		jfWindow.setJMenuBar(jmbMainMenu);
 		jfWindow.add(jpInterface);
 		jfWindow.pack();
 		jfWindow.setLocationRelativeTo(null);
-		
 	}
 	
 	public void setVisible(boolean b)
@@ -84,5 +131,11 @@ public class ApplicationView
 		
 		jlConnectStatus.setText( "Not Connected" );
 		jlConnectStatus.setForeground(Color.RED);
+	}
+	
+	public void setSerialNumber(String sn)
+	{
+		if (sn == null) sn = "";
+		jlSerialNumber.setText("S/N: "+sn);
 	}
 }

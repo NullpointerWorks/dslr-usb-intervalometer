@@ -12,11 +12,13 @@ public class Application
 	static
     {
         //check the system architecture
+		//load the native library at runtime
+		
         if(System.getProperty("sun.arch.data.model").equals("32"))
         {
             try
             {
-                System.loadLibrary("libmcp2221_jni_x86");   //load the native library at runtime
+                System.loadLibrary("libmcp2221_jni_x86");
             }
             catch(Exception ex)
             {
@@ -28,7 +30,7 @@ public class Application
         {
             try
             {
-                System.loadLibrary("libmcp2221_jni_x64");   //load the native library at runtime
+                System.loadLibrary("libmcp2221_jni_x64");
             }
             catch(Exception ex)
             {
