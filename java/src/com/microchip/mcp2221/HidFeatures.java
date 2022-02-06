@@ -17,36 +17,6 @@ import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221NativeIn
 
 public class HidFeatures implements Mcp2221NativeInterface
 {
-    static
-    {
-        //check the system architecture
-        if(System.getProperty("sun.arch.data.model").equals("32"))
-        {
-            try
-            {
-                System.loadLibrary("libmcp2221_jni_x86");   //load the native library at runtime
-            }
-            catch(Exception ex)
-            {
-                System.out.println("The specified library does not exist");
-            }
-        }
-        else 
-        if(System.getProperty("sun.arch.data.model").equals("64"))
-        {
-            try
-            {
-                System.loadLibrary("libmcp2221_jni_x64");   //load the native library at runtime
-            }
-            catch(Exception ex)
-            {
-                System.out.println("The specified library does not exist");
-                        
-            }
-        }
-    }
-    
-    
     /**
      * Load native C DLL and check the existence of every function
      * @return 0 for success; error code otherwise

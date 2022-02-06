@@ -8,7 +8,35 @@ import com.nullpointerworks.intervalometer.view.swing.UILookAndFeel;
 public class Application 
 {
 	public static final String VERSION = "v0.1.0";
-
+	
+	static
+    {
+        //check the system architecture
+        if(System.getProperty("sun.arch.data.model").equals("32"))
+        {
+            try
+            {
+                System.loadLibrary("libmcp2221_jni_x86");   //load the native library at runtime
+            }
+            catch(Exception ex)
+            {
+                System.err.println("The specified library does not exist");
+            }
+        }
+        else 
+        if(System.getProperty("sun.arch.data.model").equals("64"))
+        {
+            try
+            {
+                System.loadLibrary("libmcp2221_jni_x64");   //load the native library at runtime
+            }
+            catch(Exception ex)
+            {
+                System.err.println("The specified library does not exist");
+            }
+        }
+    }
+	
 	public static void main(String[] args) 
 	{
 		new Application();
@@ -27,7 +55,7 @@ public class Application
 		
 		
 		/*
-		Mcp2221Interface device = mFactory.getDeviceBySerialNumber("0000449396");
+		Mcp2221Device device = mFactory.getDeviceBySerialNumber("0000449396");
 		
 		device.setGPIOValue(GPIO.GP1, true);
 		sleep(1000);
@@ -45,6 +73,8 @@ public class Application
 		
 		ApplicationView vWindow = new ApplicationView("DSLR Intervalometer", 640, 480);
 		vWindow.setVisible(true);
+		
+		
 	}
 	
 	
