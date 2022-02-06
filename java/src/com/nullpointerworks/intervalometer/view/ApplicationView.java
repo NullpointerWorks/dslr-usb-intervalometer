@@ -32,7 +32,7 @@ public class ApplicationView
 	private JMenuItem jmiSaveProfile;
 	private JMenuItem jmiSaveAsProfile;
 	
-	public ApplicationView(String title, int width, int height)
+	public ApplicationView(String title)
 	{
 		
 		// menu bar
@@ -97,7 +97,7 @@ public class ApplicationView
 		jlSerialNumber.setText( "S/N: " );
 		
 		jpStatusBar = new StatusBarJPanel();
-		jpStatusBar.setSize(width,20);
+		jpStatusBar.setSize(640, 20);
 		jpStatusBar.setPreferredSize( jpStatusBar.getSize() );
 		jpStatusBar.addStatusBarElement(jlConnectStatus);
 		jpStatusBar.addStatusBarElement(jlSerialNumber);
@@ -105,10 +105,10 @@ public class ApplicationView
 		// interface
 		JPanel jpInterface = new JPanel();
 		jpInterface.setLocation(0, 0);
-		jpInterface.setSize(width, height);
+		jpInterface.setSize(640, 480);
 		jpInterface.setPreferredSize( jpInterface.getSize() );
 		jpInterface.setLayout( new BorderLayout() );
-		jpInterface.setBackground( Color.WHITE );
+		//jpInterface.setBackground( Color.WHITE );
 		jpInterface.add(tpTabs, BorderLayout.CENTER);
 		jpInterface.add(jpStatusBar, BorderLayout.SOUTH);
 		

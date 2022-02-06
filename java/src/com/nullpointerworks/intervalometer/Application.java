@@ -4,6 +4,7 @@ import com.nullpointerworks.intervalometer.model.config.Configuration;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221DeviceFactory;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
 import com.nullpointerworks.intervalometer.view.ProfileJPanel;
+import com.nullpointerworks.intervalometer.view.TimeTunerJDialog;
 import com.nullpointerworks.intervalometer.view.swing.UILookAndFeel;
 
 public class Application 
@@ -53,10 +54,6 @@ public class Application
 		Mcp2221DeviceFactory mFactory = new Mcp2221DeviceFactory();
 		
 		
-		
-		
-		
-		
 		/*
 		Mcp2221Device device = mFactory.getDeviceBySerialNumber("0000449396");
 		
@@ -74,11 +71,14 @@ public class Application
 		//*/
 		
 		
-		ApplicationView vWindow = new ApplicationView("DSLR Intervalometer", 640, 480);
+		ApplicationView vWindow = new ApplicationView("DSLR Intervalometer");
 		vWindow.setVisible(true);
 		
 		vWindow.setSerialNumber("0000449396");
 		vWindow.setDisplayTab("<New Profile>", new ProfileJPanel() );
+		
+		
+		
 	}
 	
 	
