@@ -60,7 +60,7 @@ public final class Mcp2221DeviceFactory
 		long mcpHandle = chip.Mcp2221_OpenBySN(DEFAULT_VID, DEFAULT_PID, sn);
 		
         result = chip.Mcp2221_GetLastError();
-        if (result != Constants.E_NO_ERR) 
+        if ( (result != Constants.E_NO_ERR) || (mcpHandle < 0) ) 
         {
             System.err.println("!!! Open connection by serial number for device: " + result);
             return null;
