@@ -39,9 +39,12 @@ public class ApplicationView
 		// menu bar
 		JMenuBar jmbMainMenu = new JMenuBar();
 		
+
+		JMenu jmConnectRecent = new JMenu("Device History");
+		JMenuItem jmiCleatHistory = new JMenuItem("Clear History");
+		
 		JMenu jmProgram = new JMenu("Program");
 		jmiConnect = new JMenuItem("Connect To Device");
-		JMenu jmConnectRecent = new JMenu("Device History");
 		jmiExit = new JMenuItem("Exit");
 		
 		JMenu jmProfile = new JMenu("Profile");
@@ -56,10 +59,12 @@ public class ApplicationView
 		
 		
 		
-		
+		jmConnectRecent.addSeparator();
+		jmConnectRecent.add(jmiCleatHistory);
 		
 		jmiConnect.setMargin(menuInset);
 		jmConnectRecent.setMargin(menuInset);
+		jmiCleatHistory.setMargin(menuInset);
 		jmiExit.setMargin(menuInset);
 		jmiNewProfile.setMargin(menuInset);
 		jmiLoadProfile.setMargin(menuInset);
