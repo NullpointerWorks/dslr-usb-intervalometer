@@ -14,21 +14,5 @@ The exposure time depends on the camera's configuration. Camera's set in Aperatu
 ## Schematic
 ![schematic](https://raw.githubusercontent.com/NullpointerWorks/dslr-usb-intervalometer/main/schematic/schema.png)
 
-
-
 ## Supported DSLR's
-There are a handful of Canon DSLRs that come equipped with a 2.5mm external shutter release interface. I own a Canon 350D (astro-modified) and 1100D and confirmed it works on both of them. The list below is not an exhaustive list, just the ones I'm aware of.
-###### Canon EOS
-- 1100D
-- 300D/Rebel
-- 350D/XT
-- 400D/Xti
-- 10D
-- 20D
-- 20Da
-- 30D
-- 5D
-- 1D
-- 1Ds
-- 1Ds MkI
-- 1D MkII
+I believe most(if not all) Canon DSLRs come equipped with a 2.5mm external shutter release interface. I own a Canon 350D (astro-modified) and 1100D and confirmed it works on both of them. 
