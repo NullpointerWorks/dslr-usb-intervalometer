@@ -86,18 +86,4 @@ public class Application
 		
 		//vWindow.setDisplayTab("<New Profile>", new ProfileJPanel() );
 	}
-	
-	
-	
-	private void sleep(int i) 
-	{
-		try 
-		{
-			Thread.sleep(i);
-		} 
-		catch (InterruptedException e) 
-		{
-			e.printStackTrace();
-		}
-	}
 }

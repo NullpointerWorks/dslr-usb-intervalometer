@@ -25,20 +25,18 @@ public class ConnectToCommand implements ActionCommand
 	@Override
 	public void onCommand() 
 	{
-		ConnectToJDialog dialog = new ConnectToJDialog();
-		dialog.setVisible(true);
-		
-		if (!dialog.isAccepted())
+		ConnectToJDialog vDialog = new ConnectToJDialog();
+		vDialog.setVisible(true);
+		if (!vDialog.isAccepted())
 		{
 			return; // cancelled
 		}
 		
-		String sn = dialog.getSerialNumber();
+		String sn = vDialog.getSerialNumber();
 		Mcp2221Device dev = mFactory.getDeviceBySerialNumber(sn);
 		if (dev == null)
 		{
 			// error
-			
 			vWindow.setSerialNumber("");
 			vWindow.setConnected(false);
 			return;
