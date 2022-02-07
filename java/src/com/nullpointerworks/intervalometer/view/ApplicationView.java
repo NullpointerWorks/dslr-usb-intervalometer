@@ -40,8 +40,8 @@ public class ApplicationView
 		JMenuBar jmbMainMenu = new JMenuBar();
 		
 		JMenu jmProgram = new JMenu("Program");
-		jmiConnect = new JMenuItem("Connect To");
-		JMenu jmConnectRecent = new JMenu("Connect Recent");
+		jmiConnect = new JMenuItem("Connect To Device");
+		JMenu jmConnectRecent = new JMenu("Device History");
 		jmiExit = new JMenuItem("Exit");
 		
 		JMenu jmProfile = new JMenu("Profile");
