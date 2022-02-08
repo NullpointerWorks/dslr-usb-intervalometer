@@ -84,7 +84,7 @@ public class ConnectToJDialog extends JDialog
 		JPanel jpInterface = new JPanel();
 		jpInterface.setLayout( new AbsoluteLayout() );
 		jpInterface.setLocation(0, 0);
-		jpInterface.setSize(300, 140);
+		jpInterface.setSize(300, 115);
 		jpInterface.setPreferredSize( jpInterface.getSize() );
 		jpInterface.add(jlEnterSerial);
 		jpInterface.add(jtfSerialInput);
