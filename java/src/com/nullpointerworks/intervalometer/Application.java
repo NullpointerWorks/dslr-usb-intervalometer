@@ -18,35 +18,35 @@ public class Application
 	public static final String VERSION = "v0.1.0";
 	
 	static
-    {
-        //check the system architecture
+	{
+		//check the system architecture
 		//load the native library at runtime
 		
-        if(System.getProperty("sun.arch.data.model").equals("32"))
-        {
-            try
-            {
-                System.loadLibrary("libmcp2221_jni_x86");
-            }
-            catch(Exception ex)
-            {
-                System.err.println("The specified library does not exist");
-            }
-        }
-        else 
-        if(System.getProperty("sun.arch.data.model").equals("64"))
-        {
-            try
-            {
-                System.loadLibrary("libmcp2221_jni_x64");
-            }
-            catch(Exception ex)
-            {
-                System.err.println("The specified library does not exist");
-            }
-        }
-    }
-	
+		if(System.getProperty("sun.arch.data.model").equals("32"))
+		{
+			try
+			{
+			    System.loadLibrary("libmcp2221_jni_x86");
+			}
+			catch(Exception ex)
+			{
+			    System.err.println("The specified library does not exist");
+			}
+		}
+		else 
+		if(System.getProperty("sun.arch.data.model").equals("64"))
+		{
+			try
+			{
+			    System.loadLibrary("libmcp2221_jni_x64");
+			}
+			catch(Exception ex)
+			{
+			    System.err.println("The specified library does not exist");
+			}
+		}
+	}
+
 	public static void main(String[] args) 
 	{
 		new Application();
