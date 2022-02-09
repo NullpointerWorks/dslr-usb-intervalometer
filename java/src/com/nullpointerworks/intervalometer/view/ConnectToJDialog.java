@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
-import com.nullpointerworks.intervalometer.view.swing.GhostText;
 
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
@@ -40,7 +39,7 @@ public class ConnectToJDialog extends JDialog
 		jtfSerialInput.setLocation(105, 20);
 		jtfSerialInput.setSize(170, 25);
 		jtfSerialInput.setPreferredSize(jtfSerialInput.getSize());
-		new GhostText(jtfSerialInput, "Leave empty if unknown");
+		//new GhostText(jtfSerialInput, "Leave empty if unknown");
 		jtfSerialInput.addKeyListener( new KeyAdapter() 
 		{
 			@Override

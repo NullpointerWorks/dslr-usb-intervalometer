@@ -3,6 +3,8 @@ package com.nullpointerworks.intervalometer.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Insets;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -118,15 +120,23 @@ public class ApplicationView
 		jfWindow = new JFrame();
 		jfWindow.setTitle(title);
 		jfWindow.setResizable(false);
-		jfWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jfWindow.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		jfWindow.setLayout( new AbsoluteLayout() );
 		jfWindow.setJMenuBar(jmbMainMenu);
+		jfWindow.addWindowListener( new WindowAdapter() 
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				jmiExit.doClick();
+			}
+		});
 		jfWindow.add(jpInterface);
 		jfWindow.pack();
 		jfWindow.setLocationRelativeTo(null);
 	}
 
 	public void setConnectToCommand(ActionCommand aConnectTo) {jmiConnect.addActionListener(aConnectTo);}
+	public void setExitCommand(ActionCommand aConnectTo) {jmiExit.addActionListener(aConnectTo);}
 	
 	public void setVisible(boolean b)
 	{

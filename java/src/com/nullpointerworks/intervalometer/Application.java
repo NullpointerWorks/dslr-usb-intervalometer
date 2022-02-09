@@ -1,6 +1,7 @@
 package com.nullpointerworks.intervalometer;
 
 import com.nullpointerworks.intervalometer.control.ConnectToCommand;
+import com.nullpointerworks.intervalometer.control.ProgramExitCommand;
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
 import com.nullpointerworks.intervalometer.model.config.Configuration;
@@ -78,10 +79,11 @@ public class Application
 		ApplicationView vWindow = new ApplicationView("DSLR Intervalometer");
 		
 		
-		ActionCommand aConnectTo = new ConnectToCommand(vWindow, mFactory, mDeviceManager);
+		ActionCommand cConnectTo = new ConnectToCommand(vWindow, mFactory, mDeviceManager);
+		ActionCommand cExitProgram = new ProgramExitCommand();
 		
-		
-		vWindow.setConnectToCommand(aConnectTo);
+		vWindow.setConnectToCommand(cConnectTo);
+		vWindow.setExitCommand(cExitProgram);
 		vWindow.setVisible(true);
 		
 		//vWindow.setDisplayTab("<New Profile>", new ProfileJPanel() );
