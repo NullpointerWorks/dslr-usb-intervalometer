@@ -14,6 +14,7 @@ import javax.swing.JTabbedPane;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
+import com.nullpointerworks.intervalometer.view.swing.RolloverJMenu;
 import com.nullpointerworks.intervalometer.view.swing.StatusBarJPanel;
 
 public class ApplicationView 
@@ -39,8 +40,7 @@ public class ApplicationView
 		// menu bar
 		JMenuBar jmbMainMenu = new JMenuBar();
 		
-		
-		JMenu jmConnectRecent = new JMenu("Device History");
+		JMenu jmConnectRecent = new RolloverJMenu("Device History");
 		JMenuItem jmiClearHistory = new JMenuItem("Clear History");
 		
 		JMenu jmProgram = new JMenu("Program");
@@ -55,8 +55,6 @@ public class ApplicationView
 		jmiSaveAsProfile = new JMenuItem("Save As...");
 		
 		JMenu jmAbout = new JMenu("About");
-		
-		
 		
 		
 		jmConnectRecent.addSeparator();
