@@ -32,7 +32,6 @@ public class XMLConfiguration implements Configuration
 		items = new ArrayList<ConfigItem>();
 		items.add( new BoolConfigItem("AudioAlarm", false) );
 		items.add( new BoolConfigItem("VisualAlarm", false) );
-		items.add( new StringConfigItem("Recent.Devices.Device", "") );
 		
 		if (!loader.existsXML(cnfgPath))
 		{
@@ -59,10 +58,47 @@ public class XMLConfiguration implements Configuration
 		return el.getText().equalsIgnoreCase("true");
 	}
 	
+	public List<String> getRecentDevices()
+	{
+		List<String> list = new ArrayList<String>();
+		
+		Element rec = root.getChild("Recent");
+		if (rec==null) return list;
+		
+		Element dev = rec.getChild("Devices");
+		if (dev==null) return list;
+		
+		List<Element> children = dev.getChildren("Device");
+		if (children==null) return list;
+		
+		for (Element child : children)
+		{
+			list.add(child.getText());
+		}
+		
+		return list;
+	}
 	
-	
-	
-	
+	public List<String> getRecentProfiles()
+	{
+		List<String> list = new ArrayList<String>();
+		
+		Element rec = root.getChild("Recent");
+		if (rec==null) return list;
+		
+		Element pro = rec.getChild("Profiles");
+		if (pro==null) return list;
+		
+		List<Element> children = pro.getChildren("Profile");
+		if (children==null) return list;
+		
+		for (Element child : children)
+		{
+			list.add(child.getText());
+		}
+		
+		return list;
+	}
 	
 	// ===================================================================
 	
