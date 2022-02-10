@@ -5,13 +5,16 @@ import com.nullpointerworks.intervalometer.control.ProgramExitCommand;
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
 import com.nullpointerworks.intervalometer.model.config.Configuration;
+import com.nullpointerworks.intervalometer.model.config.XMLConfiguration;
 import com.nullpointerworks.intervalometer.model.nativeinterface.GPIO;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221Device;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221DeviceFactory;
+import com.nullpointerworks.intervalometer.util.PathBuilder;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
 import com.nullpointerworks.intervalometer.view.ProfileJPanel;
 import com.nullpointerworks.intervalometer.view.TimeTunerJDialog;
 import com.nullpointerworks.intervalometer.view.swing.UILookAndFeel;
+import com.nullpointerworks.util.FileUtil;
 
 public class Application 
 {
@@ -54,9 +57,11 @@ public class Application
 	
 	private Application()
 	{
+		final String s = FileUtil.getSourceCodePath(Application.class);
+		final PathBuilder appURL = new PathBuilder( s.substring(1) );
 		UILookAndFeel.setLookAndFeel( UILookAndFeel.WINDOWS );
 		
-		Configuration mConfig;
+		Configuration mConfig = new XMLConfiguration(appURL);
 		Mcp2221DeviceFactory mFactory = new Mcp2221DeviceFactory();
 		DeviceManager mDeviceManager = new DeviceManager();
 		
