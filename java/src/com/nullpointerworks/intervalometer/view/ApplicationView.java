@@ -33,7 +33,9 @@ public class ApplicationView
 	private JMenuItem jmiConnect;
 	private JMenu jmConnectRecent;
 	private JMenuItem jmiClearHistory;
+	private JMenuItem jmiDisconnect;
 	private JMenuItem jmiExit;
+	
 	private JMenuItem jmiNewProfile;
 	private JMenuItem jmiLoadProfile;
 	private JMenuItem jmiSaveProfile;
@@ -50,12 +52,13 @@ public class ApplicationView
 		
 		JMenu jmProgram = new JMenu("Program");
 		jmiConnect = new JMenuItem("Connect To Device");
+		jmiDisconnect = new JMenuItem("Disconnect Device");
 		jmiExit = new JMenuItem("Exit");
 		
 		JMenu jmProfile = new JMenu("Profile");
 		jmiNewProfile = new JMenuItem("New");
 		jmiLoadProfile = new JMenuItem("Load");
-		JMenu jmLoadRecent = new JMenu("Load Recent");
+		JMenu jmLoadRecent = new RolloverJMenu("Load Recent");
 		jmiSaveProfile = new JMenuItem("Save");
 		jmiSaveAsProfile = new JMenuItem("Save As...");
 		
@@ -65,18 +68,10 @@ public class ApplicationView
 		jmConnectRecent.addSeparator();
 		jmConnectRecent.add(jmiClearHistory);
 		
-		jmiConnect.setMargin(menuInset);
-		jmConnectRecent.setMargin(menuInset);
-		jmiClearHistory.setMargin(menuInset);
-		jmiExit.setMargin(menuInset);
-		jmiNewProfile.setMargin(menuInset);
-		jmiLoadProfile.setMargin(menuInset);
-		jmLoadRecent.setMargin(menuInset);
-		jmiSaveProfile.setMargin(menuInset);
-		jmiSaveAsProfile.setMargin(menuInset);
-		
 		jmProgram.add(jmiConnect);
 		jmProgram.add(jmConnectRecent);
+		jmProgram.addSeparator();
+		jmProgram.add(jmiDisconnect);
 		jmProgram.addSeparator();
 		jmProgram.add(jmiExit);
 		
@@ -91,6 +86,19 @@ public class ApplicationView
 		jmbMainMenu.add(jmProgram);
 		jmbMainMenu.add(jmProfile);
 		jmbMainMenu.add(jmAbout);
+		
+		jmiConnect.setMargin(menuInset);
+		jmiDisconnect.setMargin(menuInset);
+		jmConnectRecent.setMargin(menuInset);
+		jmiClearHistory.setMargin(menuInset);
+		jmiExit.setMargin(menuInset);
+		jmiNewProfile.setMargin(menuInset);
+		jmiLoadProfile.setMargin(menuInset);
+		jmLoadRecent.setMargin(menuInset);
+		jmiSaveProfile.setMargin(menuInset);
+		jmiSaveAsProfile.setMargin(menuInset);
+		
+		jmiDisconnect.setEnabled(false);
 		
 		// tab interface
 		tpTabs = new JTabbedPane();
@@ -137,9 +145,11 @@ public class ApplicationView
 		jfWindow.pack();
 		jfWindow.setLocationRelativeTo(null);
 	}
-
-	public void setConnectToCommand(ActionCommand aConnectTo) {jmiConnect.addActionListener(aConnectTo);}
-	public void setExitCommand(ActionCommand aConnectTo) {jmiExit.addActionListener(aConnectTo);}
+	
+	public void setConnectToCommand(ActionCommand c) {jmiConnect.addActionListener(c);}
+	public void setDisconnectCommand(ActionCommand c) {jmiDisconnect.addActionListener(c);}
+	public void setExitCommand(ActionCommand c) {jmiExit.addActionListener(c);}
+	public void setClearHistoryCommand(ActionCommand c) {jmiClearHistory.addActionListener(c);}
 	
 	public void setVisible(boolean b)
 	{
@@ -154,6 +164,9 @@ public class ApplicationView
 	
 	public void setConnected(boolean b)
 	{
+		jmiConnect.setEnabled(!b);
+		jmiDisconnect.setEnabled(b);
+		
 		if (b)
 		{
 			jlConnectStatus.setText( "Connected" );

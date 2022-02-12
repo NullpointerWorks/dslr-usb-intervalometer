@@ -12,4 +12,7 @@ public interface Configuration
 	
 	void setRecentDevice(String sn);
 	void setRecentProfile(String sn);
+	
+	void clearRecentDevices();
+	void clearRecentProfiles();
 }

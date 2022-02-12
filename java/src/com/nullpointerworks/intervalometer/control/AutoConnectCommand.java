@@ -24,6 +24,12 @@ public class AutoConnectCommand implements ActionCommand
 	@Override
 	public void onCommand() 
 	{
+		if (mDeviceManager.hasDevice())
+		{
+			mDeviceManager.getStoredDevice().closeConnection();
+			mDeviceManager.setStoredDevice(null);
+		}
+		
 		Mcp2221Device dev = mFactory.getDeviceBySerialNumber(serialNumber);
 		if (dev == null)
 		{

@@ -47,6 +47,12 @@ public class ConnectToCommand implements ActionCommand
 			return; // no s/n given
 		}
 		
+		if (mDeviceManager.hasDevice())
+		{
+			mDeviceManager.getStoredDevice().closeConnection();
+			mDeviceManager.setStoredDevice(null);
+		}
+		
 		Mcp2221Device dev = mFactory.getDeviceBySerialNumber(sn);
 		if (dev == null)
 		{

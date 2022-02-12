@@ -81,17 +81,53 @@ public class XMLConfiguration implements Configuration
 	
 	public void setRecentDevice(String sn)
 	{
+		List<String> check = getRecentDevices();
+		for (String serial : check)
+		{
+			if (serial.equalsIgnoreCase(sn)) return;
+		}
+		
 		var el = new Element("RecentDevice");
 		el.setText(sn);
 		root.addChild(el);
 		loader.saveXML(doc, cnfgPath);
 	}
 	
-	public void setRecentProfile(String sn)
+	public void setRecentProfile(String pro)
 	{
+		List<String> check = getRecentProfiles();
+		for (String profile : check)
+		{
+			if (profile.equalsIgnoreCase(pro)) return;
+		}
+		
 		var el = new Element("RecentProfile");
-		el.setText(sn);
+		el.setText(pro);
 		root.addChild(el);
+		loader.saveXML(doc, cnfgPath);
+	}
+	
+	public void clearRecentDevices()
+	{
+		List<Element> children = root.getChildren("RecentDevice");
+		int l = children.size() - 1;
+		for (; l>=0; l--)
+		{
+			Element child = children.get(l);
+			root.remChild(child);
+		}
+		loader.saveXML(doc, cnfgPath);
+	}
+	
+	public void clearRecentProfiles()
+	{
+		List<Element> children = root.getChildren("RecentProfile");
+		int l = children.size() - 1;
+		for (; l>=0; l--)
+		{
+			Element child = children.get(l);
+			root.remChild(child);
+		}
 		loader.saveXML(doc, cnfgPath);
 	}
 	

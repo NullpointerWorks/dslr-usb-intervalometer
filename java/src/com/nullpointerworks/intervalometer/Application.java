@@ -1,13 +1,11 @@
 package com.nullpointerworks.intervalometer;
 
-import com.nullpointerworks.intervalometer.control.ConnectToCommand;
-import com.nullpointerworks.intervalometer.control.ProgramExitCommand;
-import com.nullpointerworks.intervalometer.control.RefreshDevicesCommand;
-import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
-import com.nullpointerworks.intervalometer.control.interfaces.Command;
+import com.nullpointerworks.intervalometer.control.*;
+import com.nullpointerworks.intervalometer.control.interfaces.*;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
 import com.nullpointerworks.intervalometer.model.config.Configuration;
 import com.nullpointerworks.intervalometer.model.config.XMLConfiguration;
+
 import com.nullpointerworks.intervalometer.model.nativeinterface.GPIO;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221Device;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221DeviceFactory;
@@ -88,10 +86,13 @@ public class Application
 		
 		Command cRefreshRecentDevices = new RefreshDevicesCommand(vWindow, mConfig, mFactory, mDeviceManager);
 		ActionCommand cConnectTo = new ConnectToCommand(vWindow, mFactory, mDeviceManager, mConfig, cRefreshRecentDevices);
+		ActionCommand cClearDevHistory = new ClearDevHistoryCommand(cRefreshRecentDevices, mConfig);
 		ActionCommand cExitProgram = new ProgramExitCommand();
+		ActionCommand cDisconnectDevice = new DisconnectDeviceCommand(vWindow, mDeviceManager);
 		
-		
+		vWindow.setClearHistoryCommand(cClearDevHistory);
 		vWindow.setConnectToCommand(cConnectTo);
+		vWindow.setDisconnectCommand(cDisconnectDevice);
 		vWindow.setExitCommand(cExitProgram);
 		vWindow.setVisible(true);
 		
