@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.nullpointerworks.intervalometer.model.config.item.BoolConfigItem;
-import com.nullpointerworks.intervalometer.model.config.item.StringConfigItem;
 import com.nullpointerworks.intervalometer.util.PathBuilder;
 import com.nullpointerworks.intervalometer.util.XMLLoader;
 
@@ -61,42 +60,22 @@ public class XMLConfiguration implements Configuration
 	public List<String> getRecentDevices()
 	{
 		List<String> list = new ArrayList<String>();
-		
-		Element rec = root.getChild("Recent");
-		if (rec==null) return list;
-		
-		Element dev = rec.getChild("Devices");
-		if (dev==null) return list;
-		
-		List<Element> children = dev.getChildren("Device");
-		if (children==null) return list;
-		
+		List<Element> children = root.getChildren("RecentDevice");
 		for (Element child : children)
 		{
 			list.add(child.getText());
 		}
-		
 		return list;
 	}
 	
 	public List<String> getRecentProfiles()
 	{
 		List<String> list = new ArrayList<String>();
-		
-		Element rec = root.getChild("Recent");
-		if (rec==null) return list;
-		
-		Element pro = rec.getChild("Profiles");
-		if (pro==null) return list;
-		
-		List<Element> children = pro.getChildren("Profile");
-		if (children==null) return list;
-		
+		List<Element> children = root.getChildren("RecentProfile");
 		for (Element child : children)
 		{
 			list.add(child.getText());
 		}
-		
 		return list;
 	}
 	
