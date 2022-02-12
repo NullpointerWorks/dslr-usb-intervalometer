@@ -47,11 +47,10 @@ public class ApplicationView
 		// menu bar
 		JMenuBar jmbMainMenu = new JMenuBar();
 		
-		jmConnectRecent = new RolloverJMenu("Device History");
-		jmiClearHistory = new JMenuItem("Clear History");
-		
 		JMenu jmProgram = new JMenu("Program");
 		jmiConnect = new JMenuItem("Connect To Device");
+		jmConnectRecent = new RolloverJMenu("Device History");
+		jmiClearHistory = new JMenuItem("Clear History");
 		jmiDisconnect = new JMenuItem("Disconnect Device");
 		jmiExit = new JMenuItem("Exit");
 		
@@ -59,10 +58,15 @@ public class ApplicationView
 		jmiNewProfile = new JMenuItem("New");
 		jmiLoadProfile = new JMenuItem("Load");
 		JMenu jmLoadRecent = new RolloverJMenu("Load Recent");
+		
 		jmiSaveProfile = new JMenuItem("Save");
 		jmiSaveAsProfile = new JMenuItem("Save As...");
 		
 		JMenu jmAbout = new JMenu("About");
+		
+		
+		
+		
 		
 		
 		jmConnectRecent.addSeparator();
@@ -147,9 +151,14 @@ public class ApplicationView
 	}
 	
 	public void setConnectToCommand(ActionCommand c) {jmiConnect.addActionListener(c);}
+	public void setClearHistoryCommand(ActionCommand c) {jmiClearHistory.addActionListener(c);}
 	public void setDisconnectCommand(ActionCommand c) {jmiDisconnect.addActionListener(c);}
 	public void setExitCommand(ActionCommand c) {jmiExit.addActionListener(c);}
-	public void setClearHistoryCommand(ActionCommand c) {jmiClearHistory.addActionListener(c);}
+	
+	public void setNewProfileCommand(ActionCommand c) {jmiNewProfile.addActionListener(c);}
+	public void setLoadProfileCommand(ActionCommand c) {jmiLoadProfile.addActionListener(c);}
+	public void setSaveProfileCommand(ActionCommand c) {jmiSaveProfile.addActionListener(c);}
+	public void setSaveAsProfileCommand(ActionCommand c) {jmiSaveAsProfile.addActionListener(c);}
 	
 	public void setVisible(boolean b)
 	{
