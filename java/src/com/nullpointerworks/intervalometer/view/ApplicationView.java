@@ -175,10 +175,16 @@ public class ApplicationView
 	{
 		jmConnectRecent.removeAll();
 		
-		for (String sn : list)
+		int i=0;
+		int l=list.size();
+		for (; i<l; i++)
 		{
+			String sn 			= list.get(i);
+			ActionCommand ac 	= commands.get(i);
+			
 			JMenuItem jmiRecDev = new JMenuItem(sn);
 			jmiRecDev.setMargin(menuInset);
+			jmiRecDev.addActionListener(ac);
 			jmConnectRecent.add(jmiRecDev);
 		}
 		
