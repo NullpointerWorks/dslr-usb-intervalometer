@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -30,6 +31,8 @@ public class ApplicationView
 
 	private final Insets menuInset = new Insets(-1,0,0,0); // makes menu items not as tall as its default
 	private JMenuItem jmiConnect;
+	private JMenu jmConnectRecent;
+	private JMenuItem jmiClearHistory;
 	private JMenuItem jmiExit;
 	private JMenuItem jmiNewProfile;
 	private JMenuItem jmiLoadProfile;
@@ -42,8 +45,8 @@ public class ApplicationView
 		// menu bar
 		JMenuBar jmbMainMenu = new JMenuBar();
 		
-		JMenu jmConnectRecent = new RolloverJMenu("Device History");
-		JMenuItem jmiClearHistory = new JMenuItem("Clear History");
+		jmConnectRecent = new RolloverJMenu("Device History");
+		jmiClearHistory = new JMenuItem("Clear History");
 		
 		JMenu jmProgram = new JMenu("Program");
 		jmiConnect = new JMenuItem("Connect To Device");
@@ -166,5 +169,20 @@ public class ApplicationView
 	{
 		if (sn == null) sn = "";
 		jlSerialNumber.setText("S/N: "+sn);
+	}
+	
+	public void setRecentDevices(List<String> list, List<ActionCommand> commands)
+	{
+		jmConnectRecent.removeAll();
+		
+		for (String sn : list)
+		{
+			JMenuItem jmiRecDev = new JMenuItem(sn);
+			jmiRecDev.setMargin(menuInset);
+			jmConnectRecent.add(jmiRecDev);
+		}
+		
+		jmConnectRecent.addSeparator();
+		jmConnectRecent.add(jmiClearHistory);
 	}
 }

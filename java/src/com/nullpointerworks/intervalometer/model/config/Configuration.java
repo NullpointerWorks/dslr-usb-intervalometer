@@ -9,4 +9,7 @@ public interface Configuration
 	
 	List<String> getRecentDevices();
 	List<String> getRecentProfiles();
+	
+	void setRecentDevice(String sn);
+	void setRecentProfile(String sn);
 }

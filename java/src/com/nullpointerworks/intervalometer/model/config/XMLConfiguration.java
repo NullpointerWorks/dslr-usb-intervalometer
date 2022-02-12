@@ -79,6 +79,22 @@ public class XMLConfiguration implements Configuration
 		return list;
 	}
 	
+	public void setRecentDevice(String sn)
+	{
+		var el = new Element("RecentDevice");
+		el.setText(sn);
+		root.addChild(el);
+		loader.saveXML(doc, cnfgPath);
+	}
+	
+	public void setRecentProfile(String sn)
+	{
+		var el = new Element("RecentProfile");
+		el.setText(sn);
+		root.addChild(el);
+		loader.saveXML(doc, cnfgPath);
+	}
+	
 	// ===================================================================
 	
 	private Document makeDefault(PathBuilder cnf)
