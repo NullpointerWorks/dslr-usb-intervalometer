@@ -3,6 +3,7 @@ package com.nullpointerworks.intervalometer;
 import com.nullpointerworks.intervalometer.control.*;
 import com.nullpointerworks.intervalometer.control.interfaces.*;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
+import com.nullpointerworks.intervalometer.model.ProfileManager;
 import com.nullpointerworks.intervalometer.model.config.Configuration;
 import com.nullpointerworks.intervalometer.model.config.XMLConfiguration;
 
@@ -64,6 +65,7 @@ public class Application
 		Configuration mConfig = new XMLConfiguration(appURL);
 		Mcp2221DeviceFactory mFactory = new Mcp2221DeviceFactory();
 		DeviceManager mDeviceManager = new DeviceManager();
+		ProfileManager mProfileManager = new ProfileManager();
 		
 		/*
 		Mcp2221Device device = mFactory.getDeviceBySerialNumber("0000449396");
@@ -87,12 +89,13 @@ public class Application
 		Command cRefreshRecentDevices = new RefreshDevicesCommand(vWindow, mConfig, mFactory, mDeviceManager);
 		ActionCommand cConnectTo = new ConnectToCommand(vWindow, mFactory, mDeviceManager, mConfig, cRefreshRecentDevices);
 		ActionCommand cClearDevHistory = new ClearDevHistoryCommand(cRefreshRecentDevices, mConfig);
-		ActionCommand cExitProgram = new ProgramExitCommand(mDeviceManager);
+		ActionCommand cExitProgram = new ProgramExitCommand(mDeviceManager, mProfileManager);
 		ActionCommand cDisconnectDevice = new DisconnectDeviceCommand(vWindow, mDeviceManager);
 		
-		ActionCommand cNewProfile = new NewProfileCommand(vWindow);
-		
-		
+		ActionCommand cNewProfile = new NewProfileCommand(vWindow, mProfileManager);
+		ActionCommand cLoadProfile;
+		ActionCommand cSaveProfile;
+		ActionCommand cSaveAsProfile;
 		
 		
 		

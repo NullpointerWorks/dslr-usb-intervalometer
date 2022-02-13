@@ -2,16 +2,17 @@ package com.nullpointerworks.intervalometer.control;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
+import com.nullpointerworks.intervalometer.model.ProfileManager;
 
 public class ProgramExitCommand implements ActionCommand 
 {
 	private DeviceManager mDeviceManager;
+	private ProfileManager mProfileManager;
 	
-	
-	public ProgramExitCommand(DeviceManager devm)
+	public ProgramExitCommand(DeviceManager devm, ProfileManager prom)
 	{
 		mDeviceManager = devm;
-		
+		mProfileManager = prom;
 	}
 	
 	@Override
@@ -24,7 +25,13 @@ public class ProgramExitCommand implements ActionCommand
 			mDeviceManager.setStoredDevice(null);
 		}
 		
-		
+		// save unsaved profile
+		if (mProfileManager.hasProfile())
+		{
+			
+			
+			// TODO
+		}
 		
 		System.exit(0);
 	}
