@@ -90,12 +90,22 @@ public class Application
 		ActionCommand cExitProgram = new ProgramExitCommand(mDeviceManager);
 		ActionCommand cDisconnectDevice = new DisconnectDeviceCommand(vWindow, mDeviceManager);
 		
+		ActionCommand cNewProfile = new NewProfileCommand(vWindow);
+		
+		
+		
+		
+		
+		
+		
 		vWindow.setClearDevHistoryCommand(cClearDevHistory);
 		vWindow.setConnectToCommand(cConnectTo);
 		vWindow.setDisconnectCommand(cDisconnectDevice);
 		vWindow.setExitCommand(cExitProgram);
-		vWindow.setVisible(true);
 		
+		vWindow.setNewProfileCommand(cNewProfile);
+		
+		vWindow.setVisible(true);
 		cRefreshRecentDevices.onCommand();
 		
 		//vWindow.setDisplayTab("<New Profile>", new ProfileJPanel() );

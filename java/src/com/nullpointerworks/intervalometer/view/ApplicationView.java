@@ -159,6 +159,12 @@ public class ApplicationView
 	{
 		tpTabs.removeAll();
 		tpTabs.addTab(title, comp);
+		setDisplayTabTitle(title);
+	}
+	
+	public void setDisplayTabTitle(String title)
+	{
+		tpTabs.setTitleAt(0, title);
 	}
 	
 	public void setConnected(boolean b)
