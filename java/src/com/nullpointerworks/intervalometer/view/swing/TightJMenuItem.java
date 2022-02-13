@@ -2,14 +2,13 @@ package com.nullpointerworks.intervalometer.view.swing;
 
 import java.awt.Insets;
 
-import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
-public class RolloverJMenu extends JMenu 
+public class TightJMenuItem extends JMenuItem 
 {
-	public RolloverJMenu(String s)
+	public TightJMenuItem(String s) 
 	{
 		super(s);
-		setRolloverEnabled(false);
 		setMargin(new Insets(-1,0,0,0));// makes menu items not as tall as its default
 	}
 }

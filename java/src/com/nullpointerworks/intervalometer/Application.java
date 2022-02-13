@@ -87,10 +87,10 @@ public class Application
 		Command cRefreshRecentDevices = new RefreshDevicesCommand(vWindow, mConfig, mFactory, mDeviceManager);
 		ActionCommand cConnectTo = new ConnectToCommand(vWindow, mFactory, mDeviceManager, mConfig, cRefreshRecentDevices);
 		ActionCommand cClearDevHistory = new ClearDevHistoryCommand(cRefreshRecentDevices, mConfig);
-		ActionCommand cExitProgram = new ProgramExitCommand();
+		ActionCommand cExitProgram = new ProgramExitCommand(mDeviceManager);
 		ActionCommand cDisconnectDevice = new DisconnectDeviceCommand(vWindow, mDeviceManager);
 		
-		vWindow.setClearHistoryCommand(cClearDevHistory);
+		vWindow.setClearDevHistoryCommand(cClearDevHistory);
 		vWindow.setConnectToCommand(cConnectTo);
 		vWindow.setDisconnectCommand(cDisconnectDevice);
 		vWindow.setExitCommand(cExitProgram);

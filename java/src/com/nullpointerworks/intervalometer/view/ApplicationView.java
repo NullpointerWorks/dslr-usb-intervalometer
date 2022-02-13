@@ -2,7 +2,6 @@ package com.nullpointerworks.intervalometer.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Insets;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
@@ -19,6 +18,7 @@ import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
 import com.nullpointerworks.intervalometer.view.swing.RolloverJMenu;
 import com.nullpointerworks.intervalometer.view.swing.StatusBarJPanel;
+import com.nullpointerworks.intervalometer.view.swing.TightJMenuItem;
 
 public class ApplicationView 
 {
@@ -28,16 +28,17 @@ public class ApplicationView
 	private JTabbedPane tpTabs;
 	private JLabel jlConnectStatus;
 	private JLabel jlSerialNumber;
-
-	private final Insets menuInset = new Insets(-1,0,0,0); // makes menu items not as tall as its default
+	
 	private JMenuItem jmiConnect;
 	private JMenu jmConnectRecent;
-	private JMenuItem jmiClearHistory;
+	private JMenuItem jmiClearDevHistory;
 	private JMenuItem jmiDisconnect;
 	private JMenuItem jmiExit;
 	
 	private JMenuItem jmiNewProfile;
 	private JMenuItem jmiLoadProfile;
+	private JMenu jmLoadRecent;
+	private JMenuItem jmiClearProHistory;
 	private JMenuItem jmiSaveProfile;
 	private JMenuItem jmiSaveAsProfile;
 	
@@ -48,29 +49,28 @@ public class ApplicationView
 		JMenuBar jmbMainMenu = new JMenuBar();
 		
 		JMenu jmProgram = new JMenu("Program");
-		jmiConnect = new JMenuItem("Connect To Device");
-		jmConnectRecent = new RolloverJMenu("Device History");
-		jmiClearHistory = new JMenuItem("Clear History");
-		jmiDisconnect = new JMenuItem("Disconnect Device");
-		jmiExit = new JMenuItem("Exit");
+		jmiConnect = new TightJMenuItem("Connect To Device");
+		jmConnectRecent = new RolloverJMenu("Recent Devices");
+		jmiClearDevHistory = new TightJMenuItem("Clear History");
+		jmiDisconnect = new TightJMenuItem("Disconnect Device");
+		jmiExit = new TightJMenuItem("Exit");
 		
 		JMenu jmProfile = new JMenu("Profile");
-		jmiNewProfile = new JMenuItem("New");
-		jmiLoadProfile = new JMenuItem("Load");
-		JMenu jmLoadRecent = new RolloverJMenu("Load Recent");
-		
-		jmiSaveProfile = new JMenuItem("Save");
-		jmiSaveAsProfile = new JMenuItem("Save As...");
+		jmiNewProfile = new TightJMenuItem("New");
+		jmiLoadProfile = new TightJMenuItem("Load");
+		jmLoadRecent = new RolloverJMenu("Load Recent");
+		jmiClearProHistory = new TightJMenuItem("Clear History");
+		jmiSaveProfile = new TightJMenuItem("Save");
+		jmiSaveAsProfile = new TightJMenuItem("Save As...");
 		
 		JMenu jmAbout = new JMenu("About");
 		
 		
-		
-		
-		
-		
 		jmConnectRecent.addSeparator();
-		jmConnectRecent.add(jmiClearHistory);
+		jmConnectRecent.add(jmiClearDevHistory);
+		
+		jmLoadRecent.addSeparator();
+		jmLoadRecent.add(jmiClearProHistory);
 		
 		jmProgram.add(jmiConnect);
 		jmProgram.add(jmConnectRecent);
@@ -90,17 +90,6 @@ public class ApplicationView
 		jmbMainMenu.add(jmProgram);
 		jmbMainMenu.add(jmProfile);
 		jmbMainMenu.add(jmAbout);
-		
-		jmiConnect.setMargin(menuInset);
-		jmiDisconnect.setMargin(menuInset);
-		jmConnectRecent.setMargin(menuInset);
-		jmiClearHistory.setMargin(menuInset);
-		jmiExit.setMargin(menuInset);
-		jmiNewProfile.setMargin(menuInset);
-		jmiLoadProfile.setMargin(menuInset);
-		jmLoadRecent.setMargin(menuInset);
-		jmiSaveProfile.setMargin(menuInset);
-		jmiSaveAsProfile.setMargin(menuInset);
 		
 		jmiDisconnect.setEnabled(false);
 		
@@ -151,12 +140,13 @@ public class ApplicationView
 	}
 	
 	public void setConnectToCommand(ActionCommand c) {jmiConnect.addActionListener(c);}
-	public void setClearHistoryCommand(ActionCommand c) {jmiClearHistory.addActionListener(c);}
+	public void setClearDevHistoryCommand(ActionCommand c) {jmiClearDevHistory.addActionListener(c);}
 	public void setDisconnectCommand(ActionCommand c) {jmiDisconnect.addActionListener(c);}
 	public void setExitCommand(ActionCommand c) {jmiExit.addActionListener(c);}
 	
 	public void setNewProfileCommand(ActionCommand c) {jmiNewProfile.addActionListener(c);}
 	public void setLoadProfileCommand(ActionCommand c) {jmiLoadProfile.addActionListener(c);}
+	public void setClearProHistoryCommand(ActionCommand c) {jmiClearProHistory.addActionListener(c);}
 	public void setSaveProfileCommand(ActionCommand c) {jmiSaveProfile.addActionListener(c);}
 	public void setSaveAsProfileCommand(ActionCommand c) {jmiSaveAsProfile.addActionListener(c);}
 	
@@ -204,13 +194,12 @@ public class ApplicationView
 			String sn 			= list.get(i);
 			ActionCommand ac 	= commands.get(i);
 			
-			JMenuItem jmiRecDev = new JMenuItem(sn);
-			jmiRecDev.setMargin(menuInset);
+			JMenuItem jmiRecDev = new TightJMenuItem(sn);
 			jmiRecDev.addActionListener(ac);
 			jmConnectRecent.add(jmiRecDev);
 		}
 		
 		jmConnectRecent.addSeparator();
-		jmConnectRecent.add(jmiClearHistory);
+		jmConnectRecent.add(jmiClearDevHistory);
 	}
 }
