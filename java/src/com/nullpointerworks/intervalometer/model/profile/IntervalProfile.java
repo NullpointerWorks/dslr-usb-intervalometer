@@ -8,12 +8,11 @@ public class IntervalProfile
 
 	private String profilePath;
 	
-	public IntervalProfile(boolean fromFile, String name)
+	public IntervalProfile(boolean fromFile)
 	{
 		isFromFile = fromFile;
 		isChanged = true;
-		profileName = name;
-		
+		profileName = "UnnamedProfile";
 		profilePath = "/UnnamedProfile.xml";
 	}
 	

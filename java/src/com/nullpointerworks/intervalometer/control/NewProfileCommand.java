@@ -31,7 +31,7 @@ public class NewProfileCommand implements ActionCommand
 		}
 		
 		
-		IntervalProfile mProfile = new IntervalProfile(false, "Unnamed Profile");
+		IntervalProfile mProfile = new IntervalProfile(false);
 		ProfileJPanel vProfile = new ProfileJPanel();
 		
 		

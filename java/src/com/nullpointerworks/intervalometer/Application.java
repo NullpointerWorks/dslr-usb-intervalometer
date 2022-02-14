@@ -12,7 +12,6 @@ import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221Device;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221DeviceFactory;
 import com.nullpointerworks.intervalometer.util.PathBuilder;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
-import com.nullpointerworks.intervalometer.view.ProfileJPanel;
 import com.nullpointerworks.intervalometer.view.TimeTunerJDialog;
 import com.nullpointerworks.intervalometer.view.swing.UILookAndFeel;
 import com.nullpointerworks.util.FileUtil;
@@ -94,10 +93,8 @@ public class Application
 		
 		ActionCommand cNewProfile = new NewProfileCommand(vWindow, mProfileManager);
 		ActionCommand cLoadProfile;
-		ActionCommand cSaveProfile;
+		ActionCommand cSaveProfile = new SaveProfileCommand(vWindow, mProfileManager);
 		ActionCommand cSaveAsProfile;
-		
-		
 		
 		
 		
@@ -107,10 +104,9 @@ public class Application
 		vWindow.setExitCommand(cExitProgram);
 		
 		vWindow.setNewProfileCommand(cNewProfile);
+		vWindow.setSaveProfileCommand(cSaveProfile);
 		
 		vWindow.setVisible(true);
 		cRefreshRecentDevices.onCommand();
-		
-		//vWindow.setDisplayTab("<New Profile>", new ProfileJPanel() );
 	}
 }
