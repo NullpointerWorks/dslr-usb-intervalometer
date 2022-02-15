@@ -1,12 +1,16 @@
 package com.nullpointerworks.intervalometer.view;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
 import com.nullpointerworks.intervalometer.view.swing.JTextFieldFilter;
@@ -71,10 +75,6 @@ public class ProfileJPanel extends JPanel
 		jtfNumber.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
 		
 		
-		
-		
-		
-		
 		JButton jbStartStop = new JButton("Start");
 		jbStartStop.setLocation(20, 20);
 		jbStartStop.setSize(70, 20);
@@ -84,6 +84,23 @@ public class ProfileJPanel extends JPanel
 		lbExposuresTaken.setSize(100, 20);
 		
 		
+		
+		JLabel lbNotes = new JLabel("Notes:");
+		lbNotes.setLocation(12, 230);
+		lbNotes.setSize(100, 20);
+		
+		
+		JTextArea jtaNotes = new JTextArea();
+		jtaNotes.setPreferredSize(jtaNotes.getSize());
+		jtaNotes.setLineWrap(true);
+		jtaNotes.setWrapStyleWord(true);
+		jtaNotes.setBackground( new Color(240,240,240) );
+		jtaNotes.setFont( new Font("Tahoma", Font.PLAIN, 11) );
+		JScrollPane jspNotes = new JScrollPane(jtaNotes);
+		jspNotes.setLocation(7, 250);
+		jspNotes.setSize(315, 140);
+		jspNotes.setBorder( BorderFactory.createLoweredBevelBorder() );
+		jspNotes.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		
 		JPanel jpIntervalometer = new JPanel();
@@ -118,6 +135,8 @@ public class ProfileJPanel extends JPanel
 		setLayout( new AbsoluteLayout() );
 		add(jpIntervalometer);
 		add(jpSession);
+		add(lbNotes);
+		add(jspNotes);
 	}
 	
 	
