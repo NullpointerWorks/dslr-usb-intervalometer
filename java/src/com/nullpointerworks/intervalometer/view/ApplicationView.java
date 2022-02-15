@@ -51,7 +51,7 @@ public class ApplicationView
 		JMenu jmProgram = new JMenu("Program");
 		jmiConnect = new TightJMenuItem("Connect To Device");
 		jmConnectRecent = new RolloverJMenu("Recent Devices");
-		jmiClearDevHistory = new TightJMenuItem("Clear History");
+		jmiClearDevHistory = new TightJMenuItem("Clear");
 		jmiDisconnect = new TightJMenuItem("Disconnect Device");
 		jmiExit = new TightJMenuItem("Exit");
 		
@@ -59,7 +59,7 @@ public class ApplicationView
 		jmiNewProfile = new TightJMenuItem("New");
 		jmiLoadProfile = new TightJMenuItem("Load");
 		jmLoadRecent = new RolloverJMenu("Load Recent");
-		jmiClearProHistory = new TightJMenuItem("Clear History");
+		jmiClearProHistory = new TightJMenuItem("Clear");
 		jmiSaveProfile = new TightJMenuItem("Save");
 		jmiSaveAsProfile = new TightJMenuItem("Save As...");
 		
@@ -68,7 +68,6 @@ public class ApplicationView
 		
 		jmConnectRecent.addSeparator();
 		jmConnectRecent.add(jmiClearDevHistory);
-		
 		jmLoadRecent.addSeparator();
 		jmLoadRecent.add(jmiClearProHistory);
 		
@@ -90,8 +89,10 @@ public class ApplicationView
 		jmbMainMenu.add(jmProgram);
 		jmbMainMenu.add(jmProfile);
 		jmbMainMenu.add(jmAbout);
-		
+
 		jmiDisconnect.setEnabled(false);
+		jmiSaveProfile.setEnabled(false);
+		jmiSaveAsProfile.setEnabled(false);
 		
 		// tab interface
 		tpTabs = new JTabbedPane();
@@ -150,10 +151,9 @@ public class ApplicationView
 	public void setSaveProfileCommand(ActionCommand c) {jmiSaveProfile.addActionListener(c);}
 	public void setSaveAsProfileCommand(ActionCommand c) {jmiSaveAsProfile.addActionListener(c);}
 	
-	public void setVisible(boolean b)
-	{
-		jfWindow.setVisible(b);
-	}
+	public void setVisible(boolean b) {jfWindow.setVisible(b);}
+	public void setSaveEnabled(boolean b) {jmiSaveProfile.setEnabled(b);}
+	public void setSaveAsEnabled(boolean b) {jmiSaveAsProfile.setEnabled(b);}
 	
 	public void setDisplayTab(String title, ProfileJPanel comp) 
 	{

@@ -15,7 +15,8 @@ public class IntervalProfile
 		profileName = "UnnamedProfile";
 		profilePath = "/UnnamedProfile.xml";
 	}
-	
-	
+
+	public boolean isFromFile() {return isFromFile;}
+	public boolean isChanged() {return isChanged;}
 	
 }

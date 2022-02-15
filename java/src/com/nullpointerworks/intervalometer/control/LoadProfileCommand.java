@@ -6,19 +6,17 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
-import com.nullpointerworks.intervalometer.model.ProfileBuilder;
 import com.nullpointerworks.intervalometer.model.ProfileManager;
-import com.nullpointerworks.intervalometer.util.PathBuilder;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
 import com.nullpointerworks.intervalometer.view.swing.FileTypeFilter;
 
-public class SaveProfileCommand implements ActionCommand 
+public class LoadProfileCommand implements ActionCommand 
 {
 	private ApplicationView vWindow;
 	private ProfileManager mProfileManager;
 	private final FileFilter xmlFilter;
 	
-	public SaveProfileCommand(ApplicationView v, ProfileManager pm)
+	public LoadProfileCommand(ApplicationView v, ProfileManager pm)
 	{
 		vWindow = v;
 		mProfileManager = pm;
@@ -28,18 +26,6 @@ public class SaveProfileCommand implements ActionCommand
 	@Override
 	public void onCommand() 
 	{
-		if (!mProfileManager.hasProfile())
-		{
-			return;
-		}
-		
-		var profile = mProfileManager.getStoredProfile();
-		if (!profile.isFromFile())
-		{
-			
-		}
-		
-		
 		JFileChooser chooser = new JFileChooser();
 		chooser.addChoosableFileFilter(xmlFilter);
 		chooser.setCurrentDirectory(new File("."));
@@ -49,12 +35,10 @@ public class SaveProfileCommand implements ActionCommand
 		{
 			System.out.println( chooser.getSelectedFile() );
 			
-			var path = chooser.getSelectedFile();
 			
-			ProfileBuilder builder = new ProfileBuilder();
-			PathBuilder filePath = new PathBuilder(path.getAbsolutePath());
 			
-			builder.write(profile, filePath);
+			
+			
 			
 	    }
 		

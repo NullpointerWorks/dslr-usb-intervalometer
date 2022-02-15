@@ -36,6 +36,8 @@ public class NewProfileCommand implements ActionCommand
 		
 		
 		mProfileManager.setStoredProfile(mProfile);
+		vWindow.setSaveEnabled(true);
+		vWindow.setSaveAsEnabled(false);
 		vWindow.setDisplayTab("* New Profile", vProfile);
 	}
 }

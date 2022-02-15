@@ -92,7 +92,7 @@ public class Application
 		ActionCommand cDisconnectDevice = new DisconnectDeviceCommand(vWindow, mDeviceManager);
 		
 		ActionCommand cNewProfile = new NewProfileCommand(vWindow, mProfileManager);
-		ActionCommand cLoadProfile;
+		ActionCommand cLoadProfile = new LoadProfileCommand(vWindow, mProfileManager);
 		ActionCommand cSaveProfile = new SaveProfileCommand(vWindow, mProfileManager);
 		ActionCommand cSaveAsProfile;
 		
@@ -104,6 +104,7 @@ public class Application
 		vWindow.setExitCommand(cExitProgram);
 		
 		vWindow.setNewProfileCommand(cNewProfile);
+		vWindow.setLoadProfileCommand(cLoadProfile);
 		vWindow.setSaveProfileCommand(cSaveProfile);
 		
 		vWindow.setVisible(true);
