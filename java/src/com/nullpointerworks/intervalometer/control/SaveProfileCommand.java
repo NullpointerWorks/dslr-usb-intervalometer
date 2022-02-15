@@ -6,7 +6,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
-import com.nullpointerworks.intervalometer.model.ProfileBuilder;
+import com.nullpointerworks.intervalometer.model.XMLProfileBuilder;
 import com.nullpointerworks.intervalometer.model.ProfileManager;
 import com.nullpointerworks.intervalometer.util.PathBuilder;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
@@ -33,33 +33,37 @@ public class SaveProfileCommand implements ActionCommand
 			return;
 		}
 		
+		PathBuilder filePath = null;
+		
 		var profile = mProfileManager.getStoredProfile();
 		if (!profile.isFromFile())
 		{
-			
+			JFileChooser chooser = new JFileChooser();
+			chooser.addChoosableFileFilter(xmlFilter);
+			chooser.setCurrentDirectory(new File("."));
+			int option = chooser.showSaveDialog(null);
+			if (option == JFileChooser.APPROVE_OPTION) 
+			{
+				var path = chooser.getSelectedFile();
+				filePath = new PathBuilder(path.getAbsolutePath());
+		    }
+		}
+		else
+		{
+			filePath = new PathBuilder(profile.getPath());
 		}
 		
-		
-		JFileChooser chooser = new JFileChooser();
-		chooser.addChoosableFileFilter(xmlFilter);
-		chooser.setCurrentDirectory(new File("."));
-		
-		int option = chooser.showSaveDialog(null);
-		if (option == JFileChooser.APPROVE_OPTION) 
+		XMLProfileBuilder builder = new XMLProfileBuilder();
+		if (builder.write(profile, filePath))
 		{
-			System.out.println( chooser.getSelectedFile() );
 			
-			var path = chooser.getSelectedFile();
 			
-			ProfileBuilder builder = new ProfileBuilder();
-			PathBuilder filePath = new PathBuilder(path.getAbsolutePath());
 			
-			builder.write(profile, filePath);
-			
-	    }
-		
-		
-		
-		
+			vWindow.setSaveAsEnabled(true);
+		}
+		else
+		{
+			// error
+		}
 	}
 }

@@ -5,7 +5,7 @@ public class IntervalProfile
 	private boolean isFromFile;
 	private boolean isChanged;
 	private String profileName;
-
+	
 	private String profilePath;
 	
 	public IntervalProfile(boolean fromFile)
@@ -18,5 +18,10 @@ public class IntervalProfile
 
 	public boolean isFromFile() {return isFromFile;}
 	public boolean isChanged() {return isChanged;}
+
+	public String getPath() 
+	{
+		return profilePath;
+	}
 	
 }
