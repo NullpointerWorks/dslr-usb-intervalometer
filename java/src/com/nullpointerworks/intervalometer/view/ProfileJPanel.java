@@ -45,6 +45,7 @@ public class ProfileJPanel extends JPanel
 	
 	
 	private JTextField jtfNumber;
+	private JTextArea jtaNotes;
 	
 	public ProfileJPanel()
 	{
@@ -90,8 +91,7 @@ public class ProfileJPanel extends JPanel
 		lbNotes.setSize(100, 20);
 		
 		
-		JTextArea jtaNotes = new JTextArea();
-		jtaNotes.setPreferredSize(jtaNotes.getSize());
+		jtaNotes = new JTextArea();
 		jtaNotes.setLineWrap(true);
 		jtaNotes.setWrapStyleWord(true);
 		jtaNotes.setBackground( new Color(240,240,240) );
@@ -99,6 +99,7 @@ public class ProfileJPanel extends JPanel
 		JScrollPane jspNotes = new JScrollPane(jtaNotes);
 		jspNotes.setLocation(7, 250);
 		jspNotes.setSize(315, 140);
+		jspNotes.setPreferredSize(jtaNotes.getSize());
 		jspNotes.setBorder( BorderFactory.createLoweredBevelBorder() );
 		jspNotes.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
