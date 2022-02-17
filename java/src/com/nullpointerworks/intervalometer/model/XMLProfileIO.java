@@ -1,18 +1,16 @@
 package com.nullpointerworks.intervalometer.model;
 
-import com.nullpointerworks.intervalometer.model.profile.IntervalProfile;
 import com.nullpointerworks.intervalometer.util.PathBuilder;
 import com.nullpointerworks.intervalometer.util.XMLLoader;
 
 import exp.nullpointerworks.xml.Document;
 import exp.nullpointerworks.xml.Element;
 
-// TODO
-public class XMLProfileBuilder 
+public class XMLProfileIO implements ProfileIO
 {
 	private XMLLoader loader;
 	
-	public XMLProfileBuilder()
+	public XMLProfileIO()
 	{
 		loader = new XMLLoader();
 	}
@@ -46,6 +44,12 @@ public class XMLProfileBuilder
 		root.addChild(expo);
 		
 		return loader.saveXML(doc, path);
+	}
+
+	@Override
+	public boolean read(IntervalProfile profile, PathBuilder path) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	

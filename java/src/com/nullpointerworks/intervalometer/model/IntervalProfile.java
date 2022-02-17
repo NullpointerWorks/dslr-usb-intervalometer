@@ -1,4 +1,4 @@
-package com.nullpointerworks.intervalometer.model.profile;
+package com.nullpointerworks.intervalometer.model;
 
 public class IntervalProfile 
 {
@@ -20,11 +20,9 @@ public class IntervalProfile
 
 	public boolean isFromFile() {return isFromFile;}
 	public boolean isChanged() {return isChanged;}
-
-	public String getPath() 
-	{
-		return profilePath;
-	}
+	
+	public void setPath(String path) {profilePath = path;}
+	public String getPath() {return profilePath;}
 	
 	public void setProfileName(String pn) {profileName = pn;}
 	public void setProfileNotes(String pn) {profileNotes = pn;}

@@ -1,7 +1,5 @@
 package com.nullpointerworks.intervalometer.model;
 
-import com.nullpointerworks.intervalometer.model.profile.IntervalProfile;
-
 public class ProfileManager 
 {
 	private IntervalProfile stored = null;

@@ -6,7 +6,8 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
-import com.nullpointerworks.intervalometer.model.XMLProfileBuilder;
+import com.nullpointerworks.intervalometer.model.XMLProfileIO;
+import com.nullpointerworks.intervalometer.model.ProfileIO;
 import com.nullpointerworks.intervalometer.model.ProfileManager;
 import com.nullpointerworks.intervalometer.util.PathBuilder;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
@@ -57,7 +58,7 @@ public class SaveProfileCommand implements ActionCommand
 			filePath = new PathBuilder(profile.getPath());
 		}
 		
-		XMLProfileBuilder builder = new XMLProfileBuilder();
+		ProfileIO builder = new XMLProfileIO();
 		if (builder.write(profile, filePath))
 		{
 			

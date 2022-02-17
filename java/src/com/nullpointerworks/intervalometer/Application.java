@@ -16,6 +16,23 @@ import com.nullpointerworks.intervalometer.view.TimeTunerJDialog;
 import com.nullpointerworks.intervalometer.view.swing.UILookAndFeel;
 import com.nullpointerworks.util.FileUtil;
 
+/*
+
+intervalometer needs a few thins;
+- start-up delay
+- image exposure time
+- delay between images
+- number of images to take
+- start/stop button
+
+useful things to have:
+- audible alarm when done (can be disabled)
+  or notify the user by flashing the taskbar to draw attention
+- focusing ability for non-astrophotography purposes
+
+
+
+*/
 public class Application 
 {
 	public static final String VERSION = "v0.1.0";
@@ -91,10 +108,12 @@ public class Application
 		ActionCommand cExitProgram = new ProgramExitCommand(mDeviceManager, mProfileManager);
 		ActionCommand cDisconnectDevice = new DisconnectDeviceCommand(vWindow, mDeviceManager);
 		
-		ActionCommand cNewProfile = new NewProfileCommand(vWindow, mProfileManager);
-		ActionCommand cLoadProfile = new LoadProfileCommand(vWindow, mProfileManager);
+		Command cShowProfileCommand = new ShowProfileInterfaceCommand(vWindow, mProfileManager);
+		ActionCommand cNewProfile = new NewProfileCommand(cShowProfileCommand, mProfileManager);
+		ActionCommand cLoadProfile = new LoadProfileCommand(cShowProfileCommand, mProfileManager);
 		ActionCommand cSaveProfile = new SaveProfileCommand(vWindow, mProfileManager);
 		ActionCommand cSaveAsProfile;
+		ActionCommand cCloseProfile;
 		
 		
 		

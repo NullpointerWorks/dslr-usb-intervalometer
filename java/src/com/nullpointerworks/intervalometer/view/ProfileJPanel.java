@@ -12,29 +12,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
-import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.control.interfaces.DocumentCommand;
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
 import com.nullpointerworks.intervalometer.view.swing.JTextFieldFilter;
-
-
-/*
-
-intervalometer needs a few thins;
-- start-up delay
-- image exposure time
-- delay between images
-- number of images to take
-- start/stop button
-
-useful things to have:
-- audible alarm when done (can be disabled)
-  or notify the user by flashing the taskbar to draw attention
-- focusing ability for non-astrophotography purposes
-
-
-
-*/
 
 public class ProfileJPanel extends JPanel
 {
@@ -146,16 +126,11 @@ public class ProfileJPanel extends JPanel
 		add(jspNotes);
 	}
 	
-	public String getProfileName()
-	{
-		return jtfProName.getText();
-	}
+	public String getProfileName() {return jtfProName.getText();}
+	public String getProfileNotes() {return jtaNotes.getText();}
 	
-	public String getProfileNotes()
-	{
-		return jtaNotes.getText();
-	}
-
+	public void setProfileName(String profileName) {jtfProName.setText(profileName);}
+	
 	public void setNameChangeCommand(DocumentCommand dc) {jtfProName.getDocument().addDocumentListener(dc);}
 	public void setNotesChangeCommand(DocumentCommand dc) {jtaNotes.getDocument().addDocumentListener(dc);}
 	

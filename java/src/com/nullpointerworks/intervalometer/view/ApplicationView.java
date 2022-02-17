@@ -41,6 +41,7 @@ public class ApplicationView
 	private JMenuItem jmiClearProHistory;
 	private JMenuItem jmiSaveProfile;
 	private JMenuItem jmiSaveAsProfile;
+	private JMenuItem jmiCloseProfile;
 	
 	public ApplicationView(String title)
 	{
@@ -62,6 +63,7 @@ public class ApplicationView
 		jmiClearProHistory = new TightJMenuItem("Clear");
 		jmiSaveProfile = new TightJMenuItem("Save");
 		jmiSaveAsProfile = new TightJMenuItem("Save As...");
+		jmiCloseProfile = new TightJMenuItem("Close");
 		
 		JMenu jmAbout = new JMenu("About");
 		
@@ -85,14 +87,17 @@ public class ApplicationView
 		jmProfile.addSeparator();
 		jmProfile.add(jmiSaveProfile);
 		jmProfile.add(jmiSaveAsProfile);
+		jmProfile.addSeparator();
+		jmProfile.add(jmiCloseProfile);
 		
 		jmbMainMenu.add(jmProgram);
 		jmbMainMenu.add(jmProfile);
 		jmbMainMenu.add(jmAbout);
-
+		
 		jmiDisconnect.setEnabled(false);
 		jmiSaveProfile.setEnabled(false);
 		jmiSaveAsProfile.setEnabled(false);
+		jmiCloseProfile.setEnabled(false);
 		
 		// tab interface
 		tpTabs = new JTabbedPane();
@@ -154,6 +159,7 @@ public class ApplicationView
 	public void setVisible(boolean b) {jfWindow.setVisible(b);}
 	public void setSaveEnabled(boolean b) {jmiSaveProfile.setEnabled(b);}
 	public void setSaveAsEnabled(boolean b) {jmiSaveAsProfile.setEnabled(b);}
+	public void setCloseEnabled(boolean b) {jmiCloseProfile.setEnabled(b);}
 	
 	public void setDisplayTab(String title, ProfileJPanel comp) 
 	{
