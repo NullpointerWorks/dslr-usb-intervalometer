@@ -15,6 +15,7 @@ public class XMLProfileIO implements ProfileIO
 		loader = new XMLLoader();
 	}
 	
+	@Override
 	public boolean write(IntervalProfile profile, PathBuilder path)
 	{
 		Element root = new Element("Profile");
@@ -45,15 +46,19 @@ public class XMLProfileIO implements ProfileIO
 		
 		return loader.saveXML(doc, path);
 	}
-
+	
 	@Override
-	public boolean read(IntervalProfile profile, PathBuilder path) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean read(IntervalProfile profile, PathBuilder path) 
+	{
+		Document doc = loader.loadXML(path);
+		if (doc == null) return false;
+		Element root = doc.getRootElement();
+		
+		
+		
+		
+		
+		return true;
 	}
-	
-	
-	
-	
 	
 }
