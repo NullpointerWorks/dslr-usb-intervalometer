@@ -42,11 +42,16 @@ public class SaveProfileCommand implements ActionCommand
 			chooser.addChoosableFileFilter(xmlFilter);
 			chooser.setCurrentDirectory(new File("."));
 			int option = chooser.showSaveDialog(null);
+			System.out.println(""+option);
 			if (option == JFileChooser.APPROVE_OPTION) 
 			{
 				var path = chooser.getSelectedFile();
 				filePath = new PathBuilder(path.getAbsolutePath());
 		    }
+			else
+			{
+				return;
+			}
 		}
 		else
 		{
