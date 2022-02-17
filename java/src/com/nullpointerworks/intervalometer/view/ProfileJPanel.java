@@ -12,6 +12,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
+import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
+import com.nullpointerworks.intervalometer.control.interfaces.DocumentCommand;
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
 import com.nullpointerworks.intervalometer.view.swing.JTextFieldFilter;
 
@@ -153,8 +155,9 @@ public class ProfileJPanel extends JPanel
 	{
 		return jtaNotes.getText();
 	}
-	
-	
+
+	public void setNameChangeCommand(DocumentCommand dc) {jtfProName.getDocument().addDocumentListener(dc);}
+	public void setNotesChangeCommand(DocumentCommand dc) {jtaNotes.getDocument().addDocumentListener(dc);}
 	
 	
 	

@@ -1,7 +1,9 @@
 package com.nullpointerworks.intervalometer.control;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
-import com.nullpointerworks.intervalometer.model.DeviceManager;
+import com.nullpointerworks.intervalometer.control.interfaces.DocumentCommand;
+import com.nullpointerworks.intervalometer.control.pui.NameModificationCommand;
+import com.nullpointerworks.intervalometer.control.pui.NotesModificationCommand;
 import com.nullpointerworks.intervalometer.model.ProfileManager;
 import com.nullpointerworks.intervalometer.model.profile.IntervalProfile;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
@@ -30,9 +32,15 @@ public class NewProfileCommand implements ActionCommand
 			mProfileManager.setStoredProfile(null);
 		}
 		
-		
 		IntervalProfile mProfile = new IntervalProfile(false);
 		ProfileJPanel vProfile = new ProfileJPanel();
+
+		DocumentCommand cNameChangeCommand = new NameModificationCommand(vProfile, mProfile);
+		DocumentCommand cNotesChangeCommand = new NotesModificationCommand(vProfile, mProfile);
+		
+		
+		vProfile.setNameChangeCommand(cNameChangeCommand);
+		vProfile.setNotesChangeCommand(cNotesChangeCommand);
 		
 		
 		mProfileManager.setStoredProfile(mProfile);
