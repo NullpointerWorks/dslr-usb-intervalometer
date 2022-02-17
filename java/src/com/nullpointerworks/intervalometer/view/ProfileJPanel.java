@@ -38,13 +38,12 @@ public class ProfileJPanel extends JPanel
 {
 	private static final long serialVersionUID = -7670816939485627712L;
 	
-	
 	private JButton jbSetStartDelay;
 	private JButton jbSetExposure;
 	private JButton jbSetDelay;
 	
-	
 	private JTextField jtfNumber;
+	private JTextField jtfProName;
 	private JTextArea jtaNotes;
 	
 	public ProfileJPanel()
@@ -75,7 +74,6 @@ public class ProfileJPanel extends JPanel
 		JTextField jtfNumber = new JTextField();
 		jtfNumber.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
 		
-		
 		JButton jbStartStop = new JButton("Start");
 		jbStartStop.setLocation(20, 20);
 		jbStartStop.setSize(70, 20);
@@ -84,25 +82,29 @@ public class ProfileJPanel extends JPanel
 		lbExposuresTaken.setLocation(20, 45);
 		lbExposuresTaken.setSize(100, 20);
 		
+		JLabel jlProName = new JLabel("Profile Name:");
+		jlProName.setLocation(12, 230);
+		jlProName.setSize(80, 20);
 		
+		jtfProName = new JTextField();
+		jtfProName.setLocation(90, 230);
+		jtfProName.setSize(232, 20);
 		
 		JLabel lbNotes = new JLabel("Notes:");
-		lbNotes.setLocation(12, 230);
+		lbNotes.setLocation(12, 260);
 		lbNotes.setSize(100, 20);
-		
 		
 		jtaNotes = new JTextArea();
 		jtaNotes.setLineWrap(true);
 		jtaNotes.setWrapStyleWord(true);
-		jtaNotes.setBackground( new Color(240,240,240) );
+		jtaNotes.setBackground( new Color(250,250,250) );
 		jtaNotes.setFont( new Font("Tahoma", Font.PLAIN, 11) );
 		JScrollPane jspNotes = new JScrollPane(jtaNotes);
-		jspNotes.setLocation(7, 250);
+		jspNotes.setLocation(7, 280);
 		jspNotes.setSize(315, 140);
 		jspNotes.setPreferredSize(jtaNotes.getSize());
 		jspNotes.setBorder( BorderFactory.createLoweredBevelBorder() );
 		jspNotes.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		
 		
 		JPanel jpIntervalometer = new JPanel();
 		jpIntervalometer.setLayout( new AbsoluteLayout() );
@@ -136,9 +138,25 @@ public class ProfileJPanel extends JPanel
 		setLayout( new AbsoluteLayout() );
 		add(jpIntervalometer);
 		add(jpSession);
+		add(jlProName);
+		add(jtfProName);
 		add(lbNotes);
 		add(jspNotes);
 	}
+	
+	public String getProfileName()
+	{
+		return jtfProName.getText();
+	}
+	
+	public String getProfileNotes()
+	{
+		return jtaNotes.getText();
+	}
+	
+	
+	
+	
 	
 	
 	

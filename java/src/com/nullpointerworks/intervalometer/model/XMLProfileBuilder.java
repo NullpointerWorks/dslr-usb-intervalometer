@@ -7,6 +7,7 @@ import com.nullpointerworks.intervalometer.util.XMLLoader;
 import exp.nullpointerworks.xml.Document;
 import exp.nullpointerworks.xml.Element;
 
+// TODO
 public class XMLProfileBuilder 
 {
 	private XMLLoader loader;
