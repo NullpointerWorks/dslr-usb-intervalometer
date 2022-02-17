@@ -1,5 +1,6 @@
 package com.nullpointerworks.intervalometer.control.pui;
 
+import com.nullpointerworks.intervalometer.control.interfaces.Command;
 import com.nullpointerworks.intervalometer.control.interfaces.DocumentCommand;
 import com.nullpointerworks.intervalometer.model.profile.IntervalProfile;
 import com.nullpointerworks.intervalometer.view.ProfileJPanel;
@@ -8,9 +9,11 @@ public class NotesModificationCommand implements DocumentCommand
 {
 	private IntervalProfile mProfile;
 	private ProfileJPanel vPanel;
+	private Command cProfileChange;
 	
-	public NotesModificationCommand(ProfileJPanel v, IntervalProfile m)
+	public NotesModificationCommand(Command cpc, ProfileJPanel v, IntervalProfile m)
 	{
+		cProfileChange = cpc;
 		mProfile = m;
 		vPanel = v;
 	}
@@ -19,5 +22,6 @@ public class NotesModificationCommand implements DocumentCommand
 	public synchronized void onCommand() 
 	{
 		mProfile.setProfileNotes( vPanel.getProfileNotes() );
+		cProfileChange.onCommand();
 	}
 }

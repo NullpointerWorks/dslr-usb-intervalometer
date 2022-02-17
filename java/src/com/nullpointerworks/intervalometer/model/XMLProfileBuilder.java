@@ -28,7 +28,16 @@ public class XMLProfileBuilder
 		Element extime = new Element("ExposureTime");
 		Element tween = new Element("InBetweenDelay");
 		Element expo = new Element("Exposures");
-
+		
+		
+		name.setText( profile.getProfileName() );
+		notes.setText( profile.getProfileNotes() );
+		
+		
+		
+		
+		
+		
 		root.addChild(name);
 		root.addChild(notes);
 		root.addChild(start);

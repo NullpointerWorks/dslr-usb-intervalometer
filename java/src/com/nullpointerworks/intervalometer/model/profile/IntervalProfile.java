@@ -26,15 +26,11 @@ public class IntervalProfile
 		return profilePath;
 	}
 	
-	public void setProfileName(String pn) 
-	{
-		profileName = pn;
-	}
-	
-	public void setProfileNotes(String pn) 
-	{
-		profileNotes = pn;
-	}
+	public void setProfileName(String pn) {profileName = pn;}
+	public void setProfileNotes(String pn) {profileNotes = pn;}
+
+	public String getProfileName() {return profileName;}
+	public String getProfileNotes() {return profileNotes;}
 	
 	
 	

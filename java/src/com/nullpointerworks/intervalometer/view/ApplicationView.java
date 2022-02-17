@@ -167,6 +167,11 @@ public class ApplicationView
 		tpTabs.setTitleAt(0, title);
 	}
 	
+	public String getDisplayTabTitle()
+	{
+		return tpTabs.getTitleAt(0);
+	}
+	
 	public void setConnected(boolean b)
 	{
 		jmiConnect.setEnabled(!b);

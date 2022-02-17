@@ -63,6 +63,9 @@ public class SaveProfileCommand implements ActionCommand
 			
 			
 			
+			
+			
+			vWindow.setDisplayTabTitle(profile.getProfileName());
 			vWindow.setSaveAsEnabled(true);
 		}
 		else
