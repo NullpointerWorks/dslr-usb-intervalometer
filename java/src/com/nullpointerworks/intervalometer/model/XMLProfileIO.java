@@ -53,6 +53,24 @@ public class XMLProfileIO implements ProfileIO
 		Document doc = loader.loadXML(path);
 		if (doc == null) return false;
 		Element root = doc.getRootElement();
+
+		// set name
+		Element name = root.getChild("Name");
+		if (name != null)
+		{
+			profile.setProfileName( name.getText() );
+		}
+		// set notes
+		Element note = root.getChild("Notes");
+		if (note != null)
+		{
+			profile.setProfileNotes( note.getText() );
+		}
+		
+		
+		
+		
+		
 		
 		
 		

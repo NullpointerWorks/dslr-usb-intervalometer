@@ -6,12 +6,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Development/Java/lib/npw/exp/libnpw-xml-0.16.0.jar">
+	<classpathentry kind="lib" path="D:/Development/Java/lib/npw/libnpw-util-1.0.1.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Development/Java/lib/npw/libnpw-util-1.0.1.jar">
+	<classpathentry kind="lib" path="D:/Development/Java/lib/npw/exp/libnpw-xml-0.16.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

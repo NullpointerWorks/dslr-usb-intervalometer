@@ -130,6 +130,7 @@ public class ProfileJPanel extends JPanel
 	public String getProfileNotes() {return jtaNotes.getText();}
 	
 	public void setProfileName(String profileName) {jtfProName.setText(profileName);}
+	public void setProfileNotes(String profileNote) {jtaNotes.setText(profileNote);}
 	
 	public void setNameChangeCommand(DocumentCommand dc) {jtfProName.getDocument().addDocumentListener(dc);}
 	public void setNotesChangeCommand(DocumentCommand dc) {jtaNotes.getDocument().addDocumentListener(dc);}

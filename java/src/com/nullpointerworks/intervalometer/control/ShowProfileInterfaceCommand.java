@@ -43,6 +43,8 @@ public class ShowProfileInterfaceCommand implements Command
 		vWindow.setSaveAsEnabled(false);
 		vWindow.setCloseEnabled(false);
 		vWindow.setDisplayTab(mProfile.getProfileName(), vProfile);
+
 		vProfile.setProfileName(mProfile.getProfileName());
+		vProfile.setProfileNotes(mProfile.getProfileNotes());
 	}
 }
