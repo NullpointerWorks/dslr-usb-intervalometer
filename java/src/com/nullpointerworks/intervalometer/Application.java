@@ -108,7 +108,7 @@ public class Application
 		ActionCommand cExitProgram = new ProgramExitCommand(mDeviceManager, mProfileManager);
 		ActionCommand cDisconnectDevice = new DisconnectDeviceCommand(vWindow, mDeviceManager);
 		
-		Command cShowProfileCommand = new ShowProfileInterfaceCommand(vWindow, mProfileManager);
+		Command cShowProfileCommand = new ShowProfileInterfaceCommand(vWindow, mProfileManager, mDeviceManager);
 		ActionCommand cNewProfile = new NewProfileCommand(cShowProfileCommand, mProfileManager);
 		ActionCommand cLoadProfile = new LoadProfileCommand(cShowProfileCommand, mProfileManager);
 		ActionCommand cSaveProfile = new SaveProfileCommand(vWindow, mProfileManager);

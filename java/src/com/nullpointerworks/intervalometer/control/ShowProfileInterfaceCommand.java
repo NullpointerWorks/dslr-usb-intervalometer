@@ -6,6 +6,7 @@ import com.nullpointerworks.intervalometer.control.interfaces.DocumentCommand;
 import com.nullpointerworks.intervalometer.control.pui.NameModificationCommand;
 import com.nullpointerworks.intervalometer.control.pui.NotesModificationCommand;
 import com.nullpointerworks.intervalometer.control.pui.ProfileChangeCommand;
+import com.nullpointerworks.intervalometer.model.DeviceManager;
 import com.nullpointerworks.intervalometer.model.IntervalProfile;
 import com.nullpointerworks.intervalometer.model.ProfileManager;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
@@ -15,11 +16,13 @@ public class ShowProfileInterfaceCommand implements Command
 {
 	private ApplicationView vWindow;
 	private ProfileManager mProfileManager;
+	private DeviceManager mDeviceManager;
 	
-	public ShowProfileInterfaceCommand(ApplicationView v, ProfileManager pm)
+	public ShowProfileInterfaceCommand(ApplicationView v, ProfileManager pm, DeviceManager dm)
 	{
 		vWindow = v;
 		mProfileManager = pm;
+		mDeviceManager = dm;
 	}
 	
 	@Override
