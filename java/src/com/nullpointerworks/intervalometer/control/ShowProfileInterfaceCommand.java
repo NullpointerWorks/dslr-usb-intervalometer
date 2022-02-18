@@ -1,5 +1,6 @@
 package com.nullpointerworks.intervalometer.control;
 
+import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.control.interfaces.Command;
 import com.nullpointerworks.intervalometer.control.interfaces.DocumentCommand;
 import com.nullpointerworks.intervalometer.control.pui.NameModificationCommand;
@@ -30,21 +31,45 @@ public class ShowProfileInterfaceCommand implements Command
 		Command cProfileChangeCommand = new ProfileChangeCommand(vWindow);
 		DocumentCommand cNameChangeCommand = new NameModificationCommand(cProfileChangeCommand, vProfile, mProfile);
 		DocumentCommand cNotesChangeCommand = new NotesModificationCommand(cProfileChangeCommand, vProfile, mProfile);
+
+		ActionCommand cSetStartDelay;
+		ActionCommand cSetExposureTime;
+		ActionCommand cSetTweenDelay;
+		ActionCommand cStartSession;
 		
 		
 		
 		
 		
 		
-		vProfile.setNameChangeCommand(cNameChangeCommand);
-		vProfile.setNotesChangeCommand(cNotesChangeCommand);
+		
+		
+		if (!mProfile.isFromFile())
+		{
+			vProfile.setNameChangeCommand(cNameChangeCommand);
+			vProfile.setNotesChangeCommand(cNotesChangeCommand);
+			vProfile.setStartUpDelayCommand(cSetStartDelay);
+			vProfile.setExposureTimeCommand(cSetExposureTime);
+			vProfile.setBetweenDelayCommand(cSetTweenDelay);
+			vProfile.setStartSessionCommand(cStartSession);
+		}
 		
 		vWindow.setSaveEnabled(true);
 		vWindow.setSaveAsEnabled(false);
 		vWindow.setCloseEnabled(false);
 		vWindow.setDisplayTab(mProfile.getProfileName(), vProfile);
-
 		vProfile.setProfileName(mProfile.getProfileName());
 		vProfile.setProfileNotes(mProfile.getProfileNotes());
+		
+		
+		if (mProfile.isFromFile())
+		{
+			vProfile.setNameChangeCommand(cNameChangeCommand);
+			vProfile.setNotesChangeCommand(cNotesChangeCommand);
+			vProfile.setStartUpDelayCommand(cSetStartDelay);
+			vProfile.setExposureTimeCommand(cSetExposureTime);
+			vProfile.setBetweenDelayCommand(cSetTweenDelay);
+			vProfile.setStartSessionCommand(cStartSession);
+		}
 	}
 }

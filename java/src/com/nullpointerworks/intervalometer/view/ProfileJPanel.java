@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
+import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.control.interfaces.DocumentCommand;
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
 import com.nullpointerworks.intervalometer.view.swing.JTextFieldFilter;
@@ -23,7 +24,7 @@ public class ProfileJPanel extends JPanel
 	private JButton jbSetStartDelay;
 	private JButton jbSetExposure;
 	private JButton jbSetDelay;
-	
+	private JButton jbStartStop;
 	private JTextField jtfNumber;
 	private JTextField jtfProName;
 	private JTextArea jtaNotes;
@@ -56,7 +57,7 @@ public class ProfileJPanel extends JPanel
 		JTextField jtfNumber = new JTextField();
 		jtfNumber.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
 		
-		JButton jbStartStop = new JButton("Start");
+		jbStartStop = new JButton("Start");
 		jbStartStop.setLocation(20, 20);
 		jbStartStop.setSize(70, 20);
 		
@@ -134,9 +135,9 @@ public class ProfileJPanel extends JPanel
 	
 	public void setNameChangeCommand(DocumentCommand dc) {jtfProName.getDocument().addDocumentListener(dc);}
 	public void setNotesChangeCommand(DocumentCommand dc) {jtaNotes.getDocument().addDocumentListener(dc);}
-	
-	
-	
-	
+	public void setStartUpDelayCommand(ActionCommand ac) {jbSetStartDelay.addActionListener(ac);}
+	public void setExposureTimeCommand(ActionCommand ac) {jbSetExposure.addActionListener(ac);}
+	public void setBetweenDelayCommand(ActionCommand ac) {jbSetDelay.addActionListener(ac);}
+	public void setStartSessionCommand(ActionCommand ac) {jbStartStop.addActionListener(ac);}
 	
 }
