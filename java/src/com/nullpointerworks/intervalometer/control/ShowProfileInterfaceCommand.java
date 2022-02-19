@@ -35,8 +35,8 @@ public class ShowProfileInterfaceCommand implements Command
 
 		ActionCommand cSetStartDelay = new SetStartDelayCommand();
 		ActionCommand cSetExposureTime = new SetExposureTimeCommand();
-		ActionCommand cSetTweenDelay;
-		ActionCommand cStartSession;
+		ActionCommand cSetTweenDelay = new SetBetweenTimeCommand();
+		ActionCommand cStartSession = new StartStopCommand();
 		
 		
 		
