@@ -1,6 +1,9 @@
 package com.nullpointerworks.intervalometer.control.pui;
 
+import javax.swing.JDialog;
+
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
+import com.nullpointerworks.intervalometer.view.TimeTunerJDialog;
 
 public class SetStartDelayCommand implements ActionCommand 
 {
@@ -16,6 +19,12 @@ public class SetStartDelayCommand implements ActionCommand
 	{
 		
 		
+		JDialog vTuner = new TimeTunerJDialog();
+		
+		vTuner.setVisible(true);
+		
+		
+		
 	}
-
+	
 }

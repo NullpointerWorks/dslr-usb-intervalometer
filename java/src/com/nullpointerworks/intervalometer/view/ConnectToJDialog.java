@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
-import com.nullpointerworks.intervalometer.view.swing.JTextFieldFilter;
 
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;

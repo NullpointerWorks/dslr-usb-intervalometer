@@ -32,18 +32,10 @@ public class ShowProfileInterfaceCommand implements Command
 		Command cProfileChangeCommand = new ProfileChangeCommand(vWindow);
 		DocumentCommand cNameChangeCommand = new NameModificationCommand(cProfileChangeCommand, vProfile, mProfile);
 		DocumentCommand cNotesChangeCommand = new NotesModificationCommand(cProfileChangeCommand, vProfile, mProfile);
-
 		ActionCommand cSetStartDelay = new SetStartDelayCommand();
 		ActionCommand cSetExposureTime = new SetExposureTimeCommand();
 		ActionCommand cSetTweenDelay = new SetBetweenTimeCommand();
 		ActionCommand cStartSession = new StartStopCommand();
-		
-		
-		
-		
-		
-		
-		
 		
 		if (!mProfile.isFromFile())
 		{
@@ -61,7 +53,6 @@ public class ShowProfileInterfaceCommand implements Command
 		vWindow.setDisplayTab(mProfile.getProfileName(), vProfile);
 		vProfile.setProfileName(mProfile.getProfileName());
 		vProfile.setProfileNotes(mProfile.getProfileNotes());
-		
 		
 		if (mProfile.isFromFile())
 		{
