@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
+import com.nullpointerworks.intervalometer.view.swing.JTextFieldFilter;
 
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
@@ -31,15 +32,15 @@ public class ConnectToJDialog extends JDialog
 		isAccepted = false;
 		
 		JLabel jlEnterSerial = new JLabel("Serial Number:");
-		jlEnterSerial.setLocation(20, 20);
+		jlEnterSerial.setLocation(15, 15);
 		jlEnterSerial.setSize(100, 25);
 		jlEnterSerial.setPreferredSize(jlEnterSerial.getSize());
 		
 		jtfSerialInput = new JTextField();
-		jtfSerialInput.setLocation(105, 20);
+		jtfSerialInput.setLocation(100, 15);
 		jtfSerialInput.setSize(170, 25);
 		jtfSerialInput.setPreferredSize(jtfSerialInput.getSize());
-		//new GhostText(jtfSerialInput, "Leave empty if unknown");
+		//jtfSerialInput.setDocument( new JTextFieldFilter(JTextFieldFilter.NUMERIC) );
 		jtfSerialInput.addKeyListener( new KeyAdapter() 
 		{
 			@Override
@@ -54,7 +55,7 @@ public class ConnectToJDialog extends JDialog
 		});
 		
 		jbAccept = new JButton("Accept");
-		jbAccept.setLocation(20, 70);
+		jbAccept.setLocation(10, 55);
 		jbAccept.setSize(90, 25);
 		jbAccept.setPreferredSize(jbAccept.getSize());
 		jbAccept.addActionListener( new ActionListener() 
@@ -68,7 +69,7 @@ public class ConnectToJDialog extends JDialog
 		});
 		
 		jbCancel = new JButton("Cancel");
-		jbCancel.setLocation(185, 70);
+		jbCancel.setLocation(175, 55);
 		jbCancel.setSize(90, 25);
 		jbCancel.setPreferredSize(jbCancel.getSize());
 		jbCancel.addActionListener( new ActionListener() 
@@ -83,7 +84,7 @@ public class ConnectToJDialog extends JDialog
 		JPanel jpInterface = new JPanel();
 		jpInterface.setLayout( new AbsoluteLayout() );
 		jpInterface.setLocation(0, 0);
-		jpInterface.setSize(300, 115);
+		jpInterface.setSize(280, 95);
 		jpInterface.setPreferredSize( jpInterface.getSize() );
 		jpInterface.add(jlEnterSerial);
 		jpInterface.add(jtfSerialInput);
