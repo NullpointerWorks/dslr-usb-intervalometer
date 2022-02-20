@@ -3,6 +3,7 @@ package com.nullpointerworks.intervalometer.view;
 import java.awt.Dialog;
 
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
@@ -11,15 +12,20 @@ public class TimeTunerJDialog extends JDialog
 {
 	private static final long serialVersionUID = 913577687449225667L;
 
-	public TimeTunerJDialog()
+	public TimeTunerJDialog(String title)
 	{
 		super(null, Dialog.ModalityType.APPLICATION_MODAL);
 		
 		
 		
 		
+
+		JLabel jlHours = new JLabel("h");
 		
 		
+		JLabel jlMinutes = new JLabel("'");
+		
+		JLabel jlSeconds = new JLabel("\"");
 		
 		
 		
@@ -34,7 +40,7 @@ public class TimeTunerJDialog extends JDialog
 		jpInterface.setSize(320, 240);
 		jpInterface.setPreferredSize( jpInterface.getSize() );
 		
-		setTitle("Time Tuner");
+		setTitle(title);
 		setResizable(false);
 		add(jpInterface);
 		pack();
