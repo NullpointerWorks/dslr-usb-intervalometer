@@ -19,45 +19,46 @@ public class TimeTunerJDialog extends JDialog
 	private JTextField jtfSecs;
 	
 	
+	
 	public TimeTunerJDialog(String title)
 	{
 		super(null, Dialog.ModalityType.APPLICATION_MODAL);
 		
 		jtfHours = new JTextField();
-		jtfHours.setLocation(10, 10);
+		jtfHours.setLocation(25, 10);
 		jtfHours.setSize(40, 20);
 		jtfHours.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
 		jtfHours.setHorizontalAlignment( JTextField.RIGHT );
 		//jtfHours.setToolTipText( "The amount of hours of the exposure." );
 		
 		JLabel jlHours = new JLabel("h");
-		jlHours.setLocation(55, 10);
+		jlHours.setLocation(70, 10);
 		jlHours.setSize(30, 20);
 		
 		jtfMins = new JTextField();
-		jtfMins.setLocation(75, 10);
+		jtfMins.setLocation(90, 10);
 		jtfMins.setSize(40, 20);
 		jtfMins.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
 		jtfMins.setHorizontalAlignment( JTextField.RIGHT );
 		
 		JLabel jlMinutes = new JLabel("'");
-		jlMinutes.setLocation(120, 10);
+		jlMinutes.setLocation(135, 10);
 		jlMinutes.setSize(40, 20);
 		
 		jtfSecs = new JTextField();
-		jtfSecs.setLocation(140, 10);
+		jtfSecs.setLocation(150, 10);
 		jtfSecs.setSize(40, 20);
 		jtfSecs.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
 		jtfSecs.setHorizontalAlignment( JTextField.RIGHT );
 		
 		JLabel jlSeconds = new JLabel("\"");
-		jlSeconds.setLocation(185, 10);
+		jlSeconds.setLocation(200, 10);
 		jlSeconds.setSize(40, 20);
 		
 		JPanel jpInterface = new JPanel();
 		jpInterface.setLayout( new AbsoluteLayout() );
 		jpInterface.setLocation(0, 0);
-		jpInterface.setSize(320, 240);
+		jpInterface.setSize(230, 160);
 		jpInterface.setPreferredSize( jpInterface.getSize() );
 		jpInterface.add(jtfHours);
 		jpInterface.add(jtfMins);
