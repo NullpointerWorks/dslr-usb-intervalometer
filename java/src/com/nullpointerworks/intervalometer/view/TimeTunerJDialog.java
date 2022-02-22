@@ -2,11 +2,13 @@ package com.nullpointerworks.intervalometer.view;
 
 import java.awt.Dialog;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
 import com.nullpointerworks.intervalometer.view.swing.JTextFieldFilter;
 
@@ -17,8 +19,9 @@ public class TimeTunerJDialog extends JDialog
 	private JTextField jtfHours;
 	private JTextField jtfMins;
 	private JTextField jtfSecs;
-	
-	
+
+	private JButton lbCancel;
+	private JButton lbAccept;
 	
 	public TimeTunerJDialog(String title)
 	{
@@ -55,6 +58,13 @@ public class TimeTunerJDialog extends JDialog
 		jlSeconds.setLocation(200, 10);
 		jlSeconds.setSize(40, 20);
 		
+
+		lbCancel = new JButton();
+		
+		
+		lbAccept = new JButton();
+		
+		
 		JPanel jpInterface = new JPanel();
 		jpInterface.setLayout( new AbsoluteLayout() );
 		jpInterface.setLocation(0, 0);
@@ -66,6 +76,8 @@ public class TimeTunerJDialog extends JDialog
 		jpInterface.add(jlHours);
 		jpInterface.add(jlMinutes);
 		jpInterface.add(jlSeconds);
+		jpInterface.add(lbCancel);
+		jpInterface.add(lbAccept);
 		
 		setTitle(title);
 		setResizable(false);
@@ -74,9 +86,11 @@ public class TimeTunerJDialog extends JDialog
 		setLocationRelativeTo(null);
 	}
 	
-	
-	
-	
-	
+	public void setCancelCommand(ActionCommand ac) {lbCancel.addActionListener(ac);}
+	public void setAcceptCommand(ActionCommand ac) {lbAccept.addActionListener(ac);}
+
+	public String getHoursInput() {return jtfHours.getText();}
+	public String getMinutesInput() {return jtfMins.getText();}
+	public String getSecondsInput() {return jtfSecs.getText();}
 	
 }
