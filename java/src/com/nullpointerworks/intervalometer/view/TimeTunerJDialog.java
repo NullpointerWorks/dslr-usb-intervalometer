@@ -96,4 +96,6 @@ public class TimeTunerJDialog extends JDialog
 	public String getMinutesInput() {return jtfMins.getText();}
 	public String getSecondsInput() {return jtfSecs.getText();}
 	
+	public boolean isAccepted() {return isAccepted;}
+	
 }
