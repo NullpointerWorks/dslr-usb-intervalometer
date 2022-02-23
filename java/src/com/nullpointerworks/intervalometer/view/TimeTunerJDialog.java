@@ -19,13 +19,16 @@ public class TimeTunerJDialog extends JDialog
 	private JTextField jtfHours;
 	private JTextField jtfMins;
 	private JTextField jtfSecs;
-
+	
 	private JButton lbCancel;
 	private JButton lbAccept;
+	
+	private boolean isAccepted;
 	
 	public TimeTunerJDialog(String title)
 	{
 		super(null, Dialog.ModalityType.APPLICATION_MODAL);
+		isAccepted = false;
 		
 		jtfHours = new JTextField();
 		jtfHours.setLocation(25, 10);
