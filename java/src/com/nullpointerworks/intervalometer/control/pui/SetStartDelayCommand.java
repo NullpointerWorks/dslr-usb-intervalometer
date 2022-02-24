@@ -19,11 +19,8 @@ public class SetStartDelayCommand implements ActionCommand
 		
 		TimeTunerJDialog vTuner = new TimeTunerJDialog("Start-up Delay");
 		vTuner.setVisible(true);
+		if (!vTuner.isAccepted()) return;
 		
-		if (!vTuner.isAccepted())
-		{
-			return;
-		}
 		
 		
 		
