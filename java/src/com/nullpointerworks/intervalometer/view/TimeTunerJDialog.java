@@ -1,7 +1,6 @@
 package com.nullpointerworks.intervalometer.view;
 
 import java.awt.Dialog;
-import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
