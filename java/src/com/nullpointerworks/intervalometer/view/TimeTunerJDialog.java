@@ -1,6 +1,7 @@
 package com.nullpointerworks.intervalometer.view;
 
 import java.awt.Dialog;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -15,7 +16,9 @@ import com.nullpointerworks.intervalometer.view.swing.JTextFieldFilter;
 public class TimeTunerJDialog extends JDialog 
 {
 	private static final long serialVersionUID = 913577687449225667L;
-
+	
+	//private final Font fLarge = new Font("Calibri", Font.BOLD, 28);
+	
 	private JTextField jtfHours;
 	private JTextField jtfMins;
 	private JTextField jtfSecs;
