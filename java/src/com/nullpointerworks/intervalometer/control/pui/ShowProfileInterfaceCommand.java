@@ -1,8 +1,6 @@
-package com.nullpointerworks.intervalometer.control;
+package com.nullpointerworks.intervalometer.control.pui;
 
 import com.nullpointerworks.intervalometer.control.interfaces.*;
-import com.nullpointerworks.intervalometer.control.pui.*;
-
 import com.nullpointerworks.intervalometer.model.DeviceManager;
 import com.nullpointerworks.intervalometer.model.IntervalProfile;
 import com.nullpointerworks.intervalometer.model.ProfileManager;

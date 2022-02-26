@@ -1,4 +1,4 @@
-package com.nullpointerworks.intervalometer.control;
+package com.nullpointerworks.intervalometer.control.menubar;
 
 import java.io.File;
 

@@ -2,6 +2,15 @@ package com.nullpointerworks.intervalometer;
 
 import com.nullpointerworks.intervalometer.control.*;
 import com.nullpointerworks.intervalometer.control.interfaces.*;
+import com.nullpointerworks.intervalometer.control.menubar.ClearDevHistoryCommand;
+import com.nullpointerworks.intervalometer.control.menubar.ConnectToCommand;
+import com.nullpointerworks.intervalometer.control.menubar.DisconnectDeviceCommand;
+import com.nullpointerworks.intervalometer.control.menubar.LoadProfileCommand;
+import com.nullpointerworks.intervalometer.control.menubar.NewProfileCommand;
+import com.nullpointerworks.intervalometer.control.menubar.ProgramExitCommand;
+import com.nullpointerworks.intervalometer.control.menubar.RefreshDevicesCommand;
+import com.nullpointerworks.intervalometer.control.menubar.SaveProfileCommand;
+import com.nullpointerworks.intervalometer.control.pui.ShowProfileInterfaceCommand;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
 import com.nullpointerworks.intervalometer.model.ProfileManager;
 import com.nullpointerworks.intervalometer.model.config.Configuration;
