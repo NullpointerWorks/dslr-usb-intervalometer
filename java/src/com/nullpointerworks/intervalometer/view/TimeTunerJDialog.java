@@ -112,6 +112,8 @@ public class TimeTunerJDialog extends JDialog
 		setLocationRelativeTo(null);
 	}
 	
+	public boolean isAccepted() {return isAccepted;}
+	
 	private void setAcceptCommand(ActionCommand ac) {jbAccept.addActionListener(ac);}
 	private void setCancelCommand(ActionCommand ac) {jbCancel.addActionListener(ac);}
 	
@@ -119,6 +121,11 @@ public class TimeTunerJDialog extends JDialog
 	public String getMinutesInput() {return jtfMins.getText();}
 	public String getSecondsInput() {return jtfSecs.getText();}
 	
-	public boolean isAccepted() {return isAccepted;}
+	public void setStartDelayText(int hours, int mins, int secs) 
+	{
+		jtfHours.setText(""+hours);
+		jtfMins.setText(""+mins);
+		jtfSecs.setText(""+secs);
+	}
 	
 }

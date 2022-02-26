@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Profile>
-	<Name>My New Profile</Name>
-	<Notes>With some additional notes.</Notes>
+	<Name>New Profile</Name>
+	<Notes>null</Notes>
 	<StartDelay/>
 	<ExposureTime/>
 	<InBetweenDelay/>

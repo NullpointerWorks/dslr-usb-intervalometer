@@ -50,16 +50,18 @@ public class ProfileJPanel extends JPanel
 		lbExposureTime.setSize(100, 20);
 		jtfExposureTime = new JTextField();
 		jtfExposureTime.setLocation(120, 45);
-		jtfExposureTime.setEditable(false);
 		jtfExposureTime.setSize(100, 20);
+		jtfExposureTime.setEditable(false);
+		jtfExposureTime.setHorizontalAlignment(JTextField.RIGHT);
 		
 		JLabel lbInBetweenDelay = new JLabel("In-Between Delay:");
 		lbInBetweenDelay.setLocation(20, 70);
 		lbInBetweenDelay.setSize(100, 20);
 		jtfBetweenDelay = new JTextField();
 		jtfBetweenDelay.setLocation(120, 70);
-		jtfBetweenDelay.setEditable(false);
 		jtfBetweenDelay.setSize(100, 20);
+		jtfBetweenDelay.setEditable(false);
+		jtfBetweenDelay.setHorizontalAlignment(JTextField.RIGHT);
 		
 		JLabel lbNumberExposures = new JLabel("Desired Exposures:");
 		lbNumberExposures.setLocation(20, 95);
