@@ -25,6 +25,11 @@ public class ProfileJPanel extends JPanel
 	private JButton jbSetExposure;
 	private JButton jbSetDelay;
 	private JButton jbStartStop;
+
+	private JTextField jtfStartDelay;
+	private JTextField jtfExposureTime;
+	private JTextField jtfBetweenDelay;
+	private JTextField jtfExposures;
 	private JTextField jtfNumber;
 	private JTextField jtfProName;
 	private JTextArea jtaNotes;
@@ -34,15 +39,34 @@ public class ProfileJPanel extends JPanel
 		JLabel lbStartDelay = new JLabel("Start-up Delay:");
 		lbStartDelay.setLocation(20, 20);
 		lbStartDelay.setSize(100, 20);
+		jtfStartDelay = new JTextField();
+		jtfStartDelay.setLocation(120, 20);
+		jtfStartDelay.setSize(100, 20);
+		jtfStartDelay.setEditable(false);
+		jtfStartDelay.setHorizontalAlignment(JTextField.RIGHT);
+		
 		JLabel lbExposureTime = new JLabel("Exposure Time:");
 		lbExposureTime.setLocation(20, 45);
 		lbExposureTime.setSize(100, 20);
+		jtfExposureTime = new JTextField();
+		jtfExposureTime.setLocation(120, 45);
+		jtfExposureTime.setEditable(false);
+		jtfExposureTime.setSize(100, 20);
+		
 		JLabel lbInBetweenDelay = new JLabel("In-Between Delay:");
 		lbInBetweenDelay.setLocation(20, 70);
 		lbInBetweenDelay.setSize(100, 20);
+		jtfBetweenDelay = new JTextField();
+		jtfBetweenDelay.setLocation(120, 70);
+		jtfBetweenDelay.setEditable(false);
+		jtfBetweenDelay.setSize(100, 20);
+		
 		JLabel lbNumberExposures = new JLabel("Desired Exposures:");
 		lbNumberExposures.setLocation(20, 95);
 		lbNumberExposures.setSize(100, 20);
+		jtfExposures = new JTextField();
+		jtfExposures.setLocation(120, 95);
+		jtfExposures.setSize(100, 20);
 		
 		jbSetStartDelay = new JButton("Set");
 		jbSetStartDelay.setLocation(250, 20);
@@ -101,6 +125,10 @@ public class ProfileJPanel extends JPanel
 		jpIntervalometer.add(lbExposureTime);
 		jpIntervalometer.add(lbInBetweenDelay);
 		jpIntervalometer.add(lbNumberExposures);
+		jpIntervalometer.add(jtfStartDelay);
+		jpIntervalometer.add(jtfExposureTime);
+		jpIntervalometer.add(jtfBetweenDelay);
+		jpIntervalometer.add(jtfExposures);
 		jpIntervalometer.add(jbSetStartDelay);
 		jpIntervalometer.add(jbSetExposure);
 		jpIntervalometer.add(jbSetDelay);
@@ -129,6 +157,11 @@ public class ProfileJPanel extends JPanel
 	
 	public String getProfileName() {return jtfProName.getText();}
 	public String getProfileNotes() {return jtaNotes.getText();}
+
+	public void setStartDelayText(String t) {jtfStartDelay.setText(t);}
+	public void setExposureTimeText(String t) {jtfExposureTime.setText(t);}
+	public void setBetweenDelayText(String t) {jtfBetweenDelay.setText(t);}
+	public void setExposuresText(String t) {jtfExposures.setText(t);}
 	
 	public void setProfileName(String profileName) {jtfProName.setText(profileName);}
 	public void setProfileNotes(String profileNote) {jtaNotes.setText(profileNote);}

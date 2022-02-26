@@ -32,7 +32,7 @@ public class ShowProfileInterfaceCommand implements Command
 		Command cProfileChangeCommand = new ProfileChangeCommand(vWindow);
 		DocumentCommand cNameChangeCommand = new NameModificationCommand(cProfileChangeCommand, vProfile, mProfile);
 		DocumentCommand cNotesChangeCommand = new NotesModificationCommand(cProfileChangeCommand, vProfile, mProfile);
-		ActionCommand cSetStartDelay = new SetStartDelayCommand();
+		ActionCommand cSetStartDelay = new SetStartDelayCommand(vProfile, mProfile);
 		ActionCommand cSetExposureTime = new SetExposureTimeCommand();
 		ActionCommand cSetTweenDelay = new SetBetweenTimeCommand();
 		ActionCommand cStartSession = new StartStopCommand();

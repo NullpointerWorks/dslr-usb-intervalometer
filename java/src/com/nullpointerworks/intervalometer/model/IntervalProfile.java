@@ -29,6 +29,11 @@ public class IntervalProfile
 
 	public String getProfileName() {return profileName;}
 	public String getProfileNotes() {return profileNotes;}
+
+	public void setStartDelay(int counter) 
+	{
+		
+	}
 	
 	
 	
