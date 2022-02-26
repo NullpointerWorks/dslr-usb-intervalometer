@@ -18,15 +18,25 @@ public class UpdateStartDelayCommand implements Command
 	@Override
 	public void onCommand() 
 	{
-		int sdelay = mProfile.getStartDelay();
-		int secs = sdelay % 60;
-		int hours = sdelay / 3600;
-		int mins = (sdelay-secs) / 60;
-		
-		String text = hours + "h " + mins +"m "+ secs+"s";
+		String text = getTimeText( mProfile.getStartDelay() );
 		vProfile.setStartDelayText(text);
 		
 		
+		
+		
+		
+		
+		
+	}
+	
+	private String getTimeText(int sdelay)
+	{
+		int hours = sdelay / 3600;
+		sdelay = sdelay % 3600;
+		int mins = sdelay / 60;
+		sdelay = sdelay % 60;
+		int secs = sdelay;
+		return hours + "h " + mins +"m "+ secs+"s";
 	}
 
 }

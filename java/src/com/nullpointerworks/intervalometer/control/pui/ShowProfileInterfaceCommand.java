@@ -1,6 +1,7 @@
 package com.nullpointerworks.intervalometer.control.pui;
 
 import com.nullpointerworks.intervalometer.control.interfaces.*;
+import com.nullpointerworks.intervalometer.control.updaters.UpdateStartDelayCommand;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
 import com.nullpointerworks.intervalometer.model.IntervalProfile;
 import com.nullpointerworks.intervalometer.model.ProfileManager;
@@ -28,9 +29,11 @@ public class ShowProfileInterfaceCommand implements Command
 		ProfileJPanel vProfile = new ProfileJPanel();
 		
 		Command cProfileChangeCommand = new ProfileChangeCommand(vWindow);
+		Command cUpdateProfileInterface = new UpdateStartDelayCommand(vProfile, mProfile);
 		DocumentCommand cNameChangeCommand = new NameModificationCommand(cProfileChangeCommand, vProfile, mProfile);
 		DocumentCommand cNotesChangeCommand = new NotesModificationCommand(cProfileChangeCommand, vProfile, mProfile);
-		ActionCommand cSetStartDelay = new SetStartDelayCommand(vProfile, mProfile, cProfileChangeCommand);
+		ActionCommand cSetStartDelay = new SetStartDelayCommand(mProfile, cProfileChangeCommand, cUpdateProfileInterface);
+		
 		ActionCommand cSetExposureTime = new SetExposureTimeCommand();
 		ActionCommand cSetTweenDelay = new SetBetweenTimeCommand();
 		ActionCommand cStartSession = new StartStopCommand();
@@ -51,7 +54,6 @@ public class ShowProfileInterfaceCommand implements Command
 		vWindow.setDisplayTab(mProfile.getProfileName(), vProfile);
 		vProfile.setProfileName(mProfile.getProfileName());
 		vProfile.setProfileNotes(mProfile.getProfileNotes());
-		//vProfile.setStartDelayText("0h 0m 5s");
 		
 		if (mProfile.isFromFile())
 		{
@@ -62,5 +64,7 @@ public class ShowProfileInterfaceCommand implements Command
 			vProfile.setBetweenDelayCommand(cSetTweenDelay);
 			vProfile.setStartSessionCommand(cStartSession);
 		}
+		
+		cUpdateProfileInterface.onCommand();
 	}
 }
