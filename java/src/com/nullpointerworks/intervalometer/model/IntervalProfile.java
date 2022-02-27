@@ -39,9 +39,18 @@ public class IntervalProfile
 
 	public String getProfileName() {return profileName;}
 	public String getProfileNotes() {return profileNotes;}
-
-	public void setStartDelay(int counter) {startDelay = counter;}
+	
+	public void setStartDelay(int c) {startDelay = c;}
 	public int getStartDelay() {return startDelay;}
+	
+	public void setExposureTime(int c) {exposureTime = c;}
+	public int getExposureTime() {return exposureTime;}
+	
+	public void setBetweenDelay(int c) {betweenDelay = c;}
+	public int getBetweenDelay() {return betweenDelay;}
+	
+	public void setExposures(int e) {exposures = e;}
+	public int getExposures() {return exposures;}
 	
 	
 	
