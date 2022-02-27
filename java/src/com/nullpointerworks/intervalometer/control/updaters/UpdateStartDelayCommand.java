@@ -21,12 +21,14 @@ public class UpdateStartDelayCommand implements Command
 		String text = getTimeText( mProfile.getStartDelay() );
 		vProfile.setStartDelayText(text);
 		
+		text = getTimeText( mProfile.getExposureTime() );
+		vProfile.setExposureTimeText(text);
 		
+		text = getTimeText( mProfile.getBetweenDelay() );
+		vProfile.setBetweenDelayText(text);
 		
-		
-		
-		
-		
+		text = mProfile.getExposures() + "";
+		vProfile.setExposuresText(text);
 	}
 	
 	private String getTimeText(int sdelay)
