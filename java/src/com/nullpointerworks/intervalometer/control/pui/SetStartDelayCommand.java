@@ -46,7 +46,5 @@ public class SetStartDelayCommand implements ActionCommand
 		
 		cUpdateProfileInterface.onCommand();
 		if (sdelay != counter) cProfileChangeCommand.onCommand();
-		
 	}
-	
 }

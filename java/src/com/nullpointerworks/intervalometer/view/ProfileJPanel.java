@@ -69,6 +69,7 @@ public class ProfileJPanel extends JPanel
 		jtfExposures = new JTextField();
 		jtfExposures.setLocation(120, 95);
 		jtfExposures.setSize(100, 20);
+		jtfExposures.setHorizontalAlignment(JTextField.RIGHT);
 		
 		jbSetStartDelay = new JButton("Set");
 		jbSetStartDelay.setLocation(250, 20);
