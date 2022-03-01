@@ -36,8 +36,7 @@ public class ShowProfileInterfaceCommand implements Command
 		ActionCommand cSetStartDelay = new SetStartDelayCommand(mProfile, cProfileChangeCommand, cUpdateProfileInterface);
 		ActionCommand cSetExposureTime = new SetExposureTimeCommand(mProfile, cProfileChangeCommand, cUpdateProfileInterface);
 		ActionCommand cSetTweenDelay = new SetBetweenTimeCommand(mProfile, cProfileChangeCommand, cUpdateProfileInterface);
-		
-		ActionCommand cStartSession = new StartStopCommand();
+		ActionCommand cStartSession = new StartStopCommand(vProfile, mDeviceManager);
 		
 		if (!mProfile.isFromFile())
 		{
