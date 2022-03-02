@@ -41,5 +41,9 @@ public class StartStopCommand implements ActionCommand
 			t.interrupt();
 			started = false;
 		}
+		
+		
+		vProfile.setStartButtonState(started);
+		
 	}
 }

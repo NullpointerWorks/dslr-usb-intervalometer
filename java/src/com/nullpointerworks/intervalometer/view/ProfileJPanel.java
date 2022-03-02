@@ -84,9 +84,10 @@ public class ProfileJPanel extends JPanel
 		JTextField jtfNumber = new JTextField();
 		jtfNumber.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
 		
-		jbStartStop = new JButton("Start");
+		jbStartStop = new JButton();
 		jbStartStop.setLocation(20, 20);
 		jbStartStop.setSize(70, 20);
+		setStartButtonState(false);
 		
 		JLabel lbExposuresTaken = new JLabel("Exposures Taken:");
 		lbExposuresTaken.setLocation(20, 45);
@@ -156,6 +157,18 @@ public class ProfileJPanel extends JPanel
 		add(jtfProName);
 		add(lbNotes);
 		add(jspNotes);
+	}
+	
+	public void setStartButtonState(boolean b)
+	{
+		if (!b)
+		{
+			jbStartStop.setText("Start");
+		}
+		else
+		{
+			jbStartStop.setText("Stop");
+		}
 	}
 	
 	public String getProfileName() {return jtfProName.getText();}
