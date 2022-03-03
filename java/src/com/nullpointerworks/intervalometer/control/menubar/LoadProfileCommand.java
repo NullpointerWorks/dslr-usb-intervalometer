@@ -57,9 +57,7 @@ public class LoadProfileCommand implements ActionCommand
 		
 		mProfileManager.setStoredProfile(profile);
 		cShowProfileCommand.onCommand();
-		
-		
-		
-		
+		mConfig.setRecentProfile( filePath.getAbsolutePath() );
+		cRefreshRecentProfiles.onCommand();
 	}
 }

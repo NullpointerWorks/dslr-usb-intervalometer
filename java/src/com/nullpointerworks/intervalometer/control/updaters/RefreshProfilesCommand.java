@@ -27,7 +27,7 @@ public class RefreshProfilesCommand implements Command
 	@Override
 	public void onCommand() 
 	{
-		List<String> list = mConfig.getRecentDevices();
+		List<String> list = mConfig.getRecentProfiles();
 		List<ActionCommand> cmds = new ArrayList<ActionCommand>();
 		
 		for (String sn : list)
@@ -36,7 +36,7 @@ public class RefreshProfilesCommand implements Command
 			cmds.add(c);
 		}
 		
-		vWindow.setRecentDevices(list, cmds);
+		vWindow.setRecentProfiles(list, cmds);
 		
 	}
 }

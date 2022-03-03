@@ -6,6 +6,8 @@ import javax.swing.JMenu;
 
 public class RolloverJMenu extends JMenu 
 {
+	private static final long serialVersionUID = -563965477578666188L;
+
 	public RolloverJMenu(String s)
 	{
 		super(s);
