@@ -2,7 +2,7 @@ package com.nullpointerworks.intervalometer.control.menubar;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
-import com.nullpointerworks.intervalometer.model.ProfileManager;
+import com.nullpointerworks.intervalometer.model.profile.ProfileManager;
 
 public class ProgramExitCommand implements ActionCommand 
 {

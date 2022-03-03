@@ -1,4 +1,4 @@
-package com.nullpointerworks.intervalometer.model;
+package com.nullpointerworks.intervalometer.model.profile;
 
 public class ProfileManager 
 {

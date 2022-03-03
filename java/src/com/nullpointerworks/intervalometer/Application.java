@@ -12,13 +12,13 @@ import com.nullpointerworks.intervalometer.control.menubar.RefreshDevicesCommand
 import com.nullpointerworks.intervalometer.control.menubar.SaveProfileCommand;
 import com.nullpointerworks.intervalometer.control.pui.ShowProfileInterfaceCommand;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
-import com.nullpointerworks.intervalometer.model.ProfileManager;
 import com.nullpointerworks.intervalometer.model.config.Configuration;
 import com.nullpointerworks.intervalometer.model.config.XMLConfiguration;
 
 import com.nullpointerworks.intervalometer.model.nativeinterface.GPIO;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221Device;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221DeviceFactory;
+import com.nullpointerworks.intervalometer.model.profile.ProfileManager;
 import com.nullpointerworks.intervalometer.util.PathBuilder;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
 import com.nullpointerworks.intervalometer.view.TimeTunerJDialog;

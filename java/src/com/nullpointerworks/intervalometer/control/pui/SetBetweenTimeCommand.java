@@ -2,7 +2,7 @@ package com.nullpointerworks.intervalometer.control.pui;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.control.interfaces.Command;
-import com.nullpointerworks.intervalometer.model.IntervalProfile;
+import com.nullpointerworks.intervalometer.model.profile.IntervalProfile;
 import com.nullpointerworks.intervalometer.view.TimeTunerJDialog;
 import com.nullpointerworks.util.Convert;
 

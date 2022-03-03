@@ -6,9 +6,9 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
-import com.nullpointerworks.intervalometer.model.XMLProfileIO;
-import com.nullpointerworks.intervalometer.model.ProfileIO;
-import com.nullpointerworks.intervalometer.model.ProfileManager;
+import com.nullpointerworks.intervalometer.model.profile.ProfileIO;
+import com.nullpointerworks.intervalometer.model.profile.ProfileManager;
+import com.nullpointerworks.intervalometer.model.profile.XMLProfileIO;
 import com.nullpointerworks.intervalometer.util.PathBuilder;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
 import com.nullpointerworks.intervalometer.view.swing.FileTypeFilter;

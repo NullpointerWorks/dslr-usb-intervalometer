@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <Profile>
 	<Name>Example Profile</Name>
 	<Notes>A sample note to clearify this profile is an example.</Notes>
 	<StartDelay>5</StartDelay>
 	<ExposureTime>120</ExposureTime>
 	<InBetweenDelay>10</InBetweenDelay>
-	<Exposures>200</Exposures>
+	<Exposures>999</Exposures>
 </Profile>

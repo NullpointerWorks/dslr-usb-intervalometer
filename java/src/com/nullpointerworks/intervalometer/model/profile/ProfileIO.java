@@ -1,4 +1,4 @@
-package com.nullpointerworks.intervalometer.model;
+package com.nullpointerworks.intervalometer.model.profile;
 
 import com.nullpointerworks.intervalometer.util.PathBuilder;
 
