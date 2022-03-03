@@ -7,6 +7,7 @@ import javax.swing.filechooser.FileFilter;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.control.interfaces.Command;
+import com.nullpointerworks.intervalometer.model.config.Configuration;
 import com.nullpointerworks.intervalometer.model.profile.IntervalProfile;
 import com.nullpointerworks.intervalometer.model.profile.ProfileIO;
 import com.nullpointerworks.intervalometer.model.profile.ProfileManager;
@@ -19,12 +20,16 @@ public class LoadProfileCommand implements ActionCommand
 	private Command cShowProfileCommand;
 	private ProfileManager mProfileManager;
 	private final FileFilter xmlFilter;
+	private Configuration mConfig;
+	private Command cRefreshRecentProfiles;
 	
-	public LoadProfileCommand(Command spc, ProfileManager pm)
+	public LoadProfileCommand(Command spc, Command rrp, ProfileManager pm, Configuration cfg)
 	{
 		cShowProfileCommand = spc;
 		mProfileManager = pm;
 		xmlFilter = new FileTypeFilter(".xml", "Extensible Markup Language");
+		mConfig = cfg;
+		cRefreshRecentProfiles = rrp;
 	}
 	
 	@Override
@@ -37,7 +42,7 @@ public class LoadProfileCommand implements ActionCommand
 		int option = chooser.showOpenDialog(null);
 		if (option != JFileChooser.APPROVE_OPTION) return;
 		
-		var path = chooser.getSelectedFile();
+		File path = chooser.getSelectedFile();
 		PathBuilder filePath = new PathBuilder(path.getAbsolutePath());
 		
 		IntervalProfile profile = new IntervalProfile(true);
@@ -51,8 +56,10 @@ public class LoadProfileCommand implements ActionCommand
 		}
 		
 		mProfileManager.setStoredProfile(profile);
-		
-		
 		cShowProfileCommand.onCommand();
+		
+		
+		
+		
 	}
 }

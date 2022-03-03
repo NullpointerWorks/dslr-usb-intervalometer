@@ -67,7 +67,6 @@ public class ApplicationView
 		
 		JMenu jmAbout = new JMenu("About");
 		
-		
 		jmConnectRecent.addSeparator();
 		jmConnectRecent.add(jmiClearDevHistory);
 		jmLoadRecent.addSeparator();
@@ -201,6 +200,26 @@ public class ApplicationView
 	}
 	
 	public void setRecentDevices(List<String> list, List<ActionCommand> commands)
+	{
+		jmConnectRecent.removeAll();
+		
+		int i=0;
+		int l=list.size();
+		for (; i<l; i++)
+		{
+			String sn 			= list.get(i);
+			ActionCommand ac 	= commands.get(i);
+			
+			JMenuItem jmiRecDev = new TightJMenuItem(sn);
+			jmiRecDev.addActionListener(ac);
+			jmConnectRecent.add(jmiRecDev);
+		}
+		
+		jmConnectRecent.addSeparator();
+		jmConnectRecent.add(jmiClearDevHistory);
+	}
+	
+	public void setRecentProfiles(List<String> list, List<ActionCommand> commands)
 	{
 		jmConnectRecent.removeAll();
 		

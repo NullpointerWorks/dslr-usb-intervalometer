@@ -1,27 +1,17 @@
 package com.nullpointerworks.intervalometer;
 
-import com.nullpointerworks.intervalometer.control.*;
 import com.nullpointerworks.intervalometer.control.interfaces.*;
-import com.nullpointerworks.intervalometer.control.menubar.ClearDevHistoryCommand;
-import com.nullpointerworks.intervalometer.control.menubar.ConnectToCommand;
-import com.nullpointerworks.intervalometer.control.menubar.DisconnectDeviceCommand;
-import com.nullpointerworks.intervalometer.control.menubar.LoadProfileCommand;
-import com.nullpointerworks.intervalometer.control.menubar.NewProfileCommand;
-import com.nullpointerworks.intervalometer.control.menubar.ProgramExitCommand;
-import com.nullpointerworks.intervalometer.control.menubar.RefreshDevicesCommand;
-import com.nullpointerworks.intervalometer.control.menubar.SaveProfileCommand;
+import com.nullpointerworks.intervalometer.control.menubar.*;
 import com.nullpointerworks.intervalometer.control.pui.ShowProfileInterfaceCommand;
+import com.nullpointerworks.intervalometer.control.updaters.*;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
 import com.nullpointerworks.intervalometer.model.config.Configuration;
 import com.nullpointerworks.intervalometer.model.config.XMLConfiguration;
 
-import com.nullpointerworks.intervalometer.model.nativeinterface.GPIO;
-import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221Device;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221DeviceFactory;
 import com.nullpointerworks.intervalometer.model.profile.ProfileManager;
 import com.nullpointerworks.intervalometer.util.PathBuilder;
 import com.nullpointerworks.intervalometer.view.ApplicationView;
-import com.nullpointerworks.intervalometer.view.TimeTunerJDialog;
 import com.nullpointerworks.intervalometer.view.swing.UILookAndFeel;
 import com.nullpointerworks.util.FileUtil;
 
@@ -92,26 +82,10 @@ public class Application
 		DeviceManager mDeviceManager = new DeviceManager();
 		ProfileManager mProfileManager = new ProfileManager();
 		
-		/*
-		Mcp2221Device device = mFactory.getDeviceBySerialNumber("0000449396");
-		
-		device.setGPIOValue(GPIO.GP1, true);
-		sleep(1000);
-		device.setGPIOValue(GPIO.GP1, false);
-		sleep(100);
-		
-		device.setGPIOValue(GPIO.GP0, true);
-		sleep(1000);
-		device.setGPIOValue(GPIO.GP0, false);
-		sleep(100);
-		device.closeConnection();
-		
-		//*/
-		
 		ApplicationView vWindow = new ApplicationView("DSLR Intervalometer");
 		
-		
 		Command cRefreshRecentDevices = new RefreshDevicesCommand(vWindow, mConfig, mFactory, mDeviceManager);
+		Command cRefreshRecentProfiles = new RefreshProfilesCommand(vWindow, mConfig, mDeviceManager);
 		ActionCommand cConnectTo = new ConnectToCommand(vWindow, mFactory, mDeviceManager, mConfig, cRefreshRecentDevices);
 		ActionCommand cClearDevHistory = new ClearDevHistoryCommand(cRefreshRecentDevices, mConfig);
 		ActionCommand cExitProgram = new ProgramExitCommand(mDeviceManager, mProfileManager);
@@ -119,7 +93,7 @@ public class Application
 		
 		Command cShowProfileCommand = new ShowProfileInterfaceCommand(vWindow, mProfileManager, mDeviceManager);
 		ActionCommand cNewProfile = new NewProfileCommand(cShowProfileCommand, mProfileManager);
-		ActionCommand cLoadProfile = new LoadProfileCommand(cShowProfileCommand, mProfileManager);
+		ActionCommand cLoadProfile = new LoadProfileCommand(cShowProfileCommand, cRefreshRecentProfiles, mProfileManager, mConfig);
 		ActionCommand cSaveProfile = new SaveProfileCommand(vWindow, mProfileManager);
 		ActionCommand cSaveAsProfile;
 		ActionCommand cCloseProfile;

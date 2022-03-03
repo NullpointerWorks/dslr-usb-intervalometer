@@ -29,7 +29,7 @@ public class StartStopCommand implements ActionCommand
 	public synchronized void onCommand() 
 	{
 		Mcp2221Device device = mDeviceManager.getStoredDevice();
-		RunnableCommand c = new TakeExposuresCommand(device);
+		RunnableCommand c = new TakeExposuresCommand(vProfile, mProfile, device);
 		
 		if (!started)
 		{
@@ -43,8 +43,6 @@ public class StartStopCommand implements ActionCommand
 			started = false;
 		}
 		
-		
 		vProfile.setStartButtonState(started);
-		
 	}
 }
