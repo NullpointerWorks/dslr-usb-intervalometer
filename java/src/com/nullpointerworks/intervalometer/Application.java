@@ -98,8 +98,6 @@ public class Application
 		ActionCommand cSaveAsProfile;
 		ActionCommand cCloseProfile;
 		
-		
-		
 		vWindow.setClearDevHistoryCommand(cClearDevHistory);
 		vWindow.setConnectToCommand(cConnectTo);
 		vWindow.setDisconnectCommand(cDisconnectDevice);

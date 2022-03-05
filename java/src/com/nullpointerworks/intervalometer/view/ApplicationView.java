@@ -201,41 +201,28 @@ public class ApplicationView
 	
 	public void setRecentDevices(List<String> list, List<ActionCommand> commands)
 	{
-		jmConnectRecent.removeAll();
-		
-		int i=0;
-		int l=list.size();
-		for (; i<l; i++)
-		{
-			String sn 			= list.get(i);
-			ActionCommand ac 	= commands.get(i);
-			
-			JMenuItem jmiRecDev = new TightJMenuItem(sn);
-			jmiRecDev.addActionListener(ac);
-			jmConnectRecent.add(jmiRecDev);
-		}
-		
-		jmConnectRecent.addSeparator();
-		jmConnectRecent.add(jmiClearDevHistory);
+		setRecents(jmConnectRecent, jmiClearDevHistory, list, commands);
 	}
 	
 	public void setRecentProfiles(List<String> list, List<ActionCommand> commands)
 	{
-		jmConnectRecent.removeAll();
-		
+		setRecents(jmLoadRecent, jmiClearProHistory, list, commands);
+	}
+	
+	private void setRecents(JMenu menu, JMenuItem clear, List<String> list, List<ActionCommand> cmds)
+	{
+		menu.removeAll();
 		int i=0;
 		int l=list.size();
 		for (; i<l; i++)
 		{
 			String sn 			= list.get(i);
-			ActionCommand ac 	= commands.get(i);
-			
-			JMenuItem jmiRecDev = new TightJMenuItem(sn);
-			jmiRecDev.addActionListener(ac);
-			jmConnectRecent.add(jmiRecDev);
+			ActionCommand ac 	= cmds.get(i);
+			JMenuItem jmiRecPro = new TightJMenuItem(sn);
+			jmiRecPro.addActionListener(ac);
+			menu.add(jmiRecPro);
 		}
-		
-		jmConnectRecent.addSeparator();
-		jmConnectRecent.add(jmiClearDevHistory);
+		menu.addSeparator();
+		menu.add(clear);
 	}
 }
