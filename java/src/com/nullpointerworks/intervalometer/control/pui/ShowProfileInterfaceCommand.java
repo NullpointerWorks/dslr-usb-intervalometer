@@ -42,6 +42,9 @@ public class ShowProfileInterfaceCommand implements Command
 		vProfile.setBetweenDelayCommand(cSetTweenDelay);
 		vProfile.setStartSessionCommand(cStartSession);
 		
+		// if this is a new profile (not form a file) 
+		// set the change listeners before filling in info.
+		// this makes the profile as unsaved, which makes sense for a new profile
 		if (!mProfile.isFromFile())
 		{
 			vProfile.setNameChangeCommand(cNameChangeCommand);
@@ -55,6 +58,7 @@ public class ShowProfileInterfaceCommand implements Command
 		vProfile.setProfileName(mProfile.getProfileName());
 		vProfile.setProfileNotes(mProfile.getProfileNotes());
 		
+		// otherwise set the change listeners after filling in information
 		if (mProfile.isFromFile())
 		{
 			vProfile.setNameChangeCommand(cNameChangeCommand);
