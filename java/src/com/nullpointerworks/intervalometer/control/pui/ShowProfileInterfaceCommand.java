@@ -36,15 +36,16 @@ public class ShowProfileInterfaceCommand implements Command
 		ActionCommand cSetExposureTime = new SetExposureTimeCommand(mProfile, cProfileChangeCommand, cUpdateProfileInterface);
 		ActionCommand cSetTweenDelay = new SetBetweenTimeCommand(mProfile, cProfileChangeCommand, cUpdateProfileInterface);
 		ActionCommand cStartSession = new StartStopCommand(vProfile, mProfile, mDeviceManager);
+
+		vProfile.setStartUpDelayCommand(cSetStartDelay);
+		vProfile.setExposureTimeCommand(cSetExposureTime);
+		vProfile.setBetweenDelayCommand(cSetTweenDelay);
+		vProfile.setStartSessionCommand(cStartSession);
 		
 		if (!mProfile.isFromFile())
 		{
 			vProfile.setNameChangeCommand(cNameChangeCommand);
 			vProfile.setNotesChangeCommand(cNotesChangeCommand);
-			vProfile.setStartUpDelayCommand(cSetStartDelay);
-			vProfile.setExposureTimeCommand(cSetExposureTime);
-			vProfile.setBetweenDelayCommand(cSetTweenDelay);
-			vProfile.setStartSessionCommand(cStartSession);
 		}
 		
 		vWindow.setSaveEnabled(true);
@@ -58,10 +59,6 @@ public class ShowProfileInterfaceCommand implements Command
 		{
 			vProfile.setNameChangeCommand(cNameChangeCommand);
 			vProfile.setNotesChangeCommand(cNotesChangeCommand);
-			vProfile.setStartUpDelayCommand(cSetStartDelay);
-			vProfile.setExposureTimeCommand(cSetExposureTime);
-			vProfile.setBetweenDelayCommand(cSetTweenDelay);
-			vProfile.setStartSessionCommand(cStartSession);
 		}
 		
 		cUpdateProfileInterface.onCommand();

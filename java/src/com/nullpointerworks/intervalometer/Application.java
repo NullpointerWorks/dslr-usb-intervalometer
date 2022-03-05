@@ -85,7 +85,7 @@ public class Application
 		ApplicationView vWindow = new ApplicationView("DSLR Intervalometer");
 		
 		Command cRefreshRecentDevices = new RefreshDevicesCommand(vWindow, mConfig, mFactory, mDeviceManager);
-		Command cRefreshRecentProfiles = new RefreshProfilesCommand(vWindow, mConfig, mDeviceManager);
+		Command cRefreshRecentProfiles = new RefreshProfilesCommand(vWindow, mConfig);
 		ActionCommand cConnectTo = new ConnectToCommand(vWindow, mFactory, mDeviceManager, mConfig, cRefreshRecentDevices);
 		ActionCommand cClearDevHistory = new ClearDevHistoryCommand(cRefreshRecentDevices, mConfig);
 		ActionCommand cExitProgram = new ProgramExitCommand(mDeviceManager, mProfileManager);

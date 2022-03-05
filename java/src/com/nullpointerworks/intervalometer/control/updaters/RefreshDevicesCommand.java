@@ -3,9 +3,9 @@ package com.nullpointerworks.intervalometer.control.updaters;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nullpointerworks.intervalometer.control.AutoConnectCommand;
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.control.interfaces.Command;
-import com.nullpointerworks.intervalometer.control.menubar.AutoConnectCommand;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
 import com.nullpointerworks.intervalometer.model.config.Configuration;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221DeviceFactory;
