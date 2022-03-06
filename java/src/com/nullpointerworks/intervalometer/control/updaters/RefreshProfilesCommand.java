@@ -35,7 +35,7 @@ public class RefreshProfilesCommand implements Command
 		for (String p : list)
 		{
 			ActionCommand c = new AutoLoadCommand(p, mProfileManager, cShowProfileCommand);
-			String s = p.substring( p.lastIndexOf("/")+1 );
+			String s = p.substring( p.lastIndexOf("/")+1, p.lastIndexOf(".") );
 			
 			names.add(s);
 			cmds.add(c);

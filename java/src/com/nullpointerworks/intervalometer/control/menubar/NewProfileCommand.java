@@ -28,7 +28,7 @@ public class NewProfileCommand implements ActionCommand
 		}
 		
 		IntervalProfile mProfile = new IntervalProfile(false);
-		mProfile.setProfileName("New Profile");
+		mProfile.setProfileName("NewProfile");
 		mProfileManager.setStoredProfile(mProfile);
 		cShowProfileCommand.onCommand();
 	}

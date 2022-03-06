@@ -31,7 +31,6 @@ public class ProfileJPanel extends JPanel
 	private JTextField jtfBetweenDelay;
 	private JTextField jtfExposures;
 	private JTextField jtfNumber;
-	private JTextField jtfProName;
 	private JTextArea jtaNotes;
 	
 	public ProfileJPanel()
@@ -93,16 +92,8 @@ public class ProfileJPanel extends JPanel
 		lbExposuresTaken.setLocation(20, 45);
 		lbExposuresTaken.setSize(100, 20);
 		
-		JLabel jlProName = new JLabel("Profile Name:");
-		jlProName.setLocation(12, 230);
-		jlProName.setSize(80, 20);
-		
-		jtfProName = new JTextField();
-		jtfProName.setLocation(90, 230);
-		jtfProName.setSize(232, 20);
-		
 		JLabel lbNotes = new JLabel("Notes:");
-		lbNotes.setLocation(12, 260);
+		lbNotes.setLocation(12, 220);
 		lbNotes.setSize(100, 20);
 		
 		jtaNotes = new JTextArea();
@@ -111,8 +102,8 @@ public class ProfileJPanel extends JPanel
 		jtaNotes.setBackground( new Color(250,250,250) );
 		jtaNotes.setFont( new Font("Tahoma", Font.PLAIN, 11) );
 		JScrollPane jspNotes = new JScrollPane(jtaNotes);
-		jspNotes.setLocation(7, 280);
-		jspNotes.setSize(315, 140);
+		jspNotes.setLocation(7, 240);
+		jspNotes.setSize(315, 180);
 		jspNotes.setPreferredSize(jtaNotes.getSize());
 		jspNotes.setBorder( BorderFactory.createLoweredBevelBorder() );
 		jspNotes.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -153,8 +144,6 @@ public class ProfileJPanel extends JPanel
 		setLayout( new AbsoluteLayout() );
 		add(jpIntervalometer);
 		add(jpSession);
-		add(jlProName);
-		add(jtfProName);
 		add(lbNotes);
 		add(jspNotes);
 	}
@@ -171,7 +160,6 @@ public class ProfileJPanel extends JPanel
 		}
 	}
 	
-	public String getProfileName() {return jtfProName.getText();}
 	public String getProfileNotes() {return jtaNotes.getText();}
 
 	public void setStartDelayText(String t) {jtfStartDelay.setText(t);}
@@ -179,10 +167,8 @@ public class ProfileJPanel extends JPanel
 	public void setBetweenDelayText(String t) {jtfBetweenDelay.setText(t);}
 	public void setExposuresText(String t) {jtfExposures.setText(t);}
 	
-	public void setProfileName(String profileName) {jtfProName.setText(profileName);}
 	public void setProfileNotes(String profileNote) {jtaNotes.setText(profileNote);}
 	
-	public void setNameChangeCommand(DocumentCommand dc) {jtfProName.getDocument().addDocumentListener(dc);}
 	public void setNotesChangeCommand(DocumentCommand dc) {jtaNotes.getDocument().addDocumentListener(dc);}
 	public void setStartUpDelayCommand(ActionCommand ac) {jbSetStartDelay.addActionListener(ac);}
 	public void setExposureTimeCommand(ActionCommand ac) {jbSetExposure.addActionListener(ac);}

@@ -18,7 +18,7 @@ public class IntervalProfile
 	{
 		isFromFile = fromFile;
 		isChanged = true;
-		profilePath = "";
+		profilePath = "NewProfile.xml";
 		
 		// defaults
 		profileName = "New Profile";
