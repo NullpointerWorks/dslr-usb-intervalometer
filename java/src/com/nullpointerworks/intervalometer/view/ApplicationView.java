@@ -16,6 +16,7 @@ import javax.swing.JTabbedPane;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
+import com.nullpointerworks.intervalometer.view.swing.CustomHeaderJTabbedPane;
 import com.nullpointerworks.intervalometer.view.swing.RolloverJMenu;
 import com.nullpointerworks.intervalometer.view.swing.StatusBarJPanel;
 import com.nullpointerworks.intervalometer.view.swing.TightJMenuItem;
@@ -99,7 +100,7 @@ public class ApplicationView
 		jmiCloseProfile.setEnabled(false);
 		
 		// tab interface
-		tpTabs = new JTabbedPane();
+		tpTabs = new CustomHeaderJTabbedPane();
 		
 		// status bar
 		jlConnectStatus = new JLabel();

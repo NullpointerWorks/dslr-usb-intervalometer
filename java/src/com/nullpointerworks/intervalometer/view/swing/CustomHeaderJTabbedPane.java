@@ -19,6 +19,11 @@ public class CustomHeaderJTabbedPane extends JTabbedPane
 		tracking = new ArrayList<Component>();
 	}
 	
+	private ActionTabHeader createActionPanel(CustomHeaderJTabbedPane parent, Icon icon, final Component comp, String title) 
+	{
+		return new ActionTabHeader(parent, title, comp, icon);
+	}
+	
 	public ActionTabHeader addActionTab(String title, Icon icon, Component comp)
 	{
 		add(comp);
@@ -61,11 +66,6 @@ public class CustomHeaderJTabbedPane extends JTabbedPane
 		setTabComponentAt( index, panel );
 		
 		return comp;
-	}
-	
-	private ActionTabHeader createActionPanel(CustomHeaderJTabbedPane parent, Icon icon, final Component comp, String title) 
-	{
-		return new ActionTabHeader(parent, title, comp, icon);
 	}
 	
 	public void removeComponent(final Component comp)
