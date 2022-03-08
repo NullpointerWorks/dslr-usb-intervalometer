@@ -12,7 +12,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
@@ -26,7 +25,7 @@ public class ApplicationView
 	private JFrame jfWindow;
 	private StatusBarJPanel jpStatusBar;
 	
-	private JTabbedPane tpTabs;
+	private CustomHeaderJTabbedPane tpTabs;
 	private JLabel jlConnectStatus;
 	private JLabel jlSerialNumber;
 	
@@ -164,7 +163,7 @@ public class ApplicationView
 	public void setDisplayTab(String title, ProfileJPanel comp) 
 	{
 		tpTabs.removeAll();
-		tpTabs.addTab(title, comp);
+		tpTabs.addActionTab(title, null, comp);
 		setDisplayTabTitle(title);
 	}
 	

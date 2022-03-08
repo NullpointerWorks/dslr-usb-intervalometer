@@ -29,12 +29,12 @@ public class ActionTabHeader extends JPanel
 		setOpaque(false);
 		
 		closeButton = new JButton();
-		closeButton.setSize(12, 16);
+		closeButton.setSize(18, 18);
 		closeButton.setPreferredSize(closeButton.getSize());
 		closeButton.setOpaque(false);
-		closeButton.setContentAreaFilled(false);
-		closeButton.setBorderPainted(false);
-		closeButton.setFocusPainted(false);
+		//closeButton.setContentAreaFilled(false);
+		//closeButton.setBorderPainted(false);
+		//closeButton.setFocusPainted(false);
 		
 		if (icon!=null) add(new JLabel(icon));
 		add(pretitle);
