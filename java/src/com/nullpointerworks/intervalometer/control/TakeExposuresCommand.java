@@ -22,39 +22,33 @@ public class TakeExposuresCommand implements RunnableCommand
 	@Override
 	public void onCommand() 
 	{
-
-		/*
-		Mcp2221Device device = mFactory.getDeviceBySerialNumber("0000449396");
+		int start_delay = mProfile.getStartDelay();
+		int exposure_time = mProfile.getExposureTime();
+		int between_delay = mProfile.getBetweenDelay();
+		int exposures_cnt = mProfile.getExposures();
 		
-		device.setGPIOValue(GPIO.GP1, true);
-		sleep(1000);
-		device.setGPIOValue(GPIO.GP1, false);
-		sleep(100);
-		
-		device.setGPIOValue(GPIO.GP0, true);
-		sleep(1000);
-		device.setGPIOValue(GPIO.GP0, false);
-		sleep(100);
-		device.closeConnection();
-		
-		//*/
-		
-		while(true)
+		sleepSeconds(start_delay);
+		while(exposures_cnt > 0)
 		{
-			try 
-			{
-				Thread.sleep(500);
-			} 
-			catch (InterruptedException e) 
-			{
-				return;
-			}
-			
-			System.out.println("cycle");
+			mDevice.setGPIOValue(GPIO.GP1, true);
+			sleepSeconds(exposure_time);
+			mDevice.setGPIOValue(GPIO.GP1, false);
+			sleepSeconds(between_delay);
+			exposures_cnt--;
 		}
-		
-		
-		
+		mDevice.closeConnection();
+	}
+	
+	private void sleepSeconds(int milli)
+	{
+		try 
+		{
+			Thread.sleep(milli * 1000);
+		} 
+		catch (InterruptedException e) 
+		{
+			return;
+		}
 	}
 	
 	
