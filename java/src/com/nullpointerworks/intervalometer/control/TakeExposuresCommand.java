@@ -26,15 +26,19 @@ public class TakeExposuresCommand implements RunnableCommand
 		int exposure_time = mProfile.getExposureTime();
 		int between_delay = mProfile.getBetweenDelay();
 		int exposures_cnt = mProfile.getExposures();
+		int exposures_taken = 0;
 		
 		sleepSeconds(start_delay);
-		while(exposures_cnt > 0)
+		while(exposures_taken < exposures_cnt)
 		{
-			mDevice.setGPIOValue(GPIO.GP1, true);
+			mDevice.setGPIOValue(GPIO.GP0, true);
 			sleepSeconds(exposure_time);
-			mDevice.setGPIOValue(GPIO.GP1, false);
+			mDevice.setGPIOValue(GPIO.GP0, false);
+
+			exposures_taken++;
+			vProfile.setExposuresText( ""+exposures_taken );
+			
 			sleepSeconds(between_delay);
-			exposures_cnt--;
 		}
 		mDevice.closeConnection();
 	}
