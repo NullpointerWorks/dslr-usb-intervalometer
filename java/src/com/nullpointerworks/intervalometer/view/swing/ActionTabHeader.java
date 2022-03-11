@@ -28,15 +28,15 @@ public class ActionTabHeader extends JPanel
 		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		setOpaque(false);
 		
-		closeButton = new JButton();
+		closeButton = new JButton(icon);
 		closeButton.setSize(18, 18);
 		closeButton.setPreferredSize(closeButton.getSize());
 		closeButton.setOpaque(false);
-		//closeButton.setContentAreaFilled(false);
+		closeButton.setContentAreaFilled(false);
 		//closeButton.setBorderPainted(false);
 		//closeButton.setFocusPainted(false);
 		
-		if (icon!=null) add(new JLabel(icon));
+		//if (icon!=null) add(new JLabel(icon));
 		add(pretitle);
 		add(title);
 		add(closeButton);
@@ -60,7 +60,4 @@ public class ActionTabHeader extends JPanel
 	{
 		return title.getText();
 	}
-	
-	
-	
 }

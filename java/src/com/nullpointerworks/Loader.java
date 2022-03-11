@@ -3,7 +3,7 @@ package com.nullpointerworks;
 import java.io.InputStream;
 import java.net.URL;
 
-public final class Loader 
+final class Loader 
 {
 	public static URL getResource(String path)
 	{

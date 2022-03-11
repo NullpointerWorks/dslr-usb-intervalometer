@@ -13,6 +13,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import com.nullpointerworks.Resources;
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
 import com.nullpointerworks.intervalometer.view.awt.AbsoluteLayout;
 import com.nullpointerworks.intervalometer.view.swing.CustomHeaderJTabbedPane;
@@ -163,7 +164,7 @@ public class ApplicationView
 	public void setDisplayTab(String title, ProfileJPanel comp) 
 	{
 		tpTabs.removeAll();
-		tpTabs.addActionTab(title, null, comp);
+		tpTabs.addActionTab(title, Resources.getIcons().getEditPencil(), comp);
 		setDisplayTabTitle(title);
 	}
 	
