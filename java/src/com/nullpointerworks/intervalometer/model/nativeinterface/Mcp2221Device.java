@@ -22,5 +22,6 @@ public interface Mcp2221Device
 	void setGPIOValue(GPIO io, boolean v);
 	
 	long getDeviceHandle();
+	boolean isConnected();
 	void closeConnection();
 }

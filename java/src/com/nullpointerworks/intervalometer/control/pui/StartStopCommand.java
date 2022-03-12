@@ -29,6 +29,15 @@ public class StartStopCommand implements ActionCommand
 	public synchronized void onCommand() 
 	{
 		Mcp2221Device device = mDeviceManager.getStoredDevice();
+		if (device == null) return; 
+		
+		if (!device.isConnected())
+		{
+			// TODO
+			// prompt to connect
+			return;
+		}
+		
 		RunnableCommand c = new TakeExposuresCommand(vProfile, mProfile, device);
 		
 		if (!started)

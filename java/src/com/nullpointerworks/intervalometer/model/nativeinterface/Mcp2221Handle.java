@@ -211,6 +211,16 @@ public class Mcp2221Handle implements Mcp2221Device
 	}
 	
 	@Override
+	public boolean isConnected()
+	{
+		@SuppressWarnings("unused")
+		String sn = new String();
+        sn = nativeInterface.Mcp2221_GetFactorySerialNumber(devHandle);
+        int result = nativeInterface.Mcp2221_GetLastError();
+        return result == Constants.E_NO_ERR;
+	}
+	
+	@Override
 	public void closeConnection()
 	{
         int result = nativeInterface.Mcp2221_Close(devHandle);
