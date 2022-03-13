@@ -94,11 +94,13 @@ public class Application
 		
 		ActionCommand cNewProfile = new NewProfileCommand(cShowProfileCommand, mProfileManager);
 		ActionCommand cLoadProfile = new LoadProfileCommand(cShowProfileCommand, cRefreshRecentProfiles, mProfileManager, mConfig);
+		ActionCommand cClearProHistory = new ClearProHistoryCommand(cRefreshRecentProfiles, mConfig);
 		ActionCommand cSaveProfile = new SaveProfileCommand(vWindow, mProfileManager);
 		ActionCommand cSaveAsProfile;
 		ActionCommand cCloseProfile;
 		
 		vWindow.setClearDevHistoryCommand(cClearDevHistory);
+		vWindow.setClearProHistoryCommand(cClearProHistory);
 		vWindow.setConnectToCommand(cConnectTo);
 		vWindow.setDisconnectCommand(cDisconnectDevice);
 		vWindow.setExitCommand(cExitProgram);

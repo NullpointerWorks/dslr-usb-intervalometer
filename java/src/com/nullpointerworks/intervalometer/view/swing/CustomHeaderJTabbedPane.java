@@ -7,6 +7,8 @@ import java.util.List;
 import javax.swing.Icon;
 import javax.swing.JTabbedPane;
 
+import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
+
 public class CustomHeaderJTabbedPane extends JTabbedPane
 {
 	private static final long serialVersionUID = -8498443122815430449L;
@@ -24,13 +26,14 @@ public class CustomHeaderJTabbedPane extends JTabbedPane
 		return new ActionTabHeader(parent, title, comp, icon);
 	}
 	
-	public ActionTabHeader addActionTab(String title, Icon icon, Component comp)
+	public ActionTabHeader addActionTab(String title, Icon icon, Component comp, ActionCommand ac)
 	{
 		add(comp);
 		int index = indexOfComponent(comp);
 		if (index < 0) return null;
 		
 		ActionTabHeader panel = createActionPanel(this, icon, comp, title );
+		panel.setTabButtonCommand(ac);
 		setTabComponentAt( index, panel );
 		return panel;
 	}
@@ -46,7 +49,7 @@ public class CustomHeaderJTabbedPane extends JTabbedPane
 	@Override
 	public void addTab(String title, Icon icon, Component comp)
 	{
-		addActionTab(title, icon, comp);
+		addActionTab(title, icon, comp, null);
 	}
 	
 	@Override

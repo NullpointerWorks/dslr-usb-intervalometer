@@ -26,6 +26,7 @@ public class IntervalProfile
 		exposureTime = 30;
 		betweenDelay = 10;
 		exposures = 999;
+		profileNotes = "";
 	}
 
 	public boolean isFromFile() {return isFromFile;}

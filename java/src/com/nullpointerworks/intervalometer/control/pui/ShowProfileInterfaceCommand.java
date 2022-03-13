@@ -31,11 +31,12 @@ public class ShowProfileInterfaceCommand implements Command
 		Command cUpdateProfileInterface = new UpdateStartDelayCommand(vProfile, mProfile);
 		DocumentCommand cNotesChangeCommand = new NotesModificationCommand(cProfileChangeCommand, vProfile, mProfile);
 		
+		ActionCommand cNameChangeCommand = new NameChangeCommand(mProfile, vProfile);
 		ActionCommand cSetStartDelay = new SetStartDelayCommand(mProfile, cProfileChangeCommand, cUpdateProfileInterface);
 		ActionCommand cSetExposureTime = new SetExposureTimeCommand(mProfile, cProfileChangeCommand, cUpdateProfileInterface);
 		ActionCommand cSetTweenDelay = new SetBetweenTimeCommand(mProfile, cProfileChangeCommand, cUpdateProfileInterface);
 		ActionCommand cStartSession = new StartStopCommand(vProfile, mProfile, mDeviceManager);
-
+		
 		vProfile.setStartUpDelayCommand(cSetStartDelay);
 		vProfile.setExposureTimeCommand(cSetExposureTime);
 		vProfile.setBetweenDelayCommand(cSetTweenDelay);
@@ -49,7 +50,7 @@ public class ShowProfileInterfaceCommand implements Command
 		vWindow.setSaveEnabled(true);
 		vWindow.setSaveAsEnabled(false);
 		vWindow.setCloseEnabled(false);
-		vWindow.setDisplayTab(mProfile.getProfileName(), vProfile);
+		vWindow.setDisplayTab(mProfile.getProfileName(), vProfile, cNameChangeCommand);
 		
 		String p = mProfile.getPath();
 		String s = p.substring( p.lastIndexOf("/")+1, p.lastIndexOf(".") );

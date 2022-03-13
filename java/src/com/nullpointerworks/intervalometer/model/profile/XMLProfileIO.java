@@ -70,6 +70,10 @@ public class XMLProfileIO implements ProfileIO
 		{
 			profile.setProfileNotes( note.getText() );
 		}
+		else
+		{
+			profile.setProfileNotes("");
+		}
 		
 		// set startup delay
 		Element sdelay = root.getChild("StartDelay");

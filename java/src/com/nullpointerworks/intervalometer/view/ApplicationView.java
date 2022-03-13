@@ -161,10 +161,10 @@ public class ApplicationView
 	public void setSaveAsEnabled(boolean b) {jmiSaveAsProfile.setEnabled(b);}
 	public void setCloseEnabled(boolean b) {jmiCloseProfile.setEnabled(b);}
 	
-	public void setDisplayTab(String title, ProfileJPanel comp) 
+	public void setDisplayTab(String title, ProfileJPanel comp, ActionCommand nameChange) 
 	{
 		tpTabs.removeAll();
-		tpTabs.addActionTab(title, Resources.getIcons().getEditPencil(), comp);
+		tpTabs.addActionTab(title, Resources.getIcons().getEditPencil(), comp, nameChange);
 		setDisplayTabTitle(title);
 	}
 	
