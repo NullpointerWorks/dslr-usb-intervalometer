@@ -30,7 +30,6 @@ public class ShowProfileInterfaceCommand implements Command
 		Command cProfileChangeCommand = new ProfileChangeCommand(vWindow);
 		Command cUpdateProfileInterface = new UpdateStartDelayCommand(vProfile, mProfile);
 		DocumentCommand cNotesChangeCommand = new NotesModificationCommand(cProfileChangeCommand, vProfile, mProfile);
-		
 		ActionCommand cNameChangeCommand = new NameChangeCommand(mProfile, vProfile);
 		ActionCommand cSetStartDelay = new SetStartDelayCommand(mProfile, cProfileChangeCommand, cUpdateProfileInterface);
 		ActionCommand cSetExposureTime = new SetExposureTimeCommand(mProfile, cProfileChangeCommand, cUpdateProfileInterface);
@@ -58,7 +57,6 @@ public class ShowProfileInterfaceCommand implements Command
 		
 		// otherwise set the change listeners after filling in information
 		if (mProfile.isFromFile()) vProfile.setNotesChangeCommand(cNotesChangeCommand);
-		
 		
 		cUpdateProfileInterface.onCommand();
 	}

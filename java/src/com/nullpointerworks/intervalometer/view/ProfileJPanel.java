@@ -39,7 +39,7 @@ public class ProfileJPanel extends JPanel
 		lbStartDelay.setLocation(20, 20);
 		lbStartDelay.setSize(100, 20);
 		jtfStartDelay = new JTextField();
-		jtfStartDelay.setLocation(120, 20);
+		jtfStartDelay.setLocation(130, 20);
 		jtfStartDelay.setSize(100, 20);
 		jtfStartDelay.setEditable(false);
 		jtfStartDelay.setHorizontalAlignment(JTextField.RIGHT);
@@ -48,7 +48,7 @@ public class ProfileJPanel extends JPanel
 		lbExposureTime.setLocation(20, 45);
 		lbExposureTime.setSize(100, 20);
 		jtfExposureTime = new JTextField();
-		jtfExposureTime.setLocation(120, 45);
+		jtfExposureTime.setLocation(130, 45);
 		jtfExposureTime.setSize(100, 20);
 		jtfExposureTime.setEditable(false);
 		jtfExposureTime.setHorizontalAlignment(JTextField.RIGHT);
@@ -57,7 +57,7 @@ public class ProfileJPanel extends JPanel
 		lbInBetweenDelay.setLocation(20, 70);
 		lbInBetweenDelay.setSize(100, 20);
 		jtfBetweenDelay = new JTextField();
-		jtfBetweenDelay.setLocation(120, 70);
+		jtfBetweenDelay.setLocation(130, 70);
 		jtfBetweenDelay.setSize(100, 20);
 		jtfBetweenDelay.setEditable(false);
 		jtfBetweenDelay.setHorizontalAlignment(JTextField.RIGHT);
@@ -66,7 +66,7 @@ public class ProfileJPanel extends JPanel
 		lbNumberExposures.setLocation(20, 95);
 		lbNumberExposures.setSize(100, 20);
 		jtfExposures = new JTextField();
-		jtfExposures.setLocation(120, 95);
+		jtfExposures.setLocation(130, 95);
 		jtfExposures.setSize(100, 20);
 		jtfExposures.setHorizontalAlignment(JTextField.RIGHT);
 		
@@ -80,9 +80,6 @@ public class ProfileJPanel extends JPanel
 		jbSetDelay.setLocation(250, 70);
 		jbSetDelay.setSize(50, 20);
 		
-		JTextField jtfNumber = new JTextField();
-		jtfNumber.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
-		
 		jbStartStop = new JButton();
 		jbStartStop.setLocation(20, 20);
 		jbStartStop.setSize(70, 20);
@@ -91,6 +88,11 @@ public class ProfileJPanel extends JPanel
 		JLabel lbExposuresTaken = new JLabel("Exposures Taken:");
 		lbExposuresTaken.setLocation(20, 45);
 		lbExposuresTaken.setSize(100, 20);
+		jtfNumber = new JTextField();
+		jtfNumber.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
+		jtfNumber.setHorizontalAlignment(JTextField.RIGHT);
+		jtfNumber.setLocation(130, 45);
+		jtfNumber.setSize(100, 20);
 		
 		JLabel lbNotes = new JLabel("Notes:");
 		lbNotes.setLocation(12, 220);
@@ -137,6 +139,7 @@ public class ProfileJPanel extends JPanel
 		jpSession.setBackground( Color.WHITE );
 		jpSession.add(jbStartStop);
 		jpSession.add(lbExposuresTaken);
+		jpSession.add(jtfNumber);
 		
 		setSize(640, 480);
 		setPreferredSize( getSize() );
@@ -166,6 +169,7 @@ public class ProfileJPanel extends JPanel
 	public void setExposureTimeText(String t) {jtfExposureTime.setText(t);}
 	public void setBetweenDelayText(String t) {jtfBetweenDelay.setText(t);}
 	public void setExposuresText(String t) {jtfExposures.setText(t);}
+	public void setExposuresTakenText(String t) {jtfNumber.setText(t);}
 	
 	public void setProfileNotes(String profileNote) {jtaNotes.setText(profileNote);}
 	

@@ -121,7 +121,7 @@ public class TimeTunerJDialog extends JDialog
 	public String getMinutesInput() {return jtfMins.getText();}
 	public String getSecondsInput() {return jtfSecs.getText();}
 	
-	public void setStartDelayText(int hours, int mins, int secs) 
+	public void setStartDelayText(long hours, long mins, long secs) 
 	{
 		jtfHours.setText(""+hours);
 		jtfMins.setText(""+mins);

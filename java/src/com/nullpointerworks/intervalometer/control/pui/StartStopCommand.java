@@ -1,8 +1,7 @@
 package com.nullpointerworks.intervalometer.control.pui;
 
 import com.nullpointerworks.intervalometer.control.TakeExposuresCommand;
-import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
-import com.nullpointerworks.intervalometer.control.interfaces.RunnableCommand;
+import com.nullpointerworks.intervalometer.control.interfaces.*;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
 import com.nullpointerworks.intervalometer.model.nativeinterface.Mcp2221Device;
 import com.nullpointerworks.intervalometer.model.profile.IntervalProfile;
@@ -15,7 +14,7 @@ public class StartStopCommand implements ActionCommand
 	private DeviceManager mDeviceManager;
 	
 	private boolean started;
-	private Thread t;
+	private TakeExposuresCommand c;
 	
 	public StartStopCommand(ProfileJPanel p, IntervalProfile i, DeviceManager dm)
 	{
@@ -37,19 +36,17 @@ public class StartStopCommand implements ActionCommand
 			// prompt to connect
 			return;
 		}
-		
-		RunnableCommand c = new TakeExposuresCommand(vProfile, mProfile, device);
-		
+
+		c = new TakeExposuresCommand(vProfile, mProfile, device);
 		if (!started)
 		{
-			t = new Thread(c);
-			t.start();
 			started = true;
+			c.onCommand();
 		}
 		else
 		{
-			t.interrupt();
 			started = false;
+			c.stop();
 		}
 		
 		vProfile.setStartButtonState(started);

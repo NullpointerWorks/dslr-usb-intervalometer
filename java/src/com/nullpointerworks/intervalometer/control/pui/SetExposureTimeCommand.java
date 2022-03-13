@@ -22,12 +22,12 @@ public class SetExposureTimeCommand implements ActionCommand
 	@Override
 	public void onCommand() 
 	{
-		int sdelay = mProfile.getExposureTime();
-		int hours = sdelay / 3600;
+		long sdelay = mProfile.getExposureTime();
+		long hours = sdelay / 3600;
 		sdelay = sdelay % 3600;
-		int mins = sdelay / 60;
+		long mins = sdelay / 60;
 		sdelay = sdelay % 60;
-		int secs = sdelay;
+		long secs = sdelay;
 		
 		TimeTunerJDialog vTuner = new TimeTunerJDialog("Exposure Time");
 		vTuner.setStartDelayText(hours, mins, secs);
@@ -41,7 +41,7 @@ public class SetExposureTimeCommand implements ActionCommand
 		mins = Convert.toInt(m);
 		secs = Convert.toInt(s);
 		
-		int counter = secs + (60 * mins) + (3600 * hours);
+		long counter = secs + (60 * mins) + (3600 * hours);
 		mProfile.setExposureTime(counter);
 		
 		cUpdateProfileInterface.onCommand();

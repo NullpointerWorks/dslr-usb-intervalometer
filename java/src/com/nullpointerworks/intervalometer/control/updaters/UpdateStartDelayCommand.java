@@ -31,13 +31,13 @@ public class UpdateStartDelayCommand implements Command
 		vProfile.setExposuresText(text);
 	}
 	
-	private String getTimeText(int sdelay)
+	private String getTimeText(long sdelay)
 	{
-		int hours = sdelay / 3600;
+		long hours = sdelay / 3600;
 		sdelay = sdelay % 3600;
-		int mins = sdelay / 60;
+		long mins = sdelay / 60;
 		sdelay = sdelay % 60;
-		int secs = sdelay;
+		long secs = sdelay;
 		return hours + "h " + mins +"m "+ secs+"s";
 	}
 

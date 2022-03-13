@@ -6,10 +6,10 @@ public class IntervalProfile
 	private boolean isChanged;
 	private String profilePath;
 	
-	private int startDelay;	
-	private int exposureTime;	
-	private int betweenDelay;	
-	private int exposures;
+	private long startDelay;	
+	private long exposureTime;	
+	private long betweenDelay;	
+	private long exposures;
 	private String profileName;
 	private String profileNotes;
 	
@@ -41,17 +41,17 @@ public class IntervalProfile
 	public String getProfileName() {return profileName;}
 	public String getProfileNotes() {return profileNotes;}
 	
-	public void setStartDelay(int c) {startDelay = c;}
-	public int getStartDelay() {return startDelay;}
+	public void setStartDelay(long c) {startDelay = c;}
+	public long getStartDelay() {return startDelay;}
 	
-	public void setExposureTime(int c) {exposureTime = c;}
-	public int getExposureTime() {return exposureTime;}
+	public void setExposureTime(long c) {exposureTime = c;}
+	public long getExposureTime() {return exposureTime;}
 	
-	public void setBetweenDelay(int c) {betweenDelay = c;}
-	public int getBetweenDelay() {return betweenDelay;}
+	public void setBetweenDelay(long c) {betweenDelay = c;}
+	public long getBetweenDelay() {return betweenDelay;}
 	
-	public void setExposures(int e) {exposures = e;}
-	public int getExposures() {return exposures;}
+	public void setExposures(long e) {exposures = e;}
+	public long getExposures() {return exposures;}
 	
 	
 	
