@@ -1,5 +1,7 @@
 package com.nullpointerworks.intervalometer.control.pui;
 
+import javax.swing.JOptionPane;
+
 import com.nullpointerworks.intervalometer.control.TakeExposuresCommand;
 import com.nullpointerworks.intervalometer.control.interfaces.*;
 import com.nullpointerworks.intervalometer.model.DeviceManager;
@@ -28,12 +30,15 @@ public class StartStopCommand implements ActionCommand
 	public synchronized void onCommand() 
 	{
 		Mcp2221Device device = mDeviceManager.getStoredDevice();
-		if (device == null) return; 
+		if (device == null) 
+		{
+			JOptionPane.showMessageDialog(vProfile, "Please connect to a device using the \"Program\" menu.", "No Device", JOptionPane.WARNING_MESSAGE);
+			return; 
+		}
 		
 		if (!device.isConnected())
 		{
-			// TODO
-			// prompt to connect
+			JOptionPane.showMessageDialog(vProfile, "Please connect to a device using the \"Program\" menu.", "No Device", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 

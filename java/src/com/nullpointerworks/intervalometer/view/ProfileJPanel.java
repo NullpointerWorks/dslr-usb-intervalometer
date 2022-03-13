@@ -69,6 +69,7 @@ public class ProfileJPanel extends JPanel
 		jtfExposures.setLocation(130, 95);
 		jtfExposures.setSize(100, 20);
 		jtfExposures.setHorizontalAlignment(JTextField.RIGHT);
+		jtfExposures.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
 		
 		jbSetStartDelay = new JButton("Set");
 		jbSetStartDelay.setLocation(250, 20);
@@ -89,7 +90,7 @@ public class ProfileJPanel extends JPanel
 		lbExposuresTaken.setLocation(20, 45);
 		lbExposuresTaken.setSize(100, 20);
 		jtfNumber = new JTextField();
-		jtfNumber.setDocument( new JTextFieldFilter( JTextFieldFilter.NUMERIC ) );
+		jtfNumber.setEditable(false);
 		jtfNumber.setHorizontalAlignment(JTextField.RIGHT);
 		jtfNumber.setLocation(130, 45);
 		jtfNumber.setSize(100, 20);
