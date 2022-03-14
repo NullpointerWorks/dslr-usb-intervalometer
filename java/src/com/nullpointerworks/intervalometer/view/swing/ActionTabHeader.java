@@ -15,7 +15,7 @@ public class ActionTabHeader extends JPanel
 {
 	private static final long serialVersionUID = -73302653717502663L;
 	
-	private JButton closeButton;
+	private JButton button;
 	private JLabel pretitle;
 	private JLabel title;
 	
@@ -28,21 +28,21 @@ public class ActionTabHeader extends JPanel
 		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		setOpaque(false);
 		
-		closeButton = new JButton(icon);
-		closeButton.setSize(18, 18);
-		closeButton.setPreferredSize(closeButton.getSize());
-		closeButton.setOpaque(false);
-		closeButton.setContentAreaFilled(false);
+		button = new JButton(icon);
+		button.setSize(18, 18);
+		button.setPreferredSize(button.getSize());
+		button.setOpaque(false);
+		button.setContentAreaFilled(false);
 		//closeButton.setBorderPainted(false);
 		//closeButton.setFocusPainted(false);
 		
 		//if (icon!=null) add(new JLabel(icon));
 		add(pretitle);
 		add(title);
-		add(closeButton);
+		add(button);
 	}
 	
-	public void setTabButtonCommand(ActionCommand c) {closeButton.addActionListener(c);}
+	public void setTabButtonCommand(ActionCommand c) {button.addActionListener(c);}
 	
 	public void setPreTitle(String txt)
 	{

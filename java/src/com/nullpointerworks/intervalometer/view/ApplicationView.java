@@ -168,10 +168,7 @@ public class ApplicationView
 		setDisplayTabTitle(title);
 	}
 	
-	public void setDisplayTabTitle(String title)
-	{
-		tpTabs.setTitleAt(0, title);
-	}
+	public void setDisplayTabTitle(String title) {tpTabs.setTitleAt(0, title);}
 	
 	public String getDisplayTabTitle()
 	{
