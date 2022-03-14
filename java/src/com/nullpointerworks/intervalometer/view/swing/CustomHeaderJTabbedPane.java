@@ -2,7 +2,9 @@ package com.nullpointerworks.intervalometer.view.swing;
 
 import java.awt.Component;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.Icon;
 import javax.swing.JTabbedPane;
@@ -14,11 +16,13 @@ public class CustomHeaderJTabbedPane extends JTabbedPane
 	private static final long serialVersionUID = -8498443122815430449L;
 	
 	private List<Component> tracking;
+	private Map<Integer, ActionTabHeader> headers;
 	
 	public CustomHeaderJTabbedPane()
 	{
 		super();
 		tracking = new ArrayList<Component>();
+		headers = new HashMap<Integer, ActionTabHeader>();
 	}
 	
 	private ActionTabHeader createActionPanel(CustomHeaderJTabbedPane parent, Icon icon, final Component comp, String title) 
@@ -35,6 +39,7 @@ public class CustomHeaderJTabbedPane extends JTabbedPane
 		ActionTabHeader panel = createActionPanel(this, icon, comp, title );
 		panel.setTabButtonCommand(ac);
 		setTabComponentAt( index, panel );
+		headers.put(index, panel);
 		return panel;
 	}
 	
@@ -44,6 +49,18 @@ public class CustomHeaderJTabbedPane extends JTabbedPane
 		tracking.add(comp);
 		super.add(title, comp);
 		return comp;
+	}
+	
+	@Override
+	public void setTitleAt(int index, String title)
+	{
+		if (headers.containsKey(index))
+		{
+			ActionTabHeader panel = headers.get(index);
+			panel.setTitle(title);
+		}
+		
+		super.setTitleAt(index, title);
 	}
 	
 	@Override
