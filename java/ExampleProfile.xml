@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Profile>
-	<Name>NewProfile</Name>
+	<Name>Example Profile</Name>
 	<Notes></Notes>
 	<StartDelay>2</StartDelay>
 	<ExposureTime>10</ExposureTime>

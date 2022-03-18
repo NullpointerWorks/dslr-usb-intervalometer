@@ -28,24 +28,21 @@ public class XMLProfileIO implements ProfileIO
 		Element extime = new Element("ExposureTime");
 		Element tween = new Element("InBetweenDelay");
 		Element expo = new Element("Exposures");
-		
-		
-		name.setText( profile.getProfileName() );
-		notes.setText( profile.getProfileNotes() );
-
-		start.setText( ""+profile.getStartDelay() );
-		extime.setText( ""+profile.getExposureTime() );
-		tween.setText( ""+profile.getBetweenDelay() );
-		expo.setText( ""+profile.getExposures() );
-		
-		
-		
 		root.addChild(name);
 		root.addChild(notes);
 		root.addChild(start);
 		root.addChild(extime);
 		root.addChild(tween);
 		root.addChild(expo);
+		
+		name.setText( profile.getProfileName() );
+		start.setText( ""+profile.getStartDelay() );
+		extime.setText( ""+profile.getExposureTime() );
+		tween.setText( ""+profile.getBetweenDelay() );
+		expo.setText( ""+profile.getExposures() );
+		
+		String sNotes = profile.getProfileNotes();
+		notes.setText( sNotes );
 		
 		return loader.saveXML(doc, path);
 	}
@@ -66,13 +63,11 @@ public class XMLProfileIO implements ProfileIO
 		
 		// set notes
 		Element note = root.getChild("Notes");
+		profile.setProfileNotes("");
 		if (note != null)
 		{
+			if (note.getText()!=null)
 			profile.setProfileNotes( note.getText() );
-		}
-		else
-		{
-			profile.setProfileNotes("");
 		}
 		
 		// set startup delay

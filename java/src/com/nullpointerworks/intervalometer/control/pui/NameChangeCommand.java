@@ -23,6 +23,7 @@ public class NameChangeCommand implements ActionCommand
 	public void onCommand() 
 	{
 		ChangeNameJDialog view = new ChangeNameJDialog();
+		view.setNameText( mProfile.getProfileName() );
 		view.setVisible(true);
 		if (view.isAccepted())
 		{
