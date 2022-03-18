@@ -24,6 +24,16 @@ public class AutoLoadCommand implements ActionCommand
 	@Override
 	public void onCommand() 
 	{
+		if (mProfileManager.hasProfile())
+		{
+			// ask to save first TODO
+			
+			
+			
+
+			mProfileManager.setStoredProfile(null);
+		}
+		
 		PathBuilder filePath = new PathBuilder(profilePath);
 		
 		IntervalProfile profile = new IntervalProfile(true);
@@ -32,7 +42,7 @@ public class AutoLoadCommand implements ActionCommand
 		ProfileIO builder = new XMLProfileIO();
 		if (!builder.read(profile, filePath))
 		{
-			// show read error
+			// show read error TODO
 			return;
 		}
 		

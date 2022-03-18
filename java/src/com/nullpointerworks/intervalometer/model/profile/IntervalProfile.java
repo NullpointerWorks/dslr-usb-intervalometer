@@ -3,7 +3,7 @@ package com.nullpointerworks.intervalometer.model.profile;
 public class IntervalProfile 
 {
 	private boolean isFromFile;
-	private boolean isChanged;
+	private boolean isSaved;
 	private String profilePath;
 	
 	private long startDelay;	
@@ -16,8 +16,7 @@ public class IntervalProfile
 	
 	public IntervalProfile(boolean fromFile)
 	{
-		isFromFile = fromFile;
-		isChanged = true;
+		isSaved =  isFromFile = fromFile;
 		profilePath = "NewProfile.xml";
 		
 		// defaults
@@ -30,7 +29,8 @@ public class IntervalProfile
 	}
 
 	public boolean isFromFile() {return isFromFile;}
-	public boolean isChanged() {return isChanged;}
+	public boolean isSaved() {return isSaved;}
+	public void setSaved(boolean b) {isSaved = b;}
 	
 	public void setPath(String path) {profilePath = path;}
 	public String getPath() {return profilePath;}
@@ -52,8 +52,4 @@ public class IntervalProfile
 	
 	public void setExposures(long e) {exposures = e;}
 	public long getExposures() {return exposures;}
-	
-	
-	
-	
 }

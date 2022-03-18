@@ -35,6 +35,19 @@ public class LoadProfileCommand implements ActionCommand
 	@Override
 	public void onCommand() 
 	{
+		if (mProfileManager.hasProfile())
+		{
+			// ask to save first TODO
+			
+			
+			
+
+			mProfileManager.setStoredProfile(null);
+		}
+		
+		
+		
+		
 		JFileChooser chooser = new JFileChooser();
 		chooser.addChoosableFileFilter(xmlFilter);
 		chooser.setCurrentDirectory(new File("."));
@@ -51,7 +64,7 @@ public class LoadProfileCommand implements ActionCommand
 		ProfileIO builder = new XMLProfileIO();
 		if (!builder.read(profile, filePath))
 		{
-			// show read error
+			// show read error TODO
 			return;
 		}
 		

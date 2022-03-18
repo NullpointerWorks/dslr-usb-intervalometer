@@ -24,6 +24,9 @@ public class NewProfileCommand implements ActionCommand
 			// save changes to previous profile
 			// clear it's data
 			// TODO
+			
+			
+			
 			mProfileManager.setStoredProfile(null);
 		}
 		
