@@ -3,6 +3,7 @@ package com.nullpointerworks.intervalometer.control.menubar;
 import java.io.File;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
 import com.nullpointerworks.intervalometer.control.interfaces.ActionCommand;
@@ -38,10 +39,14 @@ public class LoadProfileCommand implements ActionCommand
 		if (mProfileManager.hasProfile())
 		{
 			// ask to save first TODO
-			
-			
-			
-
+			int opt = JOptionPane.showConfirmDialog(null, "Would you like to save the current profile?", "Unsaved Profile", JOptionPane.OK_CANCEL_OPTION);
+			if (opt == JOptionPane.OK_OPTION)
+			{
+				
+				
+				
+				
+			}
 			mProfileManager.setStoredProfile(null);
 		}
 		
