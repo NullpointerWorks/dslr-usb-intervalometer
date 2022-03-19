@@ -35,7 +35,6 @@ public class SaveProfileCommand implements ActionCommand
 		}
 		
 		PathBuilder filePath = null;
-		
 		var profile = mProfileManager.getStoredProfile();
 		if (!profile.isFromFile())
 		{
@@ -47,6 +46,7 @@ public class SaveProfileCommand implements ActionCommand
 			{
 				var path = chooser.getSelectedFile();
 				filePath = new PathBuilder(path.getAbsolutePath());
+				profile.setPath(filePath.getAbsolutePath());
 		    }
 			else
 			{
