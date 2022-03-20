@@ -31,6 +31,7 @@ public class SaveProfileCommand implements ActionCommand
 	{
 		if (!mProfileManager.hasProfile())
 		{
+			// no profile to save
 			return;
 		}
 		

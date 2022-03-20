@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Profile>
+	<Name>NewProfile</Name>
+	<Notes></Notes>
+	<StartDelay>1</StartDelay>
+	<ExposureTime>120</ExposureTime>
+	<InBetweenDelay>10</InBetweenDelay>
+	<Exposures>999</Exposures>
+</Profile>

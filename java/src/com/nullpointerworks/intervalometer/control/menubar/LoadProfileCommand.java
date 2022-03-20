@@ -37,6 +37,7 @@ public class LoadProfileCommand implements ActionCommand
 	public void onCommand() 
 	{
 		if (mProfileManager.hasProfile())
+		if (!mProfileManager.getStoredProfile().isSaved())
 		{
 			// ask to save first TODO
 			int opt = JOptionPane.showConfirmDialog(null, "Would you like to save the current profile?", "Unsaved Profile", JOptionPane.OK_CANCEL_OPTION);
