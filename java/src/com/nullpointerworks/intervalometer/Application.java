@@ -83,22 +83,21 @@ public class Application
 		ProfileManager mProfileManager = new ProfileManager();
 		
 		ApplicationView vWindow = new ApplicationView("DSLR Intervalometer");
-
+		
+		ActionCommand cSaveProfile = new SaveProfileCommand(vWindow, mProfileManager);
 		Command cShowProfileCommand = new ShowProfileInterfaceCommand(vWindow, mProfileManager, mDeviceManager);
 		Command cRefreshRecentDevices = new RefreshDevicesCommand(vWindow, mConfig, mFactory, mDeviceManager);
-		Command cRefreshRecentProfiles = new RefreshProfilesCommand(vWindow, mConfig, mProfileManager, cShowProfileCommand);
+		Command cRefreshRecentProfiles = new RefreshProfilesCommand(vWindow, mConfig, mProfileManager, cShowProfileCommand, cSaveProfile);
 		ActionCommand cConnectTo = new ConnectToCommand(vWindow, mFactory, mDeviceManager, mConfig, cRefreshRecentDevices);
 		ActionCommand cClearDevHistory = new ClearDevHistoryCommand(cRefreshRecentDevices, mConfig);
 		ActionCommand cExitProgram = new ProgramExitCommand(mDeviceManager, mProfileManager);
 		ActionCommand cDisconnectDevice = new DisconnectDeviceCommand(vWindow, mDeviceManager);
-
-		ActionCommand cSaveProfile = new SaveProfileCommand(vWindow, mProfileManager);
-		ActionCommand cSaveAsProfile;
 		
 		ActionCommand cNewProfile = new NewProfileCommand(cShowProfileCommand, cSaveProfile, mProfileManager);
-		ActionCommand cLoadProfile = new LoadProfileCommand(cShowProfileCommand, cRefreshRecentProfiles, mProfileManager, mConfig);
+		ActionCommand cLoadProfile = new LoadProfileCommand(cShowProfileCommand, cRefreshRecentProfiles, cSaveProfile, mProfileManager, mConfig);
 		ActionCommand cClearProHistory = new ClearProHistoryCommand(cRefreshRecentProfiles, mConfig);
 		ActionCommand cCloseProfile;
+		ActionCommand cSaveAsProfile;
 		
 		vWindow.setClearDevHistoryCommand(cClearDevHistory);
 		vWindow.setClearProHistoryCommand(cClearProHistory);

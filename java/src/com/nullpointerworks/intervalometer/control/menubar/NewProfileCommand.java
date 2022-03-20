@@ -11,13 +11,13 @@ public class NewProfileCommand implements ActionCommand
 {
 	private ProfileManager mProfileManager;
 	private Command cShowProfileCommand;
-	private Command cSaveProfile;
+	private Command cSaveProfileCommand;
 	
 	public NewProfileCommand(Command spc, Command csp, ProfileManager pm)
 	{
 		mProfileManager = pm;
 		cShowProfileCommand = spc;
-		cSaveProfile = csp;
+		cSaveProfileCommand = csp;
 	}
 	
 	@Override
@@ -29,7 +29,7 @@ public class NewProfileCommand implements ActionCommand
 			int opt = JOptionPane.showConfirmDialog(null, "Would you like to save the current profile?", "Unsaved Profile", JOptionPane.OK_CANCEL_OPTION);
 			if (opt == JOptionPane.OK_OPTION)
 			{
-				cSaveProfile.onCommand();
+				cSaveProfileCommand.onCommand();
 			}
 			mProfileManager.setStoredProfile(null);
 		}

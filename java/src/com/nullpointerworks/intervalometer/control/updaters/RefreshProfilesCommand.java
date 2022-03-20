@@ -16,13 +16,15 @@ public class RefreshProfilesCommand implements Command
 	private Configuration mConfig;
 	private ProfileManager mProfileManager;
 	private Command cShowProfileCommand;
+	private Command cSaveProfileCommand;
 	
-	public RefreshProfilesCommand(ApplicationView v, Configuration c, ProfileManager pm, Command spc)
+	public RefreshProfilesCommand(ApplicationView v, Configuration c, ProfileManager pm, Command spc, Command csp)
 	{
 		vWindow = v;
 		mConfig = c;
 		mProfileManager = pm;
 		cShowProfileCommand = spc;
+		cSaveProfileCommand = csp;
 	}
 	
 	@Override
@@ -34,7 +36,7 @@ public class RefreshProfilesCommand implements Command
 		
 		for (String p : list)
 		{
-			ActionCommand c = new AutoLoadCommand(p, mProfileManager, cShowProfileCommand);
+			ActionCommand c = new AutoLoadCommand(p, mProfileManager, cShowProfileCommand, cSaveProfileCommand);
 			String s = p.substring( p.lastIndexOf("/")+1, p.lastIndexOf(".") );
 			
 			names.add(s);

@@ -18,19 +18,21 @@ import com.nullpointerworks.intervalometer.view.swing.FileTypeFilter;
 
 public class LoadProfileCommand implements ActionCommand 
 {
-	private Command cShowProfileCommand;
 	private ProfileManager mProfileManager;
 	private final FileFilter xmlFilter;
 	private Configuration mConfig;
 	private Command cRefreshRecentProfiles;
+	private Command cShowProfileCommand;
+	private Command cSaveProfileCommand;
 	
-	public LoadProfileCommand(Command spc, Command rrp, ProfileManager pm, Configuration cfg)
+	public LoadProfileCommand(Command spc, Command rrp, Command csp, ProfileManager pm, Configuration cfg)
 	{
-		cShowProfileCommand = spc;
 		mProfileManager = pm;
 		xmlFilter = new FileTypeFilter(".xml", "Extensible Markup Language");
 		mConfig = cfg;
 		cRefreshRecentProfiles = rrp;
+		cShowProfileCommand = spc;
+		cSaveProfileCommand = csp;
 	}
 	
 	@Override
@@ -39,20 +41,13 @@ public class LoadProfileCommand implements ActionCommand
 		if (mProfileManager.hasProfile())
 		if (!mProfileManager.getStoredProfile().isSaved())
 		{
-			// ask to save first TODO
 			int opt = JOptionPane.showConfirmDialog(null, "Would you like to save the current profile?", "Unsaved Profile", JOptionPane.OK_CANCEL_OPTION);
 			if (opt == JOptionPane.OK_OPTION)
 			{
-				
-				
-				
-				
+				cSaveProfileCommand.onCommand();
 			}
 			mProfileManager.setStoredProfile(null);
 		}
-		
-		
-		
 		
 		JFileChooser chooser = new JFileChooser();
 		chooser.addChoosableFileFilter(xmlFilter);
