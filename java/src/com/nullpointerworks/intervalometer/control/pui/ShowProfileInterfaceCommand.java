@@ -27,7 +27,7 @@ public class ShowProfileInterfaceCommand implements Command
 		IntervalProfile mProfile = mProfileManager.getStoredProfile();
 		ProfileJPanel vProfile = new ProfileJPanel();
 		
-		Command cProfileChangeCommand = new ProfileChangeCommand(vWindow);
+		Command cProfileChangeCommand = new ProfileChangeCommand(vWindow, mProfile);
 		Command cUpdateProfileInterface = new UpdateStartDelayCommand(vProfile, mProfile);
 		DocumentCommand cNotesChangeCommand = new NotesModificationCommand(cProfileChangeCommand, vProfile, mProfile);
 		ActionCommand cNameChangeCommand = new NameChangeCommand(mProfile, cProfileChangeCommand, vWindow);

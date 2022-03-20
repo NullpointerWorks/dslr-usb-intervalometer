@@ -16,7 +16,7 @@ public class IntervalProfile
 	
 	public IntervalProfile(boolean fromFile)
 	{
-		isSaved =  isFromFile = fromFile;
+		isSaved = isFromFile = fromFile;
 		profilePath = "NewProfile.xml";
 		
 		// defaults

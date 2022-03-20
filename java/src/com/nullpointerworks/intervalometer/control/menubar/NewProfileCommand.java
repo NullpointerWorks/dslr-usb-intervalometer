@@ -35,6 +35,7 @@ public class NewProfileCommand implements ActionCommand
 		}
 		
 		IntervalProfile mProfile = new IntervalProfile(false);
+		mProfile.setSaved(true); // set a new default profile as saved so you only get a notification when it's changed
 		mProfile.setProfileName("NewProfile");
 		mProfileManager.setStoredProfile(mProfile);
 		cShowProfileCommand.onCommand();

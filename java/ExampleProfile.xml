@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Profile>
 	<Name>Example Profile</Name>
-	<Notes></Notes>
+	<Notes>some notes</Notes>
 	<StartDelay>2</StartDelay>
 	<ExposureTime>10</ExposureTime>
 	<InBetweenDelay>4</InBetweenDelay>
