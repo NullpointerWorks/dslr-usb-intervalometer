@@ -155,6 +155,7 @@ public class ApplicationView
 	public void setClearProHistoryCommand(ActionCommand c) {jmiClearProHistory.addActionListener(c);}
 	public void setSaveProfileCommand(ActionCommand c) {jmiSaveProfile.addActionListener(c);}
 	public void setSaveAsProfileCommand(ActionCommand c) {jmiSaveAsProfile.addActionListener(c);}
+	public void setCloseProfileCommand(ActionCommand c) {jmiCloseProfile.addActionListener(c);}
 	
 	public void setVisible(boolean b) {jfWindow.setVisible(b);}
 	public void setSaveEnabled(boolean b) {jmiSaveProfile.setEnabled(b);}

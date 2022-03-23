@@ -29,6 +29,7 @@ public class IntervalProfile
 	}
 
 	public boolean isFromFile() {return isFromFile;}
+	public void isFromFile(boolean b) {isFromFile = b;}
 	public boolean isSaved() {return isSaved;}
 	public void setSaved(boolean b) {isSaved = b;}
 	
