@@ -170,11 +170,8 @@ public class ApplicationView
 	}
 	
 	public void setDisplayTabTitle(String title) {tpTabs.setTitleAt(0, title);}
-	
-	public String getDisplayTabTitle()
-	{
-		return tpTabs.getTitleAt(0);
-	}
+	public String getDisplayTabTitle() {return tpTabs.getTitleAt(0);}
+	public void clearDisplayTab() {tpTabs.removeAll();}
 	
 	public void setConnected(boolean b)
 	{
