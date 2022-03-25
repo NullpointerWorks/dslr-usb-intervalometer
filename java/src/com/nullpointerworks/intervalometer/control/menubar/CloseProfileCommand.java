@@ -29,5 +29,6 @@ public class CloseProfileCommand implements ActionCommand
 		
 		vWindow.clearDisplayTab();
 		mProfileManager.setStoredProfile(null);
+		vWindow.setCloseEnabled(false);
 	}
 }
