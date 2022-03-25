@@ -48,13 +48,17 @@ public class ShowProfileInterfaceCommand implements Command
 		
 		vWindow.setSaveEnabled(true);
 		vWindow.setSaveAsEnabled(false);
-		vWindow.setCloseEnabled(false);
+		vWindow.setCloseEnabled(true);
 		vWindow.setDisplayTab(mProfile.getProfileName(), vProfile, cNameChangeCommand);
 		
 		vProfile.setProfileNotes(mProfile.getProfileNotes());
 		
 		// otherwise set the change listeners after filling in information
-		if (mProfile.isFromFile()) vProfile.setNotesChangeCommand(cNotesChangeCommand);
+		if (mProfile.isFromFile()) 
+		{
+			vProfile.setNotesChangeCommand(cNotesChangeCommand);
+			vWindow.setSaveAsEnabled(true);
+		}
 		
 		cUpdateProfileInterface.onCommand();
 	}
