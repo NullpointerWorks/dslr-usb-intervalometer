@@ -44,7 +44,11 @@ public class ShowProfileInterfaceCommand implements Command
 		// if this is a new profile (not form a file) 
 		// set the change listeners before filling in info.
 		// this makes the profile as unsaved, which makes sense for a new profile
-		if (!mProfile.isFromFile()) vProfile.setNotesChangeCommand(cNotesChangeCommand);
+		if (!mProfile.isFromFile()) 
+		{
+			vProfile.setNotesChangeCommand(cNotesChangeCommand);
+			vWindow.setSaveAsEnabled(false);
+		}
 		
 		vWindow.setSaveEnabled(true);
 		vWindow.setSaveAsEnabled(false);

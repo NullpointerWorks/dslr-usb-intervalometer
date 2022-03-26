@@ -96,7 +96,7 @@ public class Application
 		ActionCommand cLoadProfile = new LoadProfileCommand(cShowProfileCommand, cRefreshRecentProfiles, cSaveProfile, mProfileManager, mConfig);
 		ActionCommand cClearProHistory = new ClearProHistoryCommand(cRefreshRecentProfiles, mConfig);
 		ActionCommand cSaveAsProfile = new SaveAsCommand(mProfileManager, cSaveProfile);
-		ActionCommand cCloseProfile = new CloseProfileCommand(vWindow, mProfileManager);
+		ActionCommand cCloseProfile = new CloseProfileCommand(vWindow, mProfileManager, cSaveProfile);
 		
 		vWindow.setClearDevHistoryCommand(cClearDevHistory);
 		vWindow.setClearProHistoryCommand(cClearProHistory);
