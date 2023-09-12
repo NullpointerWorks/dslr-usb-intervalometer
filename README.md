@@ -1,5 +1,3 @@
-<a target="_blank" href="https://unlicense.org"><img src="https://unlicense.org/pd-icon.png" alt="Unlicense" width="40"/> Unlicense</a>
-
 # DSLR Intervalometer
 
 There are a number of Canon DSLRs that allow for an external shutter release using a 3-terminal 2.5mm audio jack. You can purchase the hand-held intervalometers online, but using those can be somewhat inconvenient. They either don't save their last configuration, or they can't store any for later use. Not to mention configuring the device can be a pain in the butt. 
